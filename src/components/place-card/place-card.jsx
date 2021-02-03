@@ -1,8 +1,9 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 
 const PlaceCard = (props) => {
-  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = props;
+  const {previewImage, isPremium, price, title, type, rating} = props;
   const ratingInPercents = rating * 10 * 2 + `%`;
 
   return (
@@ -43,6 +44,15 @@ const PlaceCard = (props) => {
       </div>
     </article>
   );
+};
+
+PlaceCard.propTypes = {
+  previewImage: PropTypes.string,
+  isPremium: PropTypes.bool,
+  price: PropTypes.number,
+  title: PropTypes.string,
+  type: PropTypes.string,
+  rating: PropTypes.number
 };
 
 export default PlaceCard;
