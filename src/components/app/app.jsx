@@ -12,8 +12,8 @@ const App = ({cards}) => (
 App.propTypes = {
   cards: PropTypes.arrayOf(
       PropTypes.shape({
-        previewImage: PropTypes.string,
-        isPremium: PropTypes.bool,
+        preview_image: PropTypes.string,
+        is_premium: PropTypes.bool,
         price: PropTypes.number,
         title: PropTypes.string,
         type: PropTypes.string,

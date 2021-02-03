@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 
 const PlaceCard = (props) => {
-  const {previewImage, isPremium, price, title, type, rating} = props;
+  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = props;
   const ratingInPercents = rating * 10 * 2 + `%`;
 
   return (
@@ -47,8 +47,8 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  previewImage: PropTypes.string,
-  isPremium: PropTypes.bool,
+  preview_image: PropTypes.string,
+  is_premium: PropTypes.bool,
   price: PropTypes.number,
   title: PropTypes.string,
   type: PropTypes.string,
