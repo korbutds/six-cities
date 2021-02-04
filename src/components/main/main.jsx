@@ -1,6 +1,6 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import PlaceCard from '../place-card/place-card';
+import cardsPropTypes from '../../prop-types';
 
 const MainScreen = ({cards}) => {
   return (
@@ -101,16 +101,8 @@ const MainScreen = ({cards}) => {
 };
 
 MainScreen.propTypes = {
-  cards: PropTypes.arrayOf(
-      PropTypes.shape({
-        'preview_image': PropTypes.string,
-        'is_premium': PropTypes.bool,
-        'price': PropTypes.number,
-        'title': PropTypes.string,
-        'type': PropTypes.string,
-        'rating': PropTypes.number
-      })
-  )
+  cards: cardsPropTypes
 };
+
 
 export default MainScreen;

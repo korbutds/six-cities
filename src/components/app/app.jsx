@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+
 import MainScreen from '../main/main';
 
 const App = ({cards}) => (
