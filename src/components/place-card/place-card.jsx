@@ -47,12 +47,12 @@ const PlaceCard = (props) => {
 };
 
 PlaceCard.propTypes = {
-  preview_image: PropTypes.string,
-  is_premium: PropTypes.bool,
-  price: PropTypes.number,
-  title: PropTypes.string,
-  type: PropTypes.string,
-  rating: PropTypes.number
+  'preview_image': PropTypes.string,
+  'is_premium': PropTypes.bool,
+  'price': PropTypes.number,
+  'title': PropTypes.string,
+  'type': PropTypes.string,
+  'rating': PropTypes.number
 };
 
 export default PlaceCard;

@@ -12,12 +12,12 @@ const App = ({cards}) => (
 App.propTypes = {
   cards: PropTypes.arrayOf(
       PropTypes.shape({
-        preview_image: PropTypes.string,
-        is_premium: PropTypes.bool,
-        price: PropTypes.number,
-        title: PropTypes.string,
-        type: PropTypes.string,
-        rating: PropTypes.number
+        'preview_image': PropTypes.string,
+        'is_premium': PropTypes.bool,
+        'price': PropTypes.number,
+        'title': PropTypes.string,
+        'type': PropTypes.string,
+        'rating': PropTypes.number
       })
   )
 };
