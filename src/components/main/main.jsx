@@ -1,6 +1,6 @@
 import React from 'react';
 import PlaceCard from '../place-card/place-card';
-import cardsPropTypes from '../../prop-types';
+import {cardsPropTypes} from '../../prop-types';
 
 const MainScreen = ({cards}) => {
   return (
