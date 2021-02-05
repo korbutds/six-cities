@@ -4,6 +4,7 @@ import MainScreen from '../main/main';
 import LoginScreen from '../login/login';
 import FavoritesScreen from '../favorites/favorites';
 import PropertyScreen from '../property/property';
+import NotFoundScreen from '../404/404';
 
 const App = ({cards}) => (
   <>
@@ -13,6 +14,7 @@ const App = ({cards}) => (
     />
     <FavoritesScreen />
     <PropertyScreen />
+    <NotFoundScreen />
   </>
 );
 
