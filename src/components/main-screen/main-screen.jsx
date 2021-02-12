@@ -87,7 +87,7 @@ const MainScreen = ({cards}) => {
                 </ul>
               </form>
               <div className="cities__places-list places__list tabs__content">
-                {cards.map((card, index) => <PlaceCard {...card} key={card + index} />) }
+                {cards.map((card) => <PlaceCard {...card} key={card[`id`]} />) }
               </div>
             </section>
             <div className="cities__right-section">

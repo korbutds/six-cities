@@ -1,15 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from '../src/components/app/app';
+import {Offers} from '../src/mocks/offers.js';
 
-fetch(`https://6.react.pages.academy/six-cities/hotels`)
-  .then((response) => response.json())
-  .then((response) => {
-    ReactDOM.render(
-        <App
-          cards = {response}
-        />,
-        document.querySelector(`#root`)
-    );
-  });
+ReactDOM.render(
+    <App
+      cards = {Offers}
+    />,
+    document.querySelector(`#root`)
+);
 
