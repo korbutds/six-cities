@@ -3,7 +3,7 @@ import {cardPropTypes} from '../../prop-types';
 
 
 const PlaceCard = (props) => {
-  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, setPlaceId} = props;
+  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, setPlaceId, is_favorite: isFavorite} = props;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const getActivePlaceId = () => {
     setPlaceId(id);
@@ -22,7 +22,7 @@ const PlaceCard = (props) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button button" type="button">
+          <button className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : `` } button`} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
