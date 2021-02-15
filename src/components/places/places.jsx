@@ -1,13 +1,8 @@
-import React, {useState} from 'react';
-import PlaceCard from '../place-card/place-card';
+import React from 'react';
+import CitiesCard from '../cities-card/cities-card';
 import {cardsPropTypes} from '../../prop-types';
 
 const Places = ({cards}) => {
-  const [id, setId] = useState(``);
-
-  const setPlaceId = (cardId) => {
-    return setId(cardId);
-  };
   return (
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
@@ -68,7 +63,7 @@ const Places = ({cards}) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cards.map((card) => <PlaceCard {...card} key={card[`id`]} setPlaceId={setPlaceId}/>) }
+              {cards.map((card) => <CitiesCard {...card} key={card[`id`]} />) }
             </div>
           </section>
           <div className="cities__right-section">

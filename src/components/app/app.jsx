@@ -30,7 +30,7 @@ const App = ({cards}) => {
         </Route>
 
         <Route path={routePathes.FAVORITES_SCREEN} exact>
-          <FavoritesScreen />
+          <FavoritesScreen cards = {cards}/>
         </Route>
 
         <Route path={routePathes.PROPERTY_SCREEN} exact>
