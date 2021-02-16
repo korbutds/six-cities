@@ -35,11 +35,11 @@ const App = ({cards}) => {
         </Route>
 
         <Route path={routePathes.OFFER_SCREEN} exact render={(routeProps) => {
-
+          const apartmentId = routeProps.match.params.id;
           return (
             <OfferScreen
               card={cards.find((card) => {
-                return card.id === parseFloat(routeProps.match.params.id);
+                return card.id === parseFloat(apartmentId);
               }
               )}
               comments={Comments}

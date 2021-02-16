@@ -1,9 +1,10 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 import {cardPropTypes} from '../../prop-types';
 
 
 const CitiesCard = (props) => {
-  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = props;
+  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = props;
   const ratingInPercents = rating * 10 * 2 + `%`;
 
   return (
@@ -38,7 +39,7 @@ const CitiesCard = (props) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link href="#" to={`/offer/${id}`} >{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
