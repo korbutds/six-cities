@@ -21,3 +21,8 @@ export const getCitySortedPlaces = (places) => {
     );
   }, {});
 };
+
+export const makeFirstLetterUC = (str) => {
+  return str[0].toUpperCase() + str.slice(1);
+};
+

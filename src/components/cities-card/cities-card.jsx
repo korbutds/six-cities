@@ -3,13 +3,11 @@ import {cardPropTypes} from '../../prop-types';
 
 
 const CitiesCard = (props) => {
-  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, setPlaceId, is_favorite: isFavorite} = props;
+  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = props;
   const ratingInPercents = rating * 10 * 2 + `%`;
-  const getActivePlaceId = () => {
-    setPlaceId(id);
-  };
+
   return (
-    <article className="cities__place-card place-card" onMouseOver={getActivePlaceId}>
+    <article className="cities__place-card place-card">
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">

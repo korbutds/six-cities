@@ -4,14 +4,15 @@ import {cardsPropTypes} from '../../prop-types';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
-import PropertyScreen from '../property-screen/property-screen';
+import OfferScreen from '../offer-screen/offer-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
+import {Comments} from '../../mocks/comments';
 
 const routePathes = {
   MAIN_SCREEN: `/`,
   LOGIN_SCREEN: `/login`,
   FAVORITES_SCREEN: `/favorites`,
-  PROPERTY_SCREEN: `/offer/:id`,
+  OFFER_SCREEN: `/offer/:id`,
 };
 
 const App = ({cards}) => {
@@ -33,9 +34,18 @@ const App = ({cards}) => {
           <FavoritesScreen cards = {cards}/>
         </Route>
 
-        <Route path={routePathes.PROPERTY_SCREEN} exact>
-          <PropertyScreen />
-        </Route>
+        <Route path={routePathes.OFFER_SCREEN} exact render={(routeProps) => {
+
+          return (
+            <OfferScreen
+              card={cards.find((card) => {
+                return card.id === parseFloat(routeProps.match.params.id);
+              }
+              )}
+              comments={Comments}
+            />
+          );
+        }}/>
 
         <Route>
           <NotFoundScreen />
