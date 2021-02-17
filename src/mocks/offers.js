@@ -7,7 +7,7 @@ export const Offers =
     },
     'preview_image': `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg`,
     'is_premium': false,
-    'is_favorite': true,
+    'is_favorite': false,
     'price': 125,
     'title': `The Joshua Tree House`,
     'type': `apartment`,
