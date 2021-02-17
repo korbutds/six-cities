@@ -1,11 +1,11 @@
 import React from 'react';
-import {useHistory} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const NearPlacesCard = ({card}) => {
-  const history = useHistory();
+const NearPlacesCard = ({card, onCursor}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
+  const handleCardClick = () => onCursor(id);
   return (
     <article className="near-places__card place-card">
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
@@ -38,11 +38,7 @@ const NearPlacesCard = ({card}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#" onClick={(evt) => {
-            evt.preventDefault();
-            history.push(`/offer/${id}`);
-            window.scrollTo(0, 0);
-          }}>{title}</a>
+          <Link href="#" to={`/offer/${id}`} onClick={handleCardClick}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>
@@ -72,6 +68,7 @@ NearPlacesCard.propTypes = {
     }),
     'description': PropTypes.string.isRequired,
   }),
+  onCursor: PropTypes.func
 };
 
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {makeFirstLetterUC} from '../../utils';
 import Header from '../header/header';
 import Reviews from '../reviews/reviews';
@@ -33,6 +33,7 @@ const OffersList = ({offers}) => {
 
 const OfferScreen = ({card, comments, nearPlaces}) => {
   const {
+    id,
     images,
     is_premium: isPremium,
     is_favorite: isFavorite,
@@ -47,6 +48,10 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
     description
   } = card;
 
+  const [, setNearCardId] = useState(null);
+  useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
+
+  const getNearCardId = (cardId) => setNearCardId(cardId);
   const contentImages = images.slice(0, 6);
   return (
     <div className="page">
@@ -131,7 +136,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
           <section className="property__map map"></section>
         </section>
         <div className="container">
-          <NearPlacesList cards={nearPlaces} />
+          <NearPlacesList cards={nearPlaces} onCursor={getNearCardId}/>
         </div>
       </main>
     </div>
