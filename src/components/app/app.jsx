@@ -43,6 +43,8 @@ const App = ({cards}) => {
               }
               )}
               comments={Comments}
+
+              nearPlaces={cards.slice(0, 3)}
             />
           );
         }}/>
