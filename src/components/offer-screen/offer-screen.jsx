@@ -5,29 +5,13 @@ import Reviews from '../reviews/reviews';
 import PropTypes from 'prop-types';
 import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
+import OffersList from '../offers-list/offers-list';
 
 const ImageComponent = ({image}) => {
   return (
     <div className="property__image-wrapper">
       <img className="property__image" src={image} alt="Photo studio" />
     </div>
-  );
-};
-
-const OfferItem = ({offer}) => {
-  return (
-    <li className="property__inside-item">{offer}</li>
-  );
-};
-
-const OffersList = ({offers}) => {
-  if (offers.length === 0) {
-    return ``;
-  }
-  return (
-    <ul className="property__inside-list">
-      {offers.map((offer, i) => <OfferItem offer={offer} key={`${offer}-${i}`}/>)}
-    </ul>
   );
 };
 
@@ -143,7 +127,6 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
   );
 };
 
-
 OfferScreen.propTypes = {
   card: PropTypes.shape({
     'id': PropTypes.number.isRequired,
@@ -172,16 +155,5 @@ OfferScreen.propTypes = {
 ImageComponent.propTypes = {
   image: PropTypes.string
 };
-
-OffersList.propTypes = {
-  offers: PropTypes.arrayOf(
-      PropTypes.string.isRequired
-  )
-};
-
-OfferItem.propTypes = {
-  offer: PropTypes.string.isRequired
-};
-
 
 export default OfferScreen;

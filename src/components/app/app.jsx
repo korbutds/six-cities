@@ -8,7 +8,7 @@ import OfferScreen from '../offer-screen/offer-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {Comments} from '../../mocks/comments';
 
-const routePathes = {
+const RoutePathes = {
   MAIN_SCREEN: `/`,
   LOGIN_SCREEN: `/login`,
   FAVORITES_SCREEN: `/favorites`,
@@ -20,28 +20,28 @@ const App = ({cards}) => {
     <Router>
       <Switch>
 
-        <Route path={routePathes.MAIN_SCREEN} exact>
+        <Route path={RoutePathes.MAIN_SCREEN} exact>
           <MainScreen
             cards = {cards}
           />
         </Route>
 
-        <Route path={routePathes.LOGIN_SCREEN} exact>
+        <Route path={RoutePathes.LOGIN_SCREEN} exact>
           <LoginScreen />
         </Route>
 
-        <Route path={routePathes.FAVORITES_SCREEN} exact>
+        <Route path={RoutePathes.FAVORITES_SCREEN} exact>
           <FavoritesScreen cards = {cards}/>
         </Route>
 
-        <Route path={routePathes.OFFER_SCREEN} exact render={(routeProps) => {
+        <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {
           const apartmentId = routeProps.match.params.id;
+          const card = cards.find(({id}) => {
+            return id === parseFloat(apartmentId);
+          });
           return (
             <OfferScreen
-              card={cards.find((card) => {
-                return card.id === parseFloat(apartmentId);
-              }
-              )}
+              card={card}
               comments={Comments}
 
               nearPlaces={[...cards.slice(0, apartmentId - 1), ...cards.slice(apartmentId)]}
