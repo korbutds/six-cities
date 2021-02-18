@@ -44,7 +44,7 @@ const App = ({cards}) => {
               )}
               comments={Comments}
 
-              nearPlaces={cards.slice(0, 3)}
+              nearPlaces={[...cards.slice(0, apartmentId - 1), ...cards.slice(apartmentId)]}
             />
           );
         }}/>
