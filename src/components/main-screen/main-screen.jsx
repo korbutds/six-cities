@@ -3,6 +3,7 @@ import cardsPropTypes from '../places/places.prop.js';
 import Places from '../places/places';
 import NoPlaces from '../no-places/no-places';
 import Header from '../header/header';
+
 const MainScreen = ({cards}) => {
 
   return (

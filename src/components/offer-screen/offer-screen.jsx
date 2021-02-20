@@ -7,7 +7,9 @@ import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
-
+import {CitiesInfo} from '../../const.js';
+import commentPropTypes from '../reviews/comments.prop.js';
+import Map from '../map/map';
 
 const ImageComponent = ({image}) => {
   return (
@@ -36,6 +38,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 
   const [, setNearCardId] = useState(null);
   useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
+  const [currentCity] = useState(CitiesInfo.Amsterdam);
 
   const getNearCardId = (cardId) => setNearCardId(cardId);
   const contentImages = images.slice(0, 6);
@@ -119,7 +122,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 
             </div>
           </div>
-          <section className="property__map map"></section>
+          <Map city={currentCity} points={nearPlaces}/>
         </section>
         <div className="container">
           <NearPlacesList cards={nearPlaces} onCursor={getNearCardId}/>
@@ -131,20 +134,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 
 OfferScreen.propTypes = {
   card: cardPropTypes,
-  comments: PropTypes.arrayOf(
-      PropTypes.shape({
-        'id': PropTypes.number.isRequired,
-        'user': PropTypes.shape({
-          'id': PropTypes.number.isRequired,
-          'is_pro': PropTypes.bool.isRequired,
-          'name': PropTypes.string.isRequired,
-          'avatar_url': PropTypes.string.isRequired
-        }),
-        'rating': PropTypes.number.isRequired,
-        'comment': PropTypes.string.isRequired,
-        'date': PropTypes.string.isRequired
-      })
-  ),
+  comments: commentPropTypes,
   nearPlaces: PropTypes.arrayOf(
       cardPropTypes
   )
