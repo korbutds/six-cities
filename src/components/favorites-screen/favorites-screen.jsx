@@ -1,5 +1,5 @@
 import React from 'react';
-import {cardsPropTypes} from '../../prop-types';
+import cardsPropTypes from '../places/places.prop.js';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';

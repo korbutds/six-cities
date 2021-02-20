@@ -3,13 +3,18 @@ export const Offers =
   {
     'id': 1,
     'city': {
-      'location': `Amsterdam`
+      'name': `Amsterdam`,
+      'location': {
+        'latitude': 52.3909553943508,
+        'longitude': 4.85309666406198,
+        'zoom': 13
+      }
     },
     'preview_image': `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/3.jpg`,
     'is_premium': false,
     'is_favorite': false,
-    'price': 125,
-    'title': `The Joshua Tree House`,
+    'price': 1245,
+    'title': `The Hohou palace`,
     'type': `apartment`,
     'rating': 3.1,
     'images': [
@@ -52,7 +57,12 @@ export const Offers =
   {
     'id': 2,
     'city': {
-      'location': `Amsterdam`
+      'name': `Amsterdam`,
+      'location': {
+        'latitude': 52.369553943508,
+        'longitude': 4.85309666406198,
+        'zoom': 13
+      }
     },
     'preview_image': `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/15.jpg`,
     'is_premium': true,
@@ -97,7 +107,12 @@ export const Offers =
   {
     'id': 3,
     'city': {
-      'location': `Paris`
+      'name': `Paris`,
+      'location': {
+        'latitude': 52.3909553943508,
+        'longitude': 4.929309666406198,
+        'zoom': 13
+      }
     },
     'preview_image': `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/5.jpg`,
     'is_premium': true,
@@ -146,7 +161,12 @@ export const Offers =
   {
     'id': 4,
     'city': {
-      'location': `Hamburg`
+      'name': `Hamburg`,
+      'location': {
+        'latitude': 52.3809553943508,
+        'longitude': 4.939309666406198,
+        'zoom': 13
+      }
     },
     'preview_image': `https://assets.htmlacademy.ru/intensives/javascript-3/hotel/13.jpg`,
     'is_premium': false,

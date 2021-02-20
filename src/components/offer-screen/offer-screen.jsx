@@ -6,6 +6,8 @@ import PropTypes from 'prop-types';
 import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
+import cardPropTypes from '../cities-card/cities-card.prop.js';
+
 
 const ImageComponent = ({image}) => {
   return (
@@ -39,7 +41,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
   const contentImages = images.slice(0, 6);
   return (
     <div className="page">
-      <Header />
+      <Header isLogged={true} />
 
       <main className="page__main page__main--property">
         <section className="property">
@@ -128,28 +130,24 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 };
 
 OfferScreen.propTypes = {
-  card: PropTypes.shape({
-    'id': PropTypes.number.isRequired,
-    'images': PropTypes.arrayOf(PropTypes.string),
-    'is_premium': PropTypes.bool.isRequired,
-    'is_favorite': PropTypes.bool.isRequired,
-    'title': PropTypes.string.isRequired,
-    'rating': PropTypes.number.isRequired,
-    'bedrooms': PropTypes.number.isRequired,
-    'type': PropTypes.string.isRequired,
-    'max_adults': PropTypes.number.isRequired,
-    'price': PropTypes.number.isRequired,
-    'goods': PropTypes.arrayOf(PropTypes.string),
-    'host': PropTypes.shape({
-      'id': PropTypes.number.isRequired,
-      'name': PropTypes.string.isRequired,
-      'is_pro': PropTypes.bool.isRequired,
-      'avatar_url': PropTypes.string.isRequired,
-    }),
-    'description': PropTypes.string.isRequired,
-  }),
-  comments: PropTypes.array,
-  nearPlaces: PropTypes.array
+  card: cardPropTypes,
+  comments: PropTypes.arrayOf(
+      PropTypes.shape({
+        'id': PropTypes.number.isRequired,
+        'user': PropTypes.shape({
+          'id': PropTypes.number.isRequired,
+          'is_pro': PropTypes.bool.isRequired,
+          'name': PropTypes.string.isRequired,
+          'avatar_url': PropTypes.string.isRequired
+        }),
+        'rating': PropTypes.number.isRequired,
+        'comment': PropTypes.string.isRequired,
+        'date': PropTypes.string.isRequired
+      })
+  ),
+  nearPlaces: PropTypes.arrayOf(
+      cardPropTypes
+  )
 };
 
 ImageComponent.propTypes = {

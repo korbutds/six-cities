@@ -1,9 +1,14 @@
 import React, {useState} from 'react';
 import CitiesCard from '../cities-card/cities-card';
-import {cardsPropTypes} from '../../prop-types';
+import cardPropTypes from '../cities-card/cities-card.prop';
+import Map from '../map/map';
+import {CitiesInfo} from '../../const.js';
+import PropTypes from 'prop-types';
+
 
 const Places = ({cards}) => {
-  const [, setCardId] = useState(null);
+  const [cardId, setCardId] = useState(null);
+  const [currentCity] = useState(CitiesInfo.Amsterdam);
   const getCardId = (id) => {
     setCardId(id);
   };
@@ -67,11 +72,11 @@ const Places = ({cards}) => {
               </ul>
             </form>
             <div className="cities__places-list places__list tabs__content">
-              {cards.map((card) => <CitiesCard {...card} onCursor={getCardId} key={card[`id`]} />) }
+              {cards.map((card) => <CitiesCard card={card} onCursor={getCardId} key={card[`id`]} />) }
             </div>
           </section>
           <div className="cities__right-section">
-            <section className="cities__map map"></section>
+            <Map city={currentCity} points={cards} cardId={cardId}/>
           </div>
         </div>
       </div>
@@ -80,7 +85,9 @@ const Places = ({cards}) => {
 };
 
 Places.propTypes = {
-  cards: cardsPropTypes
+  cards: PropTypes.arrayOf(
+      cardPropTypes
+  )
 };
 
 export default Places;

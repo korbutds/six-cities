@@ -1,6 +1,6 @@
 import React from 'react';
 import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
-import {cardsPropTypes} from '../../prop-types';
+import cardsPropTypes from '../places/places.prop.js';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';

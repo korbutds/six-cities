@@ -15,7 +15,7 @@ const OffersList = ({offers}) => {
 
 OffersList.propTypes = {
   offers: PropTypes.arrayOf(
-      PropTypes.string.isRequired
+      PropTypes.string
   )
 };
 
