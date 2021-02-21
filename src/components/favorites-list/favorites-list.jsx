@@ -1,7 +1,7 @@
 import React from 'react';
 import FavoritesItem from '../favorites-item/favorites-item';
 import {getCitySortedPlaces} from '../../utils';
-import {cardsPropTypes} from '../../prop-types';
+import cardsPropTypes from '../places/places.prop.js';
 
 const FavotritesList = ({cards}) => {
   const favoriteLocationsCards = getCitySortedPlaces(cards);

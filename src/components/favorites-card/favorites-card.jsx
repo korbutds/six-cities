@@ -1,9 +1,9 @@
 import React from 'react';
-import {cardPropTypes} from '../../prop-types';
+import cardPropTypes from '../cities-card/cities-card.prop.js';
 
 
-const FavoritesCard = (props) => {
-  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = props;
+const FavoritesCard = ({card}) => {
+  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
 
   return (
@@ -46,6 +46,8 @@ const FavoritesCard = (props) => {
   );
 };
 
-FavoritesCard.propTypes = cardPropTypes;
+FavoritesCard.propTypes = {
+  card: cardPropTypes
+};
 
 export default FavoritesCard;

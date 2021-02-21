@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import {cardPropTypes} from '../../prop-types';
+import cardPropTypes from './cities-card.prop';
+import PropTypes from 'prop-types';
 
-
-const CitiesCard = (props) => {
-  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, onCursor} = props;
+const CitiesCard = ({card, onCursor}) => {
+  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const handleCursorHover = () => {
     onCursor(id);
@@ -52,6 +52,9 @@ const CitiesCard = (props) => {
   );
 };
 
-CitiesCard.propTypes = cardPropTypes;
+CitiesCard.propTypes = {
+  card: cardPropTypes,
+  onCursor: PropTypes.func
+};
 
 export default CitiesCard;
