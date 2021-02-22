@@ -8,9 +8,14 @@ import PropTypes from 'prop-types';
 
 const Places = ({cards}) => {
   const [cardId, setCardId] = useState(null);
-  const [currentCity] = useState(CitiesInfo.Amsterdam);
+  const [currentCity, setCurrCity] = useState(CitiesInfo.Amsterdam);
   const getCardId = (id) => {
     setCardId(id);
+  };
+
+  const handleClickChange = (evt) => {
+    evt.preventDefault();
+    setCurrCity(CitiesInfo[evt.target.innerText]);
   };
   return (
     <main className="page__main page__main--index page__main--index-empty">
@@ -19,7 +24,7 @@ const Places = ({cards}) => {
         <section className="locations container">
           <ul className="locations__list tabs__list">
             <li className="locations__item">
-              <a className="locations__item-link tabs__item" href="#">
+              <a className="locations__item-link tabs__item" href="#" onClick={handleClickChange}>
                 <span>Paris</span>
               </a>
             </li>

@@ -7,6 +7,7 @@ import "leaflet/dist/leaflet.css";
 
 const Map = ({city, points}) => {
   const mapRef = useRef();
+
   useEffect(() => {
     const cityCoords = city.coords;
     const cityZoom = city.zoom;
@@ -46,7 +47,7 @@ const Map = ({city, points}) => {
         mapRef.current.remove();
       };
     });
-  }, []);
+  }, [city]);
 
   return (<section className="property__map map" id="map" ref={mapRef}></section>);
 };
