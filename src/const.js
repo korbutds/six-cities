@@ -17,11 +17,11 @@ export const CitiesInfo = {
   }
 };
 
-export const CityList = [
-  `Paris`,
-  `Cologne`,
-  `Brussels`,
-  `Amsterdam`,
-  `Hamburg`,
-  `Dusseldorf`
-];
+export const CityList = {
+  Paris: `Paris`,
+  Cologne: `Cologne`,
+  Brussels: `Brussels`,
+  Amsterdam: `Amsterdam`,
+  Hamburg: `Hamburg`,
+  Dusseldorf: `Dusseldorf`
+};
