@@ -42,11 +42,11 @@ const Map = ({city, points}) => {
       })
       .addTo(mapRef.current)
       .bindPopup(point.title);
-
-      return () => {
-        mapRef.current.remove();
-      };
     });
+
+    return () => {
+      mapRef.current.remove();
+    };
   }, [city]);
 
   return (<section className="property__map map" id="map" ref={mapRef}></section>);
