@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import cardPropTypes from './cities-card.prop';
 import PropTypes from 'prop-types';
 
-const CitiesCard = ({card, onCursor}) => {
+const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const handleCursorHover = () => {
-    onCursor(id);
+    onCursorHandle(id);
   };
   const handleCursorOut = () => {
-    onCursor(null);
+    onCursorHandle(null);
   };
   return (
     <article className="cities__place-card place-card" onMouseEnter={handleCursorHover} onMouseLeave={handleCursorOut}>
@@ -54,7 +54,7 @@ const CitiesCard = ({card, onCursor}) => {
 
 CitiesCard.propTypes = {
   card: cardPropTypes,
-  onCursor: PropTypes.func
+  onCursorHandle: PropTypes.func
 };
 
 export default CitiesCard;

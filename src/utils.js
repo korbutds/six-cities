@@ -1,12 +1,8 @@
-// import {Offers} from './mocks/offers.js';
-export const getPlacesCities = (places) => {
-  return [...new Set(places.reduce((acc, place) => {
-    return [...acc, place[`city`][`name`]];
-  }, []))];
-};
+import {CityList} from "./const";
 
 export const getCitySortedPlaces = (places) => {
-  const cities = getPlacesCities(places);
+
+  const cities = Object.keys(CityList);
 
   return cities.reduce((acc, city) => {
     const placesInCurrentCity = places.filter((place) => {
@@ -24,12 +20,4 @@ export const getCitySortedPlaces = (places) => {
 
 export const makeFirstLetterUC = (str) => {
   return str[0].toUpperCase() + str.slice(1);
-};
-
-export const CitiesCoords = {
-  'Amsterdam': {
-    lat: 52.3740300,
-    lng: 4.8896900,
-    zoom: 12
-  }
 };

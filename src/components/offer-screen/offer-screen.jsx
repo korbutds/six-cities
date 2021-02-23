@@ -35,10 +35,10 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
     host,
     description
   } = card;
+  const currentCity = CitiesInfo[card.city.name];
 
-  const [, setNearCardId] = useState(null);
+  const [cardId, setNearCardId] = useState(null);
   useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
-  const [currentCity] = useState(CitiesInfo.Amsterdam);
 
   const getNearCardId = (cardId) => setNearCardId(cardId);
   const contentImages = images.slice(0, 6);
@@ -122,7 +122,7 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 
             </div>
           </div>
-          <Map city={currentCity} points={nearPlaces}/>
+          <Map city={currentCity} points={nearPlaces} cardId={cardId}/>
         </section>
         <div className="container">
           <NearPlacesList cards={nearPlaces} onCursor={getNearCardId}/>

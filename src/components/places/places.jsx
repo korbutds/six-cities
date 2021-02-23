@@ -1,17 +1,26 @@
 import React, {useState} from 'react';
-import CitiesCard from '../cities-card/cities-card';
 import cardPropTypes from '../cities-card/cities-card.prop';
-import Map from '../map/map';
+import CitiesList from '../cities-list/cities-list';
 import {CitiesInfo} from '../../const.js';
 import PropTypes from 'prop-types';
 import LocationList from '../location-list/location-list';
-
+import {getCitySortedPlaces} from '../../utils';
+import NoPlaces from '../no-places/no-places';
 
 const Places = ({cards}) => {
   const [cardId, setCardId] = useState(null);
-  const [currentCity] = useState(CitiesInfo.Amsterdam);
-  const getCardId = (id) => {
+  const [currentCity, changeCurrentCity] = useState(CitiesInfo.Amsterdam);
+  const handleItemId = (id) => {
     setCardId(id);
+  };
+
+  const sortedPlacesByCities = getCitySortedPlaces(cards)
+
+  const currentCityPlaces = sortedPlacesByCities[currentCity.name];
+  const handleCityChange = (evt) => {
+    evt.preventDefault();
+    const city = evt.target.textContent;
+    changeCurrentCity(CitiesInfo[city]);
   };
 
   return (
@@ -19,38 +28,11 @@ const Places = ({cards}) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <LocationList />
+          <LocationList currentCity={currentCity} onCityClick={handleCityChange}/>
         </section>
       </div>
-      <div className="cities">
-        <div className="cities__places-container container">
-          <section className="cities__places places">
-            <h2 className="visually-hidden">Places</h2>
-            <b className="places__found">{cards.length} places to stay in Amsterdam</b>
-            <form className="places__sorting" action="#" method="get">
-              <span className="places__sorting-caption">Sort by</span>
-              <span className="places__sorting-type" tabIndex="0">
-                Popular
-                <svg className="places__sorting-arrow" width="7" height="4">
-                  <use xlinkHref="#icon-arrow-select"></use>
-                </svg>
-              </span>
-              <ul className="places__options places__options--custom places__options--opened">
-                <li className="places__option places__option--active" tabIndex="0">Popular</li>
-                <li className="places__option" tabIndex="0">Price: low to high</li>
-                <li className="places__option" tabIndex="0">Price: high to low</li>
-                <li className="places__option" tabIndex="0">Top rated first</li>
-              </ul>
-            </form>
-            <div className="cities__places-list places__list tabs__content">
-              {cards.map((card) => <CitiesCard card={card} onCursor={getCardId} key={card[`id`]} />) }
-            </div>
-          </section>
-          <div className="cities__right-section">
-            <Map city={currentCity} points={cards} cardId={cardId}/>
-          </div>
-        </div>
-      </div>
+      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={handleItemId} currentCity={currentCity} cardId={cardId} />}
+
     </main>
   );
 };
