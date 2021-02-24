@@ -3,16 +3,18 @@ import {Offers} from "../mocks/offers";
 import {ActionType} from "./action";
 
 const initialState = {
-  city: CityList.Amsterdam,
+  location: CityList.Paris,
   cards: Offers,
+  citySortedCards: []
 };
+
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case ActionType.CHANGE_CITY:
+    case ActionType.CHANGE_LOCATION:
       return {
         ...state,
-        city: action.payload
+        location: action.payload
       };
   }
 

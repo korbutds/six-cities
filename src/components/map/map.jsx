@@ -7,7 +7,6 @@ import "leaflet/dist/leaflet.css";
 
 const Map = ({city, points, cardId}) => {
 
-  console.log(cardId)
   const mapRef = useRef();
 
   useEffect(() => {
@@ -30,15 +29,11 @@ const Map = ({city, points, cardId}) => {
       .addTo(mapRef.current);
 
     points.forEach((point) => {
-      const customIcon = point.id !== cardId ? leaflet.icon({
-        iconUrl: `./img/pin.svg`,
-        iconSize: [27, 39]
-      }) : leaflet.icon({
-        iconUrl: `./img/pin-active.svg`,
+      const customIcon = leaflet.icon({
+        iconUrl: `${point.id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
         iconSize: [27, 39]
       });
 
-      console.log(customIcon);
 
       leaflet.marker({
         lat: point.city.location.latitude,
@@ -71,7 +66,8 @@ Map.propTypes = {
   ),
   points: PropTypes.arrayOf(
       cardPropTypes
-  )
+  ),
+  cardId: PropTypes.number
 };
 
 export default Map;
