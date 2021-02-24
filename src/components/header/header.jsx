@@ -1,8 +1,10 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
+import {connect} from 'react-redux';
 
-const Header = ({isLogged = false, isMainPage = false}) => {
+const Header = (props) => {
+  const {isLogged, isMainPage = false} = props;
   return (
     <header className="header">
       <div className="container">
@@ -41,4 +43,10 @@ Header.propTypes = {
   isMainPage: PropTypes.bool
 };
 
-export default Header;
+const mapStateToProps = (state) => ({
+  isLogged: state.isLogged
+});
+
+export {Header};
+
+export default connect(mapStateToProps)(Header);

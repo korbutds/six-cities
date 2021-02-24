@@ -21,9 +21,7 @@ const App = ({cards}) => {
       <Switch>
 
         <Route path={RoutePathes.MAIN_SCREEN} exact>
-          <MainScreen
-            cards = {cards}
-          />
+          <MainScreen />
         </Route>
 
         <Route path={RoutePathes.LOGIN_SCREEN} exact>
@@ -31,7 +29,7 @@ const App = ({cards}) => {
         </Route>
 
         <Route path={RoutePathes.FAVORITES_SCREEN} exact>
-          <FavoritesScreen cards = {cards}/>
+          <FavoritesScreen />
         </Route>
 
         <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {

@@ -5,7 +5,8 @@ import {ActionType} from "./action";
 const initialState = {
   location: CityList.Paris,
   cards: Offers,
-  citySortedCards: []
+  citySortedCards: [],
+  isLogged: false
 };
 
 

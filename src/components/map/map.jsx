@@ -2,16 +2,19 @@ import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
+import {CitiesInfo} from '../../const.js';
+import {connect} from 'react-redux';
 
 import "leaflet/dist/leaflet.css";
 
-const Map = ({city, points, cardId}) => {
+const Map = (props) => {
+  const {city, points, cardId} = props;
 
   const mapRef = useRef();
 
   useEffect(() => {
-    const cityCoords = city.coords;
-    const cityZoom = city.zoom;
+    const cityCoords = CitiesInfo[city].coords;
+    const cityZoom = CitiesInfo[city].zoom;
 
     mapRef.current = leaflet.map(`map`, {
       center: cityCoords,
@@ -55,19 +58,17 @@ const Map = ({city, points, cardId}) => {
 };
 
 Map.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    coords: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired,
-    }),
-    zoom: PropTypes.number.isRequired
-  }
-  ),
+  city: PropTypes.string.isRequired,
   points: PropTypes.arrayOf(
       cardPropTypes
   ),
   cardId: PropTypes.number
 };
 
-export default Map;
+const mapStateToProps = (state) => ({
+  city: state.location
+});
+
+export {Map};
+
+export default connect(mapStateToProps)(Map);

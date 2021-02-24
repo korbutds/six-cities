@@ -14,7 +14,7 @@ const Places = ({cards}) => {
     setCardId(id);
   };
 
-  const sortedPlacesByCities = getCitySortedPlaces(cards)
+  const sortedPlacesByCities = getCitySortedPlaces(cards);
 
   const currentCityPlaces = sortedPlacesByCities[currentCity.name];
   const handleCityChange = (evt) => {
@@ -28,7 +28,7 @@ const Places = ({cards}) => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <LocationList currentCity={currentCity} onCityClick={handleCityChange}/>
+          <LocationList onCityClick={handleCityChange}/>
         </section>
       </div>
       {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={handleItemId} currentCity={currentCity} cardId={cardId} />}

@@ -1,5 +1,11 @@
 import {CityList} from "./const";
 
+export const getCitiesNames = (places) => {
+  return places.reduce((acc, place) => {
+    return [...acc, place.city.name];
+  }, []);
+};
+
 export const getCitySortedPlaces = (places) => {
 
   const cities = Object.keys(CityList);
