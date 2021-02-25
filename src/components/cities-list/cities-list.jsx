@@ -1,14 +1,23 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import {getCitySortedPlaces} from '../../utils';
 import CitiesCard from '../cities-card/cities-card';
+import PropTypes from 'prop-types';
+import cardPropTypes from '../cities-card/cities-card.prop';
 import Map from '../map/map';
 
-const CitiesList = ({cards, onCursorHandle, currentCity, cardId}) => {
+const CitiesList = (props) => {
+  const {cards, onCursorHandle, currentCity, cardId} = props;
+
+  const sortedPlacesByCities = getCitySortedPlaces(cards);
+
+  const currentCityPlaces = sortedPlacesByCities[currentCity];
   return (
     <div className="cities">
       <div className="cities__places-container container">
         <section className="cities__places places">
           <h2 className="visually-hidden">Places</h2>
-          <b className="places__found">{cards.length} {cards.length > 1 ? `places` : `place`} to stay in {currentCity.name}</b>
+          <b className="places__found">{currentCityPlaces.length} {currentCityPlaces.length > 1 ? `places` : `place`} to stay in {currentCity}</b>
           <form className="places__sorting" action="#" method="get">
             <span className="places__sorting-caption">Sort by</span>
             <span className="places__sorting-type" tabIndex="0">
@@ -25,15 +34,29 @@ const CitiesList = ({cards, onCursorHandle, currentCity, cardId}) => {
             </ul>
           </form>
           <div className="cities__places-list places__list tabs__content">
-            {cards.map((card) => <CitiesCard card={card} onCursorHandle={onCursorHandle} key={card[`id`]} />) }
+            {currentCityPlaces.map((card) => <CitiesCard card={card} onCursorHandle={onCursorHandle} key={card[`id`]} />) }
           </div>
         </section>
         <div className="cities__right-section">
-          <Map city={currentCity} points={cards} cardId={cardId}/>
+          <Map city={currentCity} points={currentCityPlaces} cardId={cardId}/>
         </div>
       </div>
     </div>
   );
 };
 
-export default CitiesList;
+CitiesList.propTypes = {
+  cards: PropTypes.arrayOf(cardPropTypes),
+  currentCity: PropTypes.string.isRequired,
+  cardId: PropTypes.number,
+  onCursorHandle: PropTypes.func.isRequired
+};
+
+const mapStateToProps = (state) => ({
+  currentCity: state.location,
+  cards: state.cards,
+  onCursorHandle: PropTypes.func
+});
+
+export {CitiesList};
+export default connect(mapStateToProps)(CitiesList);

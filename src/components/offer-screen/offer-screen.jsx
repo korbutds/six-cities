@@ -40,11 +40,11 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
   const [cardId, setNearCardId] = useState(null);
   useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
 
-  const getNearCardId = (cardId) => setNearCardId(cardId);
+  const getNearCardId = (handleId) => setNearCardId(handleId);
   const contentImages = images.slice(0, 6);
   return (
     <div className="page">
-      <Header isLogged={true} />
+      <Header />
 
       <main className="page__main page__main--property">
         <section className="property">

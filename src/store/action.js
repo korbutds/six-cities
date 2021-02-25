@@ -3,5 +3,3 @@ export const ActionType = {
 };
 
 export const setLocation = (location) => ({type: ActionType.CHANGE_LOCATION, payload: location});
-
-

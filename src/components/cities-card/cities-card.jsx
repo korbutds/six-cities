@@ -54,7 +54,7 @@ const CitiesCard = ({card, onCursorHandle}) => {
 
 CitiesCard.propTypes = {
   card: cardPropTypes,
-  onCursorHandle: PropTypes.func
+  onCursorHandle: PropTypes.func.isRequired
 };
 
 export default CitiesCard;

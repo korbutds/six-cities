@@ -1,37 +1,33 @@
 import React, {useState} from 'react';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import CitiesList from '../cities-list/cities-list';
-import {CitiesInfo} from '../../const.js';
 import PropTypes from 'prop-types';
 import LocationList from '../location-list/location-list';
 import {getCitySortedPlaces} from '../../utils';
 import NoPlaces from '../no-places/no-places';
+import {connect} from 'react-redux';
+import {setLocation} from '../../store/action';
 
-const Places = ({cards}) => {
+const Places = (props) => {
+  const {cards, onCityChange, currentCity} = props;
   const [cardId, setCardId] = useState(null);
-  const [currentCity, changeCurrentCity] = useState(CitiesInfo.Amsterdam);
-  const handleItemId = (id) => {
+  const changeItemId = (id) => {
     setCardId(id);
   };
 
   const sortedPlacesByCities = getCitySortedPlaces(cards);
 
-  const currentCityPlaces = sortedPlacesByCities[currentCity.name];
-  const handleCityChange = (evt) => {
-    evt.preventDefault();
-    const city = evt.target.textContent;
-    changeCurrentCity(CitiesInfo[city]);
-  };
+  const currentCityPlaces = sortedPlacesByCities[currentCity];
 
   return (
     <main className="page__main page__main--index page__main--index-empty">
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <LocationList onCityClick={handleCityChange}/>
+          <LocationList onCityClick={onCityChange}/>
         </section>
       </div>
-      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={handleItemId} currentCity={currentCity} cardId={cardId} />}
+      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={changeItemId} cardId={cardId} />}
 
     </main>
   );
@@ -40,7 +36,22 @@ const Places = ({cards}) => {
 Places.propTypes = {
   cards: PropTypes.arrayOf(
       cardPropTypes
-  )
+  ),
+  onCityChange: PropTypes.func.isRequired,
+  currentCity: PropTypes.string.isRequired
 };
 
-export default Places;
+const mapStateToProps = (state) => ({
+  cards: state.cards,
+  currentCity: state.location
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onCityChange(evt) {
+    const location = (evt.target.innerText);
+    dispatch(setLocation(location));
+  }
+});
+
+export {Places};
+export default connect(mapStateToProps, mapDispatchToProps)(Places);
