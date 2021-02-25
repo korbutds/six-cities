@@ -11,9 +11,6 @@ import {setLocation} from '../../store/action';
 const Places = (props) => {
   const {cards, onCityChange, currentCity} = props;
   const [cardId, setCardId] = useState(null);
-  const changeItemId = (id) => {
-    setCardId(id);
-  };
 
   const sortedPlacesByCities = getCitySortedPlaces(cards);
 
@@ -27,7 +24,7 @@ const Places = (props) => {
           <LocationList onCityClick={onCityChange}/>
         </section>
       </div>
-      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={changeItemId} cardId={cardId} />}
+      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={setCardId} cardId={cardId} />}
 
     </main>
   );

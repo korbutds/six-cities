@@ -6,14 +6,8 @@ import PropTypes from 'prop-types';
 const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
-  const handleCursorHover = () => {
-    onCursorHandle(id);
-  };
-  const handleCursorOut = () => {
-    onCursorHandle(null);
-  };
   return (
-    <article className="cities__place-card place-card" onMouseEnter={handleCursorHover} onMouseLeave={handleCursorOut}>
+    <article className="cities__place-card place-card" onMouseEnter={() => onCursorHandle(id)} onMouseLeave={() => onCursorHandle(null)}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="cities__image-wrapper place-card__image-wrapper">
         <a href="#">
