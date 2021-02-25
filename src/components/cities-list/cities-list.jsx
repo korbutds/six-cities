@@ -55,7 +55,6 @@ CitiesList.propTypes = {
 const mapStateToProps = (state) => ({
   currentCity: state.location,
   cards: state.cards,
-  onCursorHandle: PropTypes.func
 });
 
 export {CitiesList};
