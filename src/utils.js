@@ -1,4 +1,4 @@
-import {CityList} from "./const";
+import {CityList, SortTypes} from "./const";
 
 export const getCitiesNames = (places) => {
   return places.reduce((acc, place) => {
@@ -6,7 +6,7 @@ export const getCitiesNames = (places) => {
   }, []);
 };
 
-export const getCitySortedPlaces = (places) => {
+export const getCityFiltredPlaces = (places) => {
 
   const cities = Object.keys(CityList);
 
@@ -22,6 +22,37 @@ export const getCitySortedPlaces = (places) => {
         currentObject,
     );
   }, {});
+};
+
+const sortPlacesPopular = (placeA, placeB) => {
+  return placeA.id - placeB.id;
+};
+
+const sortPlacesPriceToLow = (placeA, placeB) => {
+  return placeB.price - placeA.price;
+};
+
+const sortPlacesPriceToHight = (placeA, placeB) => {
+  return placeA.price - placeB.price;
+};
+
+const sortPlacesRate = (placeA, placeB) => {
+  return placeA.rating - placeB.rating;
+};
+
+export const getSortedPlaces = (places, sortType) => {
+  switch (sortType) {
+    case SortTypes.POPULAR:
+      return places.sort(sortPlacesPopular);
+    case SortTypes.PRICE_HIGH_TO_LOW:
+      return places.sort(sortPlacesPriceToLow);
+    case SortTypes.PRICE_LOW_TO_HIGH:
+      return places.sort(sortPlacesPriceToHight);
+    case SortTypes.TOP_RATED_FIRST:
+      return places.sort(sortPlacesRate);
+  }
+
+  return places;
 };
 
 export const makeFirstLetterUC = (str) => {

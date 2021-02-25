@@ -1,11 +1,11 @@
 import React from 'react';
 import FavoritesItem from '../favorites-item/favorites-item';
-import {getCitiesNames, getCitySortedPlaces} from '../../utils';
+import {getCitiesNames, getCityFiltredPlaces} from '../../utils';
 import cardsPropTypes from '../places/places.prop.js';
 
 const FavotritesList = ({favoritesCards}) => {
 
-  const favoriteLocationsCards = getCitySortedPlaces(favoritesCards);
+  const favoriteLocationsCards = getCityFiltredPlaces(favoritesCards);
   const favoritesCities = getCitiesNames(favoritesCards).sort();
   return (
     <section className="favorites">

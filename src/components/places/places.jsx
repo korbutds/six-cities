@@ -3,18 +3,14 @@ import cardPropTypes from '../cities-card/cities-card.prop';
 import CitiesList from '../cities-list/cities-list';
 import PropTypes from 'prop-types';
 import LocationList from '../location-list/location-list';
-import {getCitySortedPlaces} from '../../utils';
 import NoPlaces from '../no-places/no-places';
 import {connect} from 'react-redux';
 import {setLocation} from '../../store/action';
 
 const Places = (props) => {
-  const {cards, onCityChange, currentCity} = props;
+  const {cards, onCityChange} = props;
   const [cardId, setCardId] = useState(null);
 
-  const sortedPlacesByCities = getCitySortedPlaces(cards);
-
-  const currentCityPlaces = sortedPlacesByCities[currentCity];
 
   return (
     <main className="page__main page__main--index page__main--index-empty">
@@ -24,7 +20,7 @@ const Places = (props) => {
           <LocationList onCityClick={onCityChange}/>
         </section>
       </div>
-      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList cards={currentCityPlaces} onCursorHandle={setCardId} cardId={cardId} />}
+      {cards.length === 0 ? <NoPlaces /> : <CitiesList onCursorHandle={setCardId} cardId={cardId} />}
 
     </main>
   );

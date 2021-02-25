@@ -8,8 +8,7 @@ import {connect} from 'react-redux';
 import "leaflet/dist/leaflet.css";
 
 const Map = (props) => {
-  const {city, points, cardId} = props;
-
+  const {city, cards, cardId} = props;
   const mapRef = useRef();
 
   useEffect(() => {
@@ -31,12 +30,11 @@ const Map = (props) => {
       })
       .addTo(mapRef.current);
 
-    points.forEach((point) => {
+    cards.forEach((point) => {
       const customIcon = leaflet.icon({
         iconUrl: `${point.id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
         iconSize: [27, 39]
       });
-
 
       leaflet.marker({
         lat: point.city.location.latitude,
@@ -59,14 +57,15 @@ const Map = (props) => {
 
 Map.propTypes = {
   city: PropTypes.string.isRequired,
-  points: PropTypes.arrayOf(
+  cards: PropTypes.arrayOf(
       cardPropTypes
   ),
   cardId: PropTypes.number
 };
 
 const mapStateToProps = (state) => ({
-  city: state.location
+  city: state.location,
+  cards: state.cards
 });
 
 export {Map};

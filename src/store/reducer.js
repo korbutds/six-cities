@@ -4,8 +4,8 @@ import {ActionType} from "./action";
 
 const initialState = {
   location: CityList.Paris,
+  sort: `Popular`,
   cards: Offers,
-  citySortedCards: [],
   isLogged: false
 };
 
@@ -16,6 +16,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         location: action.payload
+      };
+    case ActionType.CHANGE_SORT:
+      return {
+        ...state,
+        sort: action.payload
       };
   }
 
