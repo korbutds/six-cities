@@ -37,7 +37,7 @@ const sortPlacesPriceToHight = (placeA, placeB) => {
 };
 
 const sortPlacesRate = (placeA, placeB) => {
-  return placeA.rating - placeB.rating;
+  return placeB.rating - placeA.rating;
 };
 
 export const getSortedPlaces = (places, sortType) => {
