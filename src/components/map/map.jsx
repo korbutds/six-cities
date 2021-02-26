@@ -6,10 +6,13 @@ import {CitiesInfo} from '../../const.js';
 import {connect} from 'react-redux';
 
 import "leaflet/dist/leaflet.css";
+import {getCityFiltredPlaces} from '../../utils.js';
 
 const Map = (props) => {
   const {city, cards, cardId} = props;
   const mapRef = useRef();
+
+  const currentCityCards = getCityFiltredPlaces(cards)[city];
 
   useEffect(() => {
     const cityCoords = CitiesInfo[city].coords;
@@ -30,7 +33,7 @@ const Map = (props) => {
       })
       .addTo(mapRef.current);
 
-    cards.forEach((point) => {
+    currentCityCards.forEach((point) => {
       const customIcon = leaflet.icon({
         iconUrl: `${point.id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
         iconSize: [27, 39]
