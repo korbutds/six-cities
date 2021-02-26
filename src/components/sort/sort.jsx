@@ -1,30 +1,40 @@
-import React from 'react';
+import React, {useRef} from 'react';
+import {SortTypes} from '../../const';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
-import SortList from '../sort-list/sort-list';
+import SortItem from '../sort-item/sort-item';
 
 const Sort = (props) => {
-  const {sortType} = props;
+  const {currentSortType} = props;
+  const sortTypesList = Object.values(SortTypes);
+
+  const sortList = useRef();
+  const handleSortListClick = () => {
+    const sortTypeElement = sortList.current;
+    sortTypeElement.classList.toggle(`places__options--opened`);
+  };
   return (
     <form className="places__sorting" action="#" method="get">
       <span className="places__sorting-caption">Sort by</span>
-      <span className="places__sorting-type" tabIndex="0">
-        {sortType}
+      <span className="places__sorting-type" tabIndex="0" onClick={handleSortListClick}>
+        {currentSortType}
         <svg className="places__sorting-arrow" width="7" height="4">
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <SortList />
+      <ul className="places__options places__options--custom" ref={sortList}>
+        {sortTypesList.map((sortType, i) => <SortItem sortType={sortType} key={`${sortType}-${i}`}/>)}
+      </ul>
     </form>
   );
 };
 
 Sort.propTypes = {
-  sortType: PropTypes.string.isRequired
+  currentSortType: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  sortType: state.sort
+  currentSortType: state.sort
 });
 
 export {Sort};
