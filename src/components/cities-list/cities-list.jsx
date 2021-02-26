@@ -1,6 +1,5 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {getCityFiltredPlaces} from '../../utils';
 import CitiesCard from '../cities-card/cities-card';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
@@ -8,11 +7,7 @@ import Map from '../map/map';
 import Sort from '../sort/sort';
 
 const CitiesList = (props) => {
-  const {cards, onCursorHandle, currentCity, cardId} = props;
-
-  const filteredPlacesByCities = getCityFiltredPlaces(cards);
-
-  const currentCityPlaces = filteredPlacesByCities[currentCity];
+  const {currentCityPlaces, onCursorHandle, cardId, currentCity} = props;
 
   return (
     <div className="cities">
@@ -26,7 +21,7 @@ const CitiesList = (props) => {
           </div>
         </section>
         <div className="cities__right-section">
-          <Map city={currentCity} points={currentCityPlaces} cardId={cardId}/>
+          <Map points={currentCityPlaces} cardId={cardId}/>
         </div>
       </div>
     </div>
@@ -34,15 +29,14 @@ const CitiesList = (props) => {
 };
 
 CitiesList.propTypes = {
-  cards: PropTypes.arrayOf(cardPropTypes),
-  currentCity: PropTypes.string.isRequired,
+  currentCityPlaces: PropTypes.arrayOf(cardPropTypes),
   cardId: PropTypes.number,
-  onCursorHandle: PropTypes.func.isRequired
+  onCursorHandle: PropTypes.func.isRequired,
+  currentCity: PropTypes.string.isRequired
 };
 
 const mapStateToProps = (state) => ({
   currentCity: state.location,
-  cards: state.cards,
 });
 
 export {CitiesList};

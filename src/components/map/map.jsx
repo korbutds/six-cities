@@ -37,8 +37,8 @@ const Map = (props) => {
       });
 
       leaflet.marker({
-        lat: point.city.location.latitude,
-        lng: point.city.location.longitude
+        lat: point.location.latitude,
+        lng: point.location.longitude
       },
       {
         icon: customIcon

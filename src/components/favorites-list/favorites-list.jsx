@@ -6,7 +6,7 @@ import cardsPropTypes from '../places/places.prop.js';
 const FavotritesList = ({favoritesCards}) => {
 
   const favoriteLocationsCards = getCityFiltredPlaces(favoritesCards);
-  const favoritesCities = getCitiesNames(favoritesCards).sort();
+  const favoritesCities = [...new Set(getCitiesNames(favoritesCards))].sort();
   return (
     <section className="favorites">
       <h1 className="favorites__title">Saved listing</h1>
