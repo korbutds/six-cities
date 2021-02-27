@@ -33,21 +33,21 @@ const Map = (props) => {
       })
       .addTo(mapRef.current);
 
-    currentCityCards.forEach((point) => {
+    currentCityCards.forEach(({id, location, title}) => {
       const customIcon = leaflet.icon({
-        iconUrl: `${point.id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
+        iconUrl: `${id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
         iconSize: [27, 39]
       });
 
       leaflet.marker({
-        lat: point.location.latitude,
-        lng: point.location.longitude
+        lat: location.latitude,
+        lng: location.longitude
       },
       {
         icon: customIcon
       })
       .addTo(mapRef.current)
-      .bindPopup(point.title);
+      .bindPopup(title);
     });
 
     return () => {

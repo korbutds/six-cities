@@ -35,8 +35,8 @@ CitiesList.propTypes = {
   currentCity: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentCity: state.location,
+const mapStateToProps = ({location}) => ({
+  currentCity: location,
 });
 
 export {CitiesList};

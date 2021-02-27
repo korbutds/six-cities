@@ -6,8 +6,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import {connect} from 'react-redux';
 
-const FavoritesScreen = (props) => {
-  const {cards} = props;
+const FavoritesScreen = ({cards}) => {
 
   const favoritesCards = cards.filter((card) => (card.is_favorite));
   return (
@@ -29,8 +28,8 @@ FavoritesScreen.propTypes = {
   cards: cardsPropTypes
 };
 
-const mapStateToProps = (state) => ({
-  cards: state.cards
+const mapStateToProps = ({cards}) => ({
+  cards
 });
 
 export {FavoritesScreen};

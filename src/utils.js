@@ -24,21 +24,13 @@ export const getCityFiltredPlaces = (places) => {
   }, {});
 };
 
-const sortPlacesPopular = (placeA, placeB) => {
-  return placeA.id - placeB.id;
-};
+const sortPlacesPopular = (placeA, placeB) => (placeA.id - placeB.id);
 
-const sortPlacesPriceToLow = (placeA, placeB) => {
-  return placeB.price - placeA.price;
-};
+const sortPlacesPriceToLow = (placeA, placeB) => (placeB.price - placeA.price);
 
-const sortPlacesPriceToHight = (placeA, placeB) => {
-  return placeA.price - placeB.price;
-};
+const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB.price);
 
-const sortPlacesRate = (placeA, placeB) => {
-  return placeB.rating - placeA.rating;
-};
+const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
 
 export const getSortedPlaces = (places, sortType) => {
   switch (sortType) {
@@ -55,6 +47,4 @@ export const getSortedPlaces = (places, sortType) => {
   return places;
 };
 
-export const makeFirstLetterUC = (str) => {
-  return str[0].toUpperCase() + str.slice(1);
-};
+export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));

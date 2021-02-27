@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import {setSort} from '../../store/action';
+import {ActionCreators} from '../../store/action';
 import {connect} from 'react-redux';
 
 const SortItem = ({sortType, handleSortChange}) => {
@@ -17,7 +17,7 @@ SortItem.propTypes = {
 const mapDispatchToProps = (dispatch) => ({
   handleSortChange(evt) {
     const sortType = evt.target.innerText;
-    dispatch(setSort(sortType));
+    dispatch(ActionCreators.setSort(sortType));
   }
 });
 
