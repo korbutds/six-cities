@@ -5,9 +5,10 @@ import PropTypes from 'prop-types';
 const NearPlacesCard = ({card, onCursor}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
-  const handleCardClick = () => onCursor(id);
+  const handleCursorHover = () => onCursor(id);
+  const handleCursorOut = () => onCursor(null);
   return (
-    <article className="near-places__card place-card">
+    <article className="near-places__card place-card" onMouseEnter={handleCursorHover} onMouseLeave={handleCursorOut}>
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -38,7 +39,7 @@ const NearPlacesCard = ({card, onCursor}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <Link href="#" to={`/offer/${id}`} onClick={handleCardClick}>{title}</Link>
+          <Link href="#" to={`/offer/${id}`}>{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

@@ -2,14 +2,18 @@ import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
+import {CitiesInfo} from '../../const.js';
+import {connect} from 'react-redux';
 
 import "leaflet/dist/leaflet.css";
 
-const Map = ({city, points}) => {
+const Map = (props) => {
+  const {city, cards, cardId} = props;
   const mapRef = useRef();
+
   useEffect(() => {
-    const cityCoords = city.coords;
-    const cityZoom = city.zoom;
+    const cityCoords = CitiesInfo[city].coords;
+    const cityZoom = CitiesInfo[city].zoom;
 
     mapRef.current = leaflet.map(`map`, {
       center: cityCoords,
@@ -26,44 +30,44 @@ const Map = ({city, points}) => {
       })
       .addTo(mapRef.current);
 
-    points.forEach((point) => {
+    cards.forEach((point) => {
       const customIcon = leaflet.icon({
-        iconUrl: `./img/pin.svg`,
+        iconUrl: `${point.id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
         iconSize: [27, 39]
       });
 
       leaflet.marker({
-        lat: point.city.location.latitude,
-        lng: point.city.location.longitude
+        lat: point.location.latitude,
+        lng: point.location.longitude
       },
       {
         icon: customIcon
       })
       .addTo(mapRef.current)
       .bindPopup(point.title);
-
-      return () => {
-        mapRef.current.remove();
-      };
     });
-  }, []);
+
+    return () => {
+      mapRef.current.remove();
+    };
+  }, [city, cardId]);
 
   return (<section className="property__map map" id="map" ref={mapRef}></section>);
 };
 
 Map.propTypes = {
-  city: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    coords: PropTypes.shape({
-      lat: PropTypes.number.isRequired,
-      lng: PropTypes.number.isRequired,
-    }),
-    zoom: PropTypes.number.isRequired
-  }
-  ),
-  points: PropTypes.arrayOf(
+  city: PropTypes.string.isRequired,
+  cards: PropTypes.arrayOf(
       cardPropTypes
-  )
+  ),
+  cardId: PropTypes.number
 };
 
-export default Map;
+const mapStateToProps = (state) => ({
+  city: state.location,
+  cards: state.cards
+});
+
+export {Map};
+
+export default connect(mapStateToProps)(Map);

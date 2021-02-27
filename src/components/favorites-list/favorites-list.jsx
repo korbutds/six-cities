@@ -1,11 +1,12 @@
 import React from 'react';
 import FavoritesItem from '../favorites-item/favorites-item';
-import {getCitySortedPlaces} from '../../utils';
+import {getCitiesNames, getCityFiltredPlaces} from '../../utils';
 import cardsPropTypes from '../places/places.prop.js';
 
-const FavotritesList = ({cards}) => {
-  const favoriteLocationsCards = getCitySortedPlaces(cards);
-  const favoritesCities = Object.keys(favoriteLocationsCards).sort();
+const FavotritesList = ({favoritesCards}) => {
+
+  const favoriteLocationsCards = getCityFiltredPlaces(favoritesCards);
+  const favoritesCities = [...new Set(getCitiesNames(favoritesCards))].sort();
   return (
     <section className="favorites">
       <h1 className="favorites__title">Saved listing</h1>
@@ -17,7 +18,7 @@ const FavotritesList = ({cards}) => {
 };
 
 FavotritesList.propTypes = {
-  cards: cardsPropTypes
+  favoritesCards: cardsPropTypes
 };
 
 export default FavotritesList;

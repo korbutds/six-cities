@@ -4,16 +4,19 @@ import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
 import Header from '../header/header';
+import {connect} from 'react-redux';
 
-const FavoritesScreen = ({cards}) => {
+const FavoritesScreen = (props) => {
+  const {cards} = props;
+
   const favoritesCards = cards.filter((card) => (card.is_favorite));
   return (
     <div className="page">
-      <Header isLogged={false} />
+      <Header />
       <main className="page__main page__main--favorites">
         <div className="page__favorites-container container">
 
-          {favoritesCards.length === 0 ? <FavoritesEmpty /> : <FavoritesList cards={favoritesCards}/>}
+          {favoritesCards.length === 0 ? <FavoritesEmpty /> : <FavoritesList favoritesCards={favoritesCards}/>}
 
         </div>
       </main>
@@ -26,4 +29,9 @@ FavoritesScreen.propTypes = {
   cards: cardsPropTypes
 };
 
-export default FavoritesScreen;
+const mapStateToProps = (state) => ({
+  cards: state.cards
+});
+
+export {FavoritesScreen};
+export default connect(mapStateToProps)(FavoritesScreen);
