@@ -44,9 +44,9 @@ export const getSortedPlaces = (places, sortType) => {
       return placesCopy.sort(sortPlacesPriceToHight);
     case SortTypes.TOP_RATED_FIRST:
       return placesCopy.sort(sortPlacesRate);
+    default:
+      return placesCopy;
   }
-
-  return places;
 };
 
 export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));

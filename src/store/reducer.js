@@ -23,9 +23,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         sort: action.payload
       };
-  }
 
-  return state;
+    default:
+      return state;
+  }
 };
 
 export {reducer};
