@@ -33,8 +33,8 @@ Sort.propTypes = {
   currentSortType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentSortType: state.sort
+const mapStateToProps = ({sort}) => ({
+  currentSortType: sort
 });
 
 export {Sort};

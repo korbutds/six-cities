@@ -15,8 +15,8 @@ const LocationItem = (props) => {
 
 LocationItem.propTypes = loactionItemPropTypes;
 
-const mapStateToProps = (state) => ({
-  currentCity: state.location
+const mapStateToProps = ({location}) => ({
+  currentCity: location
 });
 
 export {LocationItem};

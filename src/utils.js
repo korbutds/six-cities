@@ -33,15 +33,17 @@ const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB.price)
 const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
 
 export const getSortedPlaces = (places, sortType) => {
+  const placesCopy = places.slice();
+
   switch (sortType) {
     case SortTypes.POPULAR:
-      return places.sort(sortPlacesPopular);
+      return placesCopy.sort(sortPlacesPopular);
     case SortTypes.PRICE_HIGH_TO_LOW:
-      return places.sort(sortPlacesPriceToLow);
+      return placesCopy.sort(sortPlacesPriceToLow);
     case SortTypes.PRICE_LOW_TO_HIGH:
-      return places.sort(sortPlacesPriceToHight);
+      return placesCopy.sort(sortPlacesPriceToHight);
     case SortTypes.TOP_RATED_FIRST:
-      return places.sort(sortPlacesRate);
+      return placesCopy.sort(sortPlacesRate);
   }
 
   return places;

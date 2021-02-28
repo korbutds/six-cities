@@ -66,9 +66,9 @@ Map.propTypes = {
   cardId: PropTypes.number
 };
 
-const mapStateToProps = (state) => ({
-  city: state.location,
-  cards: state.cards
+const mapStateToProps = ({location, cards}) => ({
+  city: location,
+  cards
 });
 
 export {Map};

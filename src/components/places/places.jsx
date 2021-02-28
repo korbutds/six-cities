@@ -39,15 +39,15 @@ Places.propTypes = {
   sortType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  cards: state.cards,
-  currentCity: state.location,
-  sortType: state.sort
+const mapStateToProps = ({cards, location, sort}) => ({
+  cards,
+  currentCity: location,
+  sortType: sort
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  handleCityChange({target}) {
-    const location = (target.innerText);
+  handleCityChange(evt) {
+    const location = evt.target.innerText;
     dispatch(ActionCreators.setLocation(location));
   }
 });

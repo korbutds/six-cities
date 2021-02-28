@@ -43,8 +43,8 @@ Header.propTypes = {
   isMainPage: PropTypes.bool
 };
 
-const mapStateToProps = (state) => ({
-  isLogged: state.isLogged
+const mapStateToProps = ({isLogged}) => ({
+  isLogged
 });
 
 export {Header};
