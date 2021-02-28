@@ -1,19 +1,25 @@
 import React from 'react';
-import {CityList} from '../../const';
 import PropTypes from 'prop-types';
 import LocationItem from '../location-item/location-item';
+import {connect} from 'react-redux';
 
-const LocationList = (props) => {
-  const {onCityClick} = props;
+const LocationList = ({onCityClick, cities}) => {
   return (
     <ul className="locations__list tabs__list">
-      {Object.keys(CityList).map((city, i) => <LocationItem city={city} key={`${city}-${i}`} onClickHandle={onCityClick}/>)}
+      {Object.keys(cities).map((city, i) => <LocationItem city={city} key={`${city}-${i}`} onClickHandle={onCityClick}/>)}
     </ul>
   );
 };
 
 LocationList.propTypes = {
-  onCityClick: PropTypes.func.isRequired
+  onCityClick: PropTypes.func.isRequired,
+  cities: PropTypes.objectOf(PropTypes.string)
 };
 
-export default LocationList;
+const mapStateToProps = ({cities}) => ({
+  cities
+});
+
+export {LocationList};
+export default connect(mapStateToProps)(LocationList);
+

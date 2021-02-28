@@ -4,18 +4,17 @@ import CitiesList from '../cities-list/cities-list';
 import PropTypes from 'prop-types';
 import LocationList from '../location-list/location-list';
 import NoPlaces from '../no-places/no-places';
-import {getCityFiltredPlaces} from '../../utils';
+import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
 import {connect} from 'react-redux';
-import {setLocation} from '../../store/action';
+import {ActionCreators} from '../../store/action';
 
 const Places = (props) => {
-  const {cards, handleCityChange, currentCity} = props;
+  const {cards, handleCityChange, currentCity, sortType} = props;
   const [cardId, setCardId] = useState(null);
 
   const filteredPlacesByCities = getCityFiltredPlaces(cards);
 
-  const currentCityPlaces = filteredPlacesByCities[currentCity];
-
+  const currentCityPlaces = getSortedPlaces(filteredPlacesByCities[currentCity], sortType);
 
   return (
     <main className="page__main page__main--index page__main--index-empty">
@@ -36,18 +35,20 @@ Places.propTypes = {
       cardPropTypes
   ),
   handleCityChange: PropTypes.func.isRequired,
-  currentCity: PropTypes.string.isRequired
+  currentCity: PropTypes.string.isRequired,
+  sortType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  cards: state.cards,
-  currentCity: state.location
+const mapStateToProps = ({cards, location, sort}) => ({
+  cards,
+  currentCity: location,
+  sortType: sort
 });
 
 const mapDispatchToProps = (dispatch) => ({
   handleCityChange(evt) {
-    const location = (evt.target.innerText);
-    dispatch(setLocation(location));
+    const location = evt.target.innerText;
+    dispatch(ActionCreators.setLocation(location));
   }
 });
 

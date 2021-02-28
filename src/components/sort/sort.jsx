@@ -22,7 +22,7 @@ const Sort = (props) => {
           <use xlinkHref="#icon-arrow-select"></use>
         </svg>
       </span>
-      <ul className="places__options places__options--custom" ref={sortList}>
+      <ul className="places__options places__options--custom" onClick={handleSortListClick} ref={sortList}>
         {sortTypesList.map((sortType, i) => <SortItem sortType={sortType} key={`${sortType}-${i}`}/>)}
       </ul>
     </form>
@@ -33,8 +33,8 @@ Sort.propTypes = {
   currentSortType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentSortType: state.sort
+const mapStateToProps = ({sort}) => ({
+  currentSortType: sort
 });
 
 export {Sort};

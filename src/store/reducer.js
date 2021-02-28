@@ -4,6 +4,7 @@ import {ActionType} from "./action";
 
 const initialState = {
   location: CityList.Paris,
+  cities: CityList,
   sort: `Popular`,
   cards: Offers,
   isLogged: false
@@ -22,9 +23,10 @@ const reducer = (state = initialState, action) => {
         ...state,
         sort: action.payload
       };
-  }
 
-  return state;
+    default:
+      return state;
+  }
 };
 
 export {reducer};

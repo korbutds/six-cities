@@ -24,37 +24,29 @@ export const getCityFiltredPlaces = (places) => {
   }, {});
 };
 
-const sortPlacesPopular = (placeA, placeB) => {
-  return placeA.id - placeB.id;
-};
+const sortPlacesPopular = (placeA, placeB) => (placeA.id - placeB.id);
 
-const sortPlacesPriceToLow = (placeA, placeB) => {
-  return placeB.price - placeA.price;
-};
+const sortPlacesPriceToLow = (placeA, placeB) => (placeB.price - placeA.price);
 
-const sortPlacesPriceToHight = (placeA, placeB) => {
-  return placeA.price - placeB.price;
-};
+const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB.price);
 
-const sortPlacesRate = (placeA, placeB) => {
-  return placeA.rating - placeB.rating;
-};
+const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
 
 export const getSortedPlaces = (places, sortType) => {
+  const placesCopy = places.slice();
+
   switch (sortType) {
     case SortTypes.POPULAR:
-      return places.sort(sortPlacesPopular);
+      return placesCopy.sort(sortPlacesPopular);
     case SortTypes.PRICE_HIGH_TO_LOW:
-      return places.sort(sortPlacesPriceToLow);
+      return placesCopy.sort(sortPlacesPriceToLow);
     case SortTypes.PRICE_LOW_TO_HIGH:
-      return places.sort(sortPlacesPriceToHight);
+      return placesCopy.sort(sortPlacesPriceToHight);
     case SortTypes.TOP_RATED_FIRST:
-      return places.sort(sortPlacesRate);
+      return placesCopy.sort(sortPlacesRate);
+    default:
+      return placesCopy;
   }
-
-  return places;
 };
 
-export const makeFirstLetterUC = (str) => {
-  return str[0].toUpperCase() + str.slice(1);
-};
+export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));
