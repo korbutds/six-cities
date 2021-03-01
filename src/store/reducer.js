@@ -6,7 +6,8 @@ const initialState = {
   cities: CityList,
   sort: `Popular`,
   cards: [],
-  authorizationStatus: AuthorizationStatus.NO_AUTH
+  authorizationStatus: AuthorizationStatus.NO_AUTH,
+  isCardsLoaded: false,
 };
 
 
@@ -25,7 +26,8 @@ const reducer = (state = initialState, action) => {
     case ActionType.LOAD_DATA:
       return {
         ...state,
-        cards: action.payload
+        cards: action.payload,
+        isCardsLoaded: true
       };
     case ActionType.REQUIRED_AUTHORIZATION:
       return {
