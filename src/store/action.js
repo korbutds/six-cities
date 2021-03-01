@@ -8,10 +8,11 @@ export const ActionType = {
 export const setLocation = (location) => ({type: ActionType.CHANGE_LOCATION, payload: location});
 export const setSort = (sort) => ({type: ActionType.CHANGE_SORT, payload: sort});
 export const getCards = (cards) => ({type: ActionType.LOAD_DATA, payload: cards});
-export const requireUthorization = (status) => ({type: ActionType.REQUIRED_AUTHORIZATION, payload: status});
+export const requireAuthorization = (status) => ({type: ActionType.REQUIRED_AUTHORIZATION, payload: status});
 
 export const ActionCreators = {
   setLocation,
   setSort,
-  getCards
+  getCards,
+  requireAuthorization,
 };
