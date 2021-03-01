@@ -1,5 +1,4 @@
-import {CityList} from "../const";
-// import {Offers} from "../mocks/offers";
+import {AuthorizationStatus, CityList} from "../const";
 import {ActionType} from "./action";
 
 const initialState = {
@@ -7,7 +6,7 @@ const initialState = {
   cities: CityList,
   sort: `Popular`,
   cards: [],
-  isLogged: false
+  authorizationStatus: AuthorizationStatus.NO_AUTH
 };
 
 
@@ -27,6 +26,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         cards: action.payload
+      };
+    case ActionType.REQUIRED_AUTHORIZATION:
+      return {
+        ...state,
+        authorizationStatus: action.payload
       };
 
     default:
