@@ -9,7 +9,7 @@ import thunk from 'redux-thunk';
 import {createApi} from './services/api';
 import {ActionCreators} from './store/action';
 import {AuthorizationStatus} from './const';
-import {checkAuth} from './store/api-actions';
+import {checkAuth, fetchCardsList} from './store/api-actions';
 
 
 const api = createApi(
@@ -22,13 +22,12 @@ const store = createStore(reducer,
     )
 );
 
-store.dispatch(checkAuth);
+store.dispatch(checkAuth());
+store.dispatch(fetchCardsList());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App
-        cards = {[]}
-      />
+      <App />
     </Provider>,
     document.querySelector(`#root`)
 );

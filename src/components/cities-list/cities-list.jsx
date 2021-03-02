@@ -20,7 +20,7 @@ const CitiesList = (props) => {
           </div>
         </section>
         <div className="cities__right-section">
-          <Map points={currentCityPlaces} cardId={cardId}/>
+          <Map points={currentCityPlaces} cards={currentCityPlaces} cardId={cardId}/>
         </div>
       </div>
     </div>

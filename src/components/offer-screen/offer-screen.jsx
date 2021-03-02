@@ -6,10 +6,12 @@ import PropTypes from 'prop-types';
 import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
-import cardPropTypes from '../cities-card/cities-card.prop.js';
+import cardsPropTypes from '../places/places.prop';
 import {CitiesInfo} from '../../const.js';
 import commentPropTypes from '../reviews/comments.prop.js';
 import Map from '../map/map';
+import {connect} from 'react-redux';
+import LoaderScreensaver from '../loading/loading';
 
 const ImageComponent = ({image}) => {
   return (
@@ -19,7 +21,14 @@ const ImageComponent = ({image}) => {
   );
 };
 
-const OfferScreen = ({card, comments, nearPlaces}) => {
+const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces}) => {
+  if (!isCardsLoaded) {
+    return <LoaderScreensaver />;
+  }
+
+  const card = cards.find(({id}) => {
+    return id === parseFloat(apartmentId);
+  });
   const {
     id,
     images,
@@ -122,10 +131,10 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 
             </div>
           </div>
-          <Map city={currentCity} points={nearPlaces} cardId={cardId}/>
+          <Map city={currentCity} cards={nearPlaces} cardId={cardId}/>
         </section>
         <div className="container">
-          <NearPlacesList cards={nearPlaces} onCursor={getNearCardId}/>
+          <NearPlacesList cardId={id} onCursor={getNearCardId}/>
         </div>
       </main>
     </div>
@@ -133,15 +142,23 @@ const OfferScreen = ({card, comments, nearPlaces}) => {
 };
 
 OfferScreen.propTypes = {
-  card: cardPropTypes,
+  cards: cardsPropTypes,
   comments: commentPropTypes,
-  nearPlaces: PropTypes.arrayOf(
-      cardPropTypes
-  )
+  nearPlaces: cardsPropTypes,
+  apartmentId: PropTypes.string.isRequired,
+  isCardsLoaded: PropTypes.bool.isRequired
 };
 
 ImageComponent.propTypes = {
   image: PropTypes.string
 };
 
-export default OfferScreen;
+const mapStateToProps = ({cards, isCardsLoaded, nearPlaces}) => ({
+  cards,
+  isCardsLoaded,
+  nearPlaces
+});
+
+
+export {OfferScreen};
+export default connect(mapStateToProps)(OfferScreen);

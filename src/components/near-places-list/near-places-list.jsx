@@ -1,8 +1,20 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import NearPlacesCard from '../near-places-card/near-places-card';
 import PropTypes from 'prop-types';
+import LoaderScreensaver from '../loading/loading';
+import {connect} from 'react-redux';
+import {fetchNearPlacesList} from '../../store/api-actions';
 
-const NearPlacesList = ({cards, onCursor}) => {
+const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNearPlaces}) => {
+  useEffect(() => {
+    if (!isNearPlacesLoaded) {
+      onLoadNearPlaces(cardId);
+    }
+  }, [isNearPlacesLoaded]);
+
+  if (!isNearPlacesLoaded) {
+    return <LoaderScreensaver />;
+  }
 
   return (
     <section className="near-places places">
@@ -15,8 +27,23 @@ const NearPlacesList = ({cards, onCursor}) => {
 };
 
 NearPlacesList.propTypes = {
-  cards: PropTypes.array,
-  onCursor: PropTypes.func
+  cards: PropTypes.array.isRequired,
+  onCursor: PropTypes.func.isRequired,
+  isNearPlacesLoaded: PropTypes.bool.isRequired,
+  onLoadNearPlaces: PropTypes.func.isRequired,
+  cardId: PropTypes.number.isRequired
 };
 
-export default NearPlacesList;
+const mapStateToProps = ({isNearPlacesLoaded, nearPlaces}) => ({
+  isNearPlacesLoaded,
+  cards: nearPlaces
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLoadNearPlaces(id) {
+    dispatch(fetchNearPlacesList(id));
+  }
+});
+
+export {NearPlacesList};
+export default connect(mapStateToProps, mapDispatchToProps)(NearPlacesList);
