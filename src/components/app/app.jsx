@@ -15,7 +15,7 @@ const RoutePathes = {
   OFFER_SCREEN: `/offer/:id`,
 };
 
-const App = ({cards}) => {
+const App = () => {
   return (
     <Router>
       <Switch>
@@ -34,15 +34,11 @@ const App = ({cards}) => {
 
         <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {
           const apartmentId = routeProps.match.params.id;
-          const card = cards.find(({id}) => {
-            return id === parseFloat(apartmentId);
-          });
+
           return (
             <OfferScreen
-              card={card}
               comments={Comments}
-
-              nearPlaces={[...cards.slice(0, apartmentId - 1), ...cards.slice(apartmentId)]}
+              apartmentId={apartmentId}
             />
           );
         }}/>

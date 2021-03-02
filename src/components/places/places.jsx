@@ -7,10 +7,17 @@ import NoPlaces from '../no-places/no-places';
 import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
 import {connect} from 'react-redux';
 import {ActionCreators} from '../../store/action';
+import LoaderScreensaver from '../loading/loading';
 
 const Places = (props) => {
-  const {cards, handleCityChange, currentCity, sortType} = props;
+  const {cards, handleCityChange, currentCity, sortType, isCardsLoaded} = props;
   const [cardId, setCardId] = useState(null);
+
+  if (!isCardsLoaded) {
+    return (
+      <LoaderScreensaver />
+    );
+  }
 
   const filteredPlacesByCities = getCityFiltredPlaces(cards);
 
@@ -36,13 +43,15 @@ Places.propTypes = {
   ),
   handleCityChange: PropTypes.func.isRequired,
   currentCity: PropTypes.string.isRequired,
-  sortType: PropTypes.string.isRequired
+  sortType: PropTypes.string.isRequired,
+  isCardsLoaded: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({cards, location, sort}) => ({
+const mapStateToProps = ({cards, location, sort, isCardsLoaded}) => ({
   cards,
   currentCity: location,
-  sortType: sort
+  sortType: sort,
+  isCardsLoaded
 });
 
 const mapDispatchToProps = (dispatch) => ({

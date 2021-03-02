@@ -8,7 +8,6 @@ import Sort from '../sort/sort';
 
 const CitiesList = (props) => {
   const {currentCityPlaces, onCursorHandle, cardId, currentCity} = props;
-
   return (
     <div className="cities">
       <div className="cities__places-container container">
@@ -21,7 +20,7 @@ const CitiesList = (props) => {
           </div>
         </section>
         <div className="cities__right-section">
-          <Map points={currentCityPlaces} cardId={cardId}/>
+          <Map points={currentCityPlaces} cards={currentCityPlaces} cardId={cardId}/>
         </div>
       </div>
     </div>
