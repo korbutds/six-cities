@@ -1,18 +1,18 @@
 import React from 'react';
-import {Switch, Route, BrowserRouter as Router} from 'react-router-dom';
-import cardsPropTypes from '../places/places.prop.js';
+import {Switch, Route, Router} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {Comments} from '../../mocks/comments';
-import {PrivateRoute} from '../private-route/private-route.jsx';
-import {RoutePathes} from '../../const.js';
+import PrivateRoute from '../private-route/private-route';
+import {RoutePathes} from '../../const';
+import browserHistory from '../../browser-history';
 
 const App = () => {
   return (
-    <Router>
+    <Router history={browserHistory}>
       <Switch>
         <Route path={RoutePathes.LOGIN_SCREEN} exact>
           <LoginScreen />
@@ -42,11 +42,6 @@ const App = () => {
       </Switch>
     </Router>
   );
-};
-
-
-App.propTypes = {
-  cards: cardsPropTypes
 };
 
 export default App;

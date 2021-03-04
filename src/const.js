@@ -80,3 +80,8 @@ export const RoutePathes = {
   FAVORITES_SCREEN: `/favorites`,
   OFFER_SCREEN: `/offer/:id`,
 };
+
+export const APIRoutePathes = {
+  LOGIN: `/login`,
+  HOTELS: `/hotels`
+};

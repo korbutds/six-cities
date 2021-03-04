@@ -3,9 +3,14 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
+import {logout} from '../../store/api-actions';
 
 const Header = (props) => {
-  const {authorizationStatus, isMainPage = false, login} = props;
+  const {authorizationStatus, isMainPage = false, login, onLogout} = props;
+  const handleLogout = () => {
+    onLogout();
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -24,7 +29,7 @@ const Header = (props) => {
                     </div>
                     <span className="header__user-name user__name">Sign in</span>
                   </Link> :
-                  <Link className="header__nav-link header__nav-link--profile" href="#" to="/">
+                  <Link className="header__nav-link header__nav-link--profile" href="#" to="/" onClick={handleLogout}>
                     <div className="header__avatar-wrapper user__avatar-wrapper">
                     </div>
                     <span className="header__user-name user__name">{login}</span>
@@ -42,7 +47,8 @@ const Header = (props) => {
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   isMainPage: PropTypes.bool,
-  login: PropTypes.string.isRequired
+  login: PropTypes.string.isRequired,
+  onLogout: PropTypes.func.isRequired
 };
 
 const mapStateToProps = ({authorizationStatus, login}) => ({
@@ -50,6 +56,12 @@ const mapStateToProps = ({authorizationStatus, login}) => ({
   login,
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onLogout() {
+    dispatch(logout());
+  }
+});
+
 export {Header};
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

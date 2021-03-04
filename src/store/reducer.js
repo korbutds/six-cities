@@ -48,6 +48,11 @@ const reducer = (state = initialState, action) => {
         nearPlaces: action.payload,
         isNearPlacesLoaded: true,
       };
+    case ActionType.CHANGE_USERNAME:
+      return {
+        ...state,
+        login: action.payload
+      };
 
     default:
       return state;
