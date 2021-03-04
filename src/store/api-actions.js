@@ -13,11 +13,15 @@ export const fetchNearPlacesList = (id) => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoutePathes.LOGIN)
-  .then(({data}) => {
-    dispatch(ActionCreators.setUserName(data.email));
+  .then((response) => {
+    dispatch(ActionCreators.setUserName(response.data.email));
+    return response;
   })
-    .then(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.AUTH)))
-    .catch(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.NO_AUTH)))
+  .then((response) => {
+    dispatch(ActionCreators.setUserAvatar(response.data[`avatar_url`]));
+  })
+  .then(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.AUTH)))
+  .catch(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
@@ -29,7 +33,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 );
 
 export const logout = () => (dispatch, _state, api) => {
-  api.get(`/logout`)
+  api.get(APIRoutePathes.LOGOUT)
     .then(() => dispatch(ActionCreators.setUserName(``)))
     .then(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.NO_AUTH)));
 };

@@ -1,6 +1,7 @@
 import {AuthorizationStatus, CityList} from "../const";
 import {ActionType} from "./action";
 
+
 const initialState = {
   location: CityList.Paris,
   cities: CityList,
@@ -10,7 +11,8 @@ const initialState = {
   nearPlaces: [],
   isNearPlacesLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  login: ``
+  login: `какой-то логин`,
+  userAvatar: ``
 };
 
 
@@ -52,6 +54,11 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         login: action.payload
+      };
+    case ActionType.USER_AVATAR:
+      return {
+        ...state,
+        userAvatar: action.payload
       };
 
     default:

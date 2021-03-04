@@ -6,7 +6,7 @@ import {AuthorizationStatus} from '../../const';
 import {logout} from '../../store/api-actions';
 
 const Header = (props) => {
-  const {authorizationStatus, isMainPage = false, login, onLogout} = props;
+  const {authorizationStatus, isMainPage = false, login, onLogout, userAvatar} = props;
   const handleLogout = () => {
     onLogout();
   };
@@ -30,7 +30,12 @@ const Header = (props) => {
                     <span className="header__user-name user__name">Sign in</span>
                   </Link> :
                   <Link className="header__nav-link header__nav-link--profile" href="#" to="/" onClick={handleLogout}>
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
+                    <div className="header__avatar-wrapper user__avatar-wrapper"
+                      style={{
+                        backgroundImage: `url(${userAvatar})`,
+                        borderRadius: `50%`
+                      }}
+                    >
                     </div>
                     <span className="header__user-name user__name">{login}</span>
                   </Link>
@@ -48,12 +53,14 @@ Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
   isMainPage: PropTypes.bool,
   login: PropTypes.string.isRequired,
-  onLogout: PropTypes.func.isRequired
+  onLogout: PropTypes.func.isRequired,
+  userAvatar: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({authorizationStatus, login}) => ({
+const mapStateToProps = ({authorizationStatus, login, userAvatar}) => ({
   authorizationStatus,
   login,
+  userAvatar
 });
 
 const mapDispatchToProps = (dispatch) => ({
