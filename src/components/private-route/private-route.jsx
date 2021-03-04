@@ -3,8 +3,16 @@ import {Redirect, Route} from 'react-router-dom';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import LoaderScreensaver from '../loading/loading';
 
-const PrivateRoute = ({authorizationStatus, component: Component, ...rest}) => {
+const PrivateRoute = ({authorizationStatus, isCardsLoaded, component: Component, ...rest}) => {
+  if (!isCardsLoaded) {
+    return (
+      <Route>
+        <LoaderScreensaver />;
+      </Route>
+    );
+  }
   return (
     <Route
       {...rest}
@@ -26,8 +34,9 @@ PrivateRoute.propTypes = () => ({
   authorizationStatus: PropTypes.string.isRequired
 });
 
-const mapStateToProps = ({authorizationStatus}) => ({
-  authorizationStatus
+const mapStateToProps = ({authorizationStatus, isCardsLoaded}) => ({
+  authorizationStatus,
+  isCardsLoaded
 });
 
 export {PrivateRoute};
