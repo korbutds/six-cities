@@ -7,30 +7,22 @@ import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {Comments} from '../../mocks/comments';
-
-const RoutePathes = {
-  MAIN_SCREEN: `/`,
-  LOGIN_SCREEN: `/login`,
-  FAVORITES_SCREEN: `/favorites`,
-  OFFER_SCREEN: `/offer/:id`,
-};
+import {PrivateRoute} from '../private-route/private-route.jsx';
+import {RoutePathes} from '../../const.js';
 
 const App = () => {
   return (
     <Router>
       <Switch>
-
-        <Route path={RoutePathes.MAIN_SCREEN} exact>
-          <MainScreen />
-        </Route>
-
         <Route path={RoutePathes.LOGIN_SCREEN} exact>
           <LoginScreen />
         </Route>
 
-        <Route path={RoutePathes.FAVORITES_SCREEN} exact>
-          <FavoritesScreen />
+        <Route path={RoutePathes.MAIN_SCREEN} exact >
+          <MainScreen />
         </Route>
+
+        <PrivateRoute path={RoutePathes.FAVORITES_SCREEN} exact component={FavoritesScreen} />
 
         <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {
           const apartmentId = routeProps.match.params.id;

@@ -73,3 +73,10 @@ export const AuthorizationStatus = {
 export const Colors = {
   SITE_BLUE: `#4481c3`
 };
+
+export const RoutePathes = {
+  MAIN_SCREEN: `/`,
+  LOGIN_SCREEN: `/login`,
+  FAVORITES_SCREEN: `/favorites`,
+  OFFER_SCREEN: `/offer/:id`,
+};

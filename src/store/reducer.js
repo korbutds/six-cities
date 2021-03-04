@@ -10,6 +10,7 @@ const initialState = {
   nearPlaces: [],
   isNearPlacesLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
+  login: ``
 };
 
 
