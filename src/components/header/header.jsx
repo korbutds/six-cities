@@ -3,9 +3,14 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {AuthorizationStatus} from '../../const';
+import {logout} from '../../store/api-actions';
 
 const Header = (props) => {
-  const {authorizationStatus, isMainPage = false} = props;
+  const {authorizationStatus, isMainPage = false, login, onLogout, userAvatar} = props;
+  const handleLogout = () => {
+    onLogout();
+  };
+
   return (
     <header className="header">
       <div className="container">
@@ -24,10 +29,15 @@ const Header = (props) => {
                     </div>
                     <span className="header__user-name user__name">Sign in</span>
                   </Link> :
-                  <Link className="header__nav-link header__nav-link--profile" href="#" to="/">
-                    <div className="header__avatar-wrapper user__avatar-wrapper">
+                  <Link className="header__nav-link header__nav-link--profile" href="#" to="/" onClick={handleLogout}>
+                    <div className="header__avatar-wrapper user__avatar-wrapper"
+                      style={{
+                        backgroundImage: `url(${userAvatar})`,
+                        borderRadius: `50%`
+                      }}
+                    >
                     </div>
-                    <span className="header__user-name user__name">ds.korbut@gmail.com</span>
+                    <span className="header__user-name user__name">{login}</span>
                   </Link>
                 }
               </li>
@@ -41,13 +51,24 @@ const Header = (props) => {
 
 Header.propTypes = {
   authorizationStatus: PropTypes.string.isRequired,
-  isMainPage: PropTypes.bool
+  isMainPage: PropTypes.bool,
+  login: PropTypes.string.isRequired,
+  onLogout: PropTypes.func.isRequired,
+  userAvatar: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({authorizationStatus}) => ({
-  authorizationStatus
+const mapStateToProps = ({authorizationStatus, login, userAvatar}) => ({
+  authorizationStatus,
+  login,
+  userAvatar
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  onLogout() {
+    dispatch(logout());
+  }
 });
 
 export {Header};
 
-export default connect(mapStateToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

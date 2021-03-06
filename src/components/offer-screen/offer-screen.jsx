@@ -7,11 +7,12 @@ import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
 import cardsPropTypes from '../places/places.prop';
-import {CitiesInfo} from '../../const.js';
 import commentPropTypes from '../reviews/comments.prop.js';
 import Map from '../map/map';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
+import NotFoundScreen from '../not-found-screen/not-found-screen';
+import {ActionCreators} from '../../store/action';
 
 const ImageComponent = ({image}) => {
   return (
@@ -21,7 +22,7 @@ const ImageComponent = ({image}) => {
   );
 };
 
-const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces}) => {
+const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
   if (!isCardsLoaded) {
     return <LoaderScreensaver />;
   }
@@ -29,6 +30,11 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces}) 
   const card = cards.find(({id}) => {
     return id === parseFloat(apartmentId);
   });
+
+  if (!card) {
+    return <NotFoundScreen />;
+  }
+
   const {
     id,
     images,
@@ -42,9 +48,11 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces}) 
     price,
     goods,
     host,
-    description
+    description,
+    city
   } = card;
-  const currentCity = CitiesInfo[card.city.name];
+
+  onLocationChange(city.name);
 
   const [cardId, setNearCardId] = useState(null);
   useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
@@ -131,7 +139,7 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces}) 
 
             </div>
           </div>
-          <Map city={currentCity} cards={nearPlaces} cardId={cardId}/>
+          <Map cards={nearPlaces} cardId={cardId}/>
         </section>
         <div className="container">
           <NearPlacesList cardId={id} onCursor={getNearCardId}/>
@@ -146,7 +154,8 @@ OfferScreen.propTypes = {
   comments: commentPropTypes,
   nearPlaces: cardsPropTypes,
   apartmentId: PropTypes.string.isRequired,
-  isCardsLoaded: PropTypes.bool.isRequired
+  isCardsLoaded: PropTypes.bool.isRequired,
+  onLocationChange: PropTypes.func.isRequired
 };
 
 ImageComponent.propTypes = {
@@ -159,6 +168,11 @@ const mapStateToProps = ({cards, isCardsLoaded, nearPlaces}) => ({
   nearPlaces
 });
 
+const mapDispatchToProps = (dispatch) => ({
+  onLocationChange(location) {
+    dispatch(ActionCreators.setLocation(location));
+  }
+});
 
 export {OfferScreen};
-export default connect(mapStateToProps)(OfferScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(OfferScreen);

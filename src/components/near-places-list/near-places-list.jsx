@@ -7,10 +7,8 @@ import {fetchNearPlacesList} from '../../store/api-actions';
 
 const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNearPlaces}) => {
   useEffect(() => {
-    if (!isNearPlacesLoaded) {
-      onLoadNearPlaces(cardId);
-    }
-  }, [isNearPlacesLoaded]);
+    onLoadNearPlaces(cardId);
+  }, [cardId]);
 
   if (!isNearPlacesLoaded) {
     return <LoaderScreensaver />;
