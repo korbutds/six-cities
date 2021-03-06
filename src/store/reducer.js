@@ -11,7 +11,7 @@ const initialState = {
   nearPlaces: [],
   isNearPlacesLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  login: `какой-то логин`,
+  login: ``,
   userAvatar: ``
 };
 
