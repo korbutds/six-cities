@@ -23,7 +23,7 @@ const ImageComponent = ({image}) => {
   );
 };
 
-const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
+const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
   if (!isCardsLoaded) {
     return <LoaderScreensaver />;
   }
@@ -134,7 +134,7 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, o
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <Reviews comments={comments}/>
+                <Reviews id={id} />
                 <PrivateRoute component={CommentForm} noAuth={() => ``}/>
               </section>
 

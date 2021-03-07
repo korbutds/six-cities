@@ -37,3 +37,8 @@ export const logout = () => (dispatch, _state, api) => {
     .then(() => dispatch(ActionCreators.setUserName(``)))
     .then(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.NO_AUTH)));
 };
+
+export const fetchCommentsList = (id) => (dispatch, _state, api) => {
+  api.get(`${APIRoutePathes.COMMENTS}/${id}`)
+    .then(({data}) => dispatch(ActionCreators.getComments(data)));
+};
