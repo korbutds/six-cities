@@ -11,8 +11,10 @@ const initialState = {
   nearPlaces: [],
   isNearPlacesLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
-  login: `какой-то логин`,
-  userAvatar: ``
+  login: ``,
+  userAvatar: ``,
+  comments: [],
+  isCommentsLoaded: false,
 };
 
 
@@ -59,6 +61,12 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         userAvatar: action.payload
+      };
+    case ActionType.LOAD_COMMENTS:
+      return {
+        ...state,
+        comments: action.payload,
+        isCommentsLoaded: true
       };
 
     default:

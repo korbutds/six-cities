@@ -6,7 +6,8 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
   CHANGE_USERNAME: `user/changeName`,
   USER_AVATAR: ``,
-  REDIRECT: `scree/redirect`
+  REDIRECT: `screen/redirect`,
+  LOAD_COMMENTS: `data/loadCardComments`
 };
 
 export const setLocation = (location) => ({type: ActionType.CHANGE_LOCATION, payload: location});
@@ -17,6 +18,7 @@ export const requireAuthorization = (status) => ({type: ActionType.REQUIRED_AUTH
 export const setUserName = (userName) => ({type: ActionType.CHANGE_USERNAME, payload: userName});
 export const setUserAvatar = (url) => ({type: ActionType.USER_AVATAR, payload: url});
 export const redirect = (url) => ({type: ActionType.REDIRECT, payload: url});
+export const getComments = (comments) => ({type: ActionType.LOAD_COMMENTS, payload: comments});
 
 export const ActionCreators = {
   setLocation,
@@ -26,5 +28,6 @@ export const ActionCreators = {
   requireAuthorization,
   setUserName,
   redirect,
-  setUserAvatar
+  setUserAvatar,
+  getComments
 };

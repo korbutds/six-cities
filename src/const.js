@@ -84,5 +84,6 @@ export const RoutePathes = {
 export const APIRoutePathes = {
   LOGIN: `/login`,
   LOGOUT: `/logout`,
-  HOTELS: `/hotels`
+  HOTELS: `/hotels`,
+  COMMENTS: `/comments`
 };

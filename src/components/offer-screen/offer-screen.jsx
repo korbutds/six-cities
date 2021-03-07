@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {ActionCreators} from '../../store/action';
+import PrivateRoute from '../private-route/private-route';
 
 const ImageComponent = ({image}) => {
   return (
@@ -22,7 +23,7 @@ const ImageComponent = ({image}) => {
   );
 };
 
-const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
+const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
   if (!isCardsLoaded) {
     return <LoaderScreensaver />;
   }
@@ -133,8 +134,8 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, o
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <Reviews comments={comments}/>
-                <CommentForm />
+                <Reviews id={id} />
+                <PrivateRoute component={() => <CommentForm id={id} />} noAuth={() => ``}/>
               </section>
 
             </div>
