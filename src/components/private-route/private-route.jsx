@@ -1,29 +1,17 @@
 import React from 'react';
-import {Redirect, Route} from 'react-router-dom';
-import {AuthorizationStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus} from '../../const';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 
-const PrivateRoute = ({authorizationStatus, isCardsLoaded, component: Component, ...rest}) => {
+const PrivateRoute = ({authorizationStatus, isCardsLoaded, component: Component, noAuth}) => {
   if (!isCardsLoaded) {
-    return (
-      <Route>
-        <LoaderScreensaver />;
-      </Route>
-    );
+    return <LoaderScreensaver />;
   }
   return (
-    <Route
-      {...rest}
-      render={(props) => {
-        return (
-          authorizationStatus === AuthorizationStatus.AUTH
-            ? <Component {...props} />
-            : <Redirect to={RoutePathes.LOGIN_SCREEN} />
-        );
-      }}
-    />
+    authorizationStatus === AuthorizationStatus.AUTH
+      ? <Component />
+      : noAuth()
   );
 };
 

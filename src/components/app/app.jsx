@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Router} from 'react-router-dom';
+import {Switch, Route, Router, Redirect} from 'react-router-dom';
 import MainScreen from '../main-screen/main-screen';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
@@ -21,8 +21,9 @@ const App = () => {
         <Route path={RoutePathes.MAIN_SCREEN} exact >
           <MainScreen />
         </Route>
-
-        <PrivateRoute path={RoutePathes.FAVORITES_SCREEN} exact component={FavoritesScreen} />
+        <Route path ={RoutePathes.FAVORITES_SCREEN} exact>
+          <PrivateRoute component={FavoritesScreen} noAuth={() => <Redirect to={RoutePathes.LOGIN_SCREEN}/>}/>
+        </Route>
 
         <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {
           const apartmentId = routeProps.match.params.id;

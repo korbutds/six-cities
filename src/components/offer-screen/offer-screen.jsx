@@ -134,6 +134,7 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, o
               </div>
               <section className="property__reviews reviews">
                 <Reviews comments={comments}/>
+
                 <CommentForm />
               </section>
 
