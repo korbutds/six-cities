@@ -13,6 +13,7 @@ import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {ActionCreators} from '../../store/action';
+import PrivateRoute from '../private-route/private-route';
 
 const ImageComponent = ({image}) => {
   return (
@@ -134,8 +135,7 @@ const OfferScreen = ({cards, comments, apartmentId, isCardsLoaded, nearPlaces, o
               </div>
               <section className="property__reviews reviews">
                 <Reviews comments={comments}/>
-
-                <CommentForm />
+                <PrivateRoute component={CommentForm} noAuth={() => ``}/>
               </section>
 
             </div>
