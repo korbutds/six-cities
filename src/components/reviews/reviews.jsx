@@ -9,7 +9,7 @@ import {fetchCommentsList} from '../../store/api-actions.js';
 const Reviews = ({comments, isCommentsLoaded, onLoad, id}) => {
   useEffect(() => {
     onLoad(id);
-  }, [comments]);
+  }, []);
 
   if (!isCommentsLoaded) {
     return <LoaderScreensaver />;

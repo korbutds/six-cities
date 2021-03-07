@@ -22,7 +22,7 @@ const App = () => {
           <MainScreen />
         </Route>
         <Route path ={RoutePathes.FAVORITES_SCREEN} exact>
-          <PrivateRoute component={FavoritesScreen} noAuth={() => <Redirect to={RoutePathes.LOGIN_SCREEN}/>}/>
+          <PrivateRoute component={() => <FavoritesScreen />} noAuth={() => <Redirect to={RoutePathes.LOGIN_SCREEN}/>}/>
         </Route>
 
         <Route path={RoutePathes.OFFER_SCREEN} exact render={(routeProps) => {

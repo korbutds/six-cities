@@ -42,3 +42,8 @@ export const fetchCommentsList = (id) => (dispatch, _state, api) => {
   api.get(`${APIRoutePathes.COMMENTS}/${id}`)
     .then(({data}) => dispatch(ActionCreators.getComments(data)));
 };
+
+export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _state, api) => {
+  api.post(`${APIRoutePathes.COMMENTS}/${id}`, {comment, rating})
+    .then(({data}) => dispatch(ActionCreators.getComments(data)));
+};

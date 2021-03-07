@@ -4,13 +4,13 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 
-const PrivateRoute = ({authorizationStatus, isCardsLoaded, component: Component, noAuth}) => {
+const PrivateRoute = ({authorizationStatus, isCardsLoaded, component, noAuth}) => {
   if (!isCardsLoaded) {
     return <LoaderScreensaver />;
   }
   return (
     authorizationStatus === AuthorizationStatus.AUTH
-      ? <Component />
+      ? component()
       : noAuth()
   );
 };
