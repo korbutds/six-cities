@@ -6,6 +6,11 @@ export const fetchCardsList = () => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(ActionCreators.getCards(data)))
 );
 
+export const fetchCurrentOffer = (id) => (dispatch, _getState, api) => (
+  api.get(`${APIRoutePathes.HOTELS}/${id}`)
+    .then(({data}) => dispatch(ActionCreators.getCurrentOffer(data)))
+);
+
 export const fetchNearPlacesList = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoutePathes.HOTELS}/${id}/nearby`).
     then(({data}) => dispatch(ActionCreators.getNearPlaces(data)))
@@ -28,7 +33,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
   api.post(APIRoutePathes.LOGIN, {email, password})
     .then(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.AUTH)))
     .then(() => dispatch(ActionCreators.setUserName(email)))
-    .then(() =>dispatch(ActionCreators.redirect(RoutePathes.MAIN_SCREEN)))
+    .then(() => dispatch(ActionCreators.redirect(RoutePathes.MAIN_SCREEN)))
     .catch(() => dispatch(ActionCreators.requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 

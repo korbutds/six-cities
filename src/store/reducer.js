@@ -9,6 +9,8 @@ const initialState = {
   cards: [],
   isCardsLoaded: false,
   nearPlaces: [],
+  currentOffer: null,
+  isOfferLoaded: false,
   isNearPlacesLoaded: false,
   authorizationStatus: AuthorizationStatus.NO_AUTH,
   login: ``,
@@ -67,6 +69,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         comments: action.payload,
         isCommentsLoaded: true
+      };
+    case ActionType.LOAD_CURRENT_OFFER:
+      return {
+        ...state,
+        currentOffer: action.payload,
+        isOfferLoaded: true,
       };
 
     default:

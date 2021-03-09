@@ -15,15 +15,15 @@ import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {ActionCreators} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
+import {fetchCurrentOffer} from '../../store/api-actions';
+import citiesCardProp from '../cities-card/cities-card.prop';
 
-const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
-  if (!isCardsLoaded) {
+const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, onLocationChange, loadOffer}) => {
+  loadOffer(apartmentId);
+
+  if (!isOfferLoaded) {
     return <LoaderScreensaver />;
   }
-
-  const card = cards.find(({id}) => {
-    return id === parseFloat(apartmentId);
-  });
 
   if (!card) {
     return <NotFoundScreen />;
@@ -148,19 +148,25 @@ OfferScreen.propTypes = {
   comments: commentPropTypes,
   nearPlaces: cardsPropTypes,
   apartmentId: PropTypes.string.isRequired,
-  isCardsLoaded: PropTypes.bool.isRequired,
-  onLocationChange: PropTypes.func.isRequired
+  isOfferLoaded: PropTypes.bool.isRequired,
+  onLocationChange: PropTypes.func.isRequired,
+  loadOffer: PropTypes.func.isRequired,
+  currentOffer: citiesCardProp
 };
 
-const mapStateToProps = ({cards, isCardsLoaded, nearPlaces}) => ({
+const mapStateToProps = ({cards, isOfferLoaded, nearPlaces, currentOffer}) => ({
   cards,
-  isCardsLoaded,
-  nearPlaces
+  isOfferLoaded,
+  nearPlaces,
+  currentOffer
 });
 
 const mapDispatchToProps = (dispatch) => ({
   onLocationChange(location) {
     dispatch(ActionCreators.setLocation(location));
+  },
+  loadOffer(id) {
+    dispatch(fetchCurrentOffer(id));
   }
 });
 

@@ -79,6 +79,7 @@ export const RoutePathes = {
   LOGIN_SCREEN: `/login`,
   FAVORITES_SCREEN: `/favorites`,
   OFFER_SCREEN: `/offer/:id`,
+  NOT_FOUND: `/404`
 };
 
 export const APIRoutePathes = {
