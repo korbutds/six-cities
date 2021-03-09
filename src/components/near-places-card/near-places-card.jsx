@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 const NearPlacesCard = ({card, onCursor}) => {
-  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
+  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const handleCursorHover = () => onCursor(id);
   const handleCursorOut = () => onCursor(null);
@@ -21,7 +21,7 @@ const NearPlacesCard = ({card, onCursor}) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>

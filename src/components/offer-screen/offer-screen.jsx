@@ -14,14 +14,7 @@ import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
 import {ActionCreators} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
-
-const ImageComponent = ({image}) => {
-  return (
-    <div className="property__image-wrapper">
-      <img className="property__image" src={image} alt="Photo studio" />
-    </div>
-  );
-};
+import Image from '../image/image';
 
 const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
   if (!isCardsLoaded) {
@@ -68,7 +61,7 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {contentImages.map((image, i) => (<ImageComponent image={image} key={`${card.id}-${i}-photo`}/>))}
+              {contentImages.map((image, i) => (<Image image={image} key={`${card.id}-${i}-photo`}/>))}
             </div>
           </div>
           <div className="property__container container">
@@ -157,10 +150,6 @@ OfferScreen.propTypes = {
   apartmentId: PropTypes.string.isRequired,
   isCardsLoaded: PropTypes.bool.isRequired,
   onLocationChange: PropTypes.func.isRequired
-};
-
-ImageComponent.propTypes = {
-  image: PropTypes.string
 };
 
 const mapStateToProps = ({cards, isCardsLoaded, nearPlaces}) => ({
