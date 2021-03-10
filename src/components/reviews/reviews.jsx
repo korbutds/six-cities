@@ -5,10 +5,13 @@ import Review from '../review/review';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading.jsx';
 import {fetchCommentsList} from '../../store/api-actions.js';
+import {useParams} from 'react-router';
 
-const Reviews = ({comments, isCommentsLoaded, onLoad, id}) => {
+const Reviews = ({comments, isCommentsLoaded, onLoad}) => {
+  const {id} = useParams();
   useEffect(() => {
     onLoad(id);
+
   }, [id]);
 
   if (!isCommentsLoaded) {
@@ -30,7 +33,6 @@ Reviews.propTypes = {
   comments: commentsPropTypes,
   isCommentsLoaded: PropTypes.bool.isRequired,
   onLoad: PropTypes.func.isRequired,
-  id: PropTypes.number.isRequired
 };
 
 const mapStateToProps = ({isCommentsLoaded, comments}) => ({

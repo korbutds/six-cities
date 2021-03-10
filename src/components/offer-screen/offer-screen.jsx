@@ -130,7 +130,7 @@ const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <Reviews id={id} />
+                <Reviews />
                 <PrivateRoute component={() => <CommentForm id={id} />} noAuth={() => ``}/>
               </section>
 

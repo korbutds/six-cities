@@ -89,4 +89,4 @@ export const APIRoutePathes = {
   COMMENTS: `/comments`
 };
 
-export const RATTING_COUNT = 5;
+export const RatingTitles = [`perfect`, `good`, `not bad`, `badly`, `terribly`];
