@@ -3,8 +3,10 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {login} from '../../store/api-actions';
 import Header from '../header/header';
+import {AuthorizationStatus, RoutePathes} from '../../const';
+import {Redirect} from 'react-router';
 
-const LoginScreen = ({onSubmit}) => {
+const LoginScreen = ({onSubmit, authorizationStatus}) => {
   const loginRef = useRef();
   const passwordRef = useRef();
   const handleSubmit = (evt) => {
@@ -14,6 +16,10 @@ const LoginScreen = ({onSubmit}) => {
       password: passwordRef.current.value
     });
   };
+
+  if (authorizationStatus === AuthorizationStatus.AUTH) {
+    return <Redirect to={RoutePathes.MAIN_SCREEN} />;
+  }
 
   return (
     <div className="page page--gray page--login">
@@ -49,8 +55,13 @@ const LoginScreen = ({onSubmit}) => {
 };
 
 LoginScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired
+  onSubmit: PropTypes.func.isRequired,
+  authorizationStatus: PropTypes.bool
 };
+
+const mapStateToProps = ({authorizationStatus}) => ({
+  authorizationStatus
+});
 
 const mapDispatchToProps = (dispatch) => ({
   onSubmit(loginData) {
@@ -59,4 +70,4 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 export {LoginScreen};
-export default connect(null, mapDispatchToProps)(LoginScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
