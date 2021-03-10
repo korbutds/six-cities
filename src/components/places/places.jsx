@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import CitiesList from '../cities-list/cities-list';
 import PropTypes from 'prop-types';
@@ -11,7 +11,6 @@ import LoaderScreensaver from '../loading/loading';
 
 const Places = (props) => {
   const {cards, handleCityChange, currentCity, sortType, isCardsLoaded} = props;
-  const [cardId, setCardId] = useState(null);
 
   if (!isCardsLoaded) {
     return (
@@ -31,7 +30,7 @@ const Places = (props) => {
           <LocationList onCityClick={handleCityChange}/>
         </section>
       </div>
-      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList currentCityPlaces={currentCityPlaces} onCursorHandle={setCardId} cardId={cardId} />}
+      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList currentCityPlaces={currentCityPlaces} />}
 
     </main>
   );
