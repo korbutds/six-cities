@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {makeFirstLetterUC} from '../../utils';
 import Header from '../header/header';
 import Reviews from '../reviews/reviews';
@@ -18,8 +18,14 @@ import Image from '../image/image';
 import {fetchCurrentOffer} from '../../store/api-actions';
 import citiesCardProp from '../cities-card/cities-card.prop';
 
-const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, onLocationChange, loadOffer}) => {
-  loadOffer(apartmentId);
+const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, loadOffer}) => {
+
+  useEffect(() => {
+    loadOffer(apartmentId);
+  }, [apartmentId]);
+
+  useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [apartmentId]);
+
 
   if (!isOfferLoaded) {
     return <LoaderScreensaver />;
@@ -43,16 +49,13 @@ const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces
     goods,
     host,
     description,
-    city
   } = card;
 
-  onLocationChange(city.name);
-
-  const [cardId, setNearCardId] = useState(null);
-  useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
-
-  const getNearCardId = (handleId) => setNearCardId(handleId);
   const contentImages = images.slice(0, 6);
+
+  const nearPlacesMapCards = nearPlaces.slice();
+  nearPlacesMapCards.push(card);
+
   return (
     <div className="page">
       <Header />
@@ -133,10 +136,10 @@ const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces
 
             </div>
           </div>
-          <Map cards={nearPlaces} cardId={cardId}/>
+          <Map cards={nearPlacesMapCards} cardId={id}/>
         </section>
         <div className="container">
-          <NearPlacesList cardId={id} onCursor={getNearCardId}/>
+          <NearPlacesList cardId={id} />
         </div>
       </main>
     </div>

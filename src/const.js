@@ -88,3 +88,5 @@ export const APIRoutePathes = {
   HOTELS: `/hotels`,
   COMMENTS: `/comments`
 };
+
+export const RATTING_COUNT = 5;

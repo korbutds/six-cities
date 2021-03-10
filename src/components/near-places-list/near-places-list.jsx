@@ -5,7 +5,7 @@ import LoaderScreensaver from '../loading/loading';
 import {connect} from 'react-redux';
 import {fetchNearPlacesList} from '../../store/api-actions';
 
-const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNearPlaces}) => {
+const NearPlacesList = ({cards, cardId, isNearPlacesLoaded, onLoadNearPlaces}) => {
   useEffect(() => {
     onLoadNearPlaces(cardId);
   }, [cardId]);
@@ -18,7 +18,7 @@ const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNear
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {cards.map((card, id) => <NearPlacesCard card={card} key={`${id}-nearCard`} onCursor={onCursor}/>)}
+        {cards.map((card, id) => <NearPlacesCard card={card} key={`${id}-nearCard`} />)}
       </div>
     </section>
   );
@@ -26,7 +26,6 @@ const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNear
 
 NearPlacesList.propTypes = {
   cards: PropTypes.array.isRequired,
-  onCursor: PropTypes.func.isRequired,
   isNearPlacesLoaded: PropTypes.bool.isRequired,
   onLoadNearPlaces: PropTypes.func.isRequired,
   cardId: PropTypes.number.isRequired

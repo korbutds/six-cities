@@ -36,13 +36,12 @@ const CommentForm = ({id, onSubmit}) => {
       commentText: ``,
       rating: null
     }));
-    commentForm.current.reset();
   };
 
   return (
     <form className="reviews__form form" action="#" method="post" onSubmit={handleCommentSubmit} ref={commentForm}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
-      <FormRating handleRatingChange={handleRatingChange}/>
+      <FormRating rating={comment.rating} handleRatingChange={handleRatingChange}/>
       <FormTextarea value={comment.commentText} handleCommentChange={handleCommentChange}/>
       <div className="reviews__button-wrapper">
         <p className="reviews__help">

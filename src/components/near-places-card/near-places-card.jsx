@@ -2,13 +2,11 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import PropTypes from 'prop-types';
 
-const NearPlacesCard = ({card, onCursor}) => {
+const NearPlacesCard = ({card}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
-  const handleCursorHover = () => onCursor(id);
-  const handleCursorOut = () => onCursor(null);
   return (
-    <article className="near-places__card place-card" onMouseEnter={handleCursorHover} onMouseLeave={handleCursorOut}>
+    <article className="near-places__card place-card" >
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
