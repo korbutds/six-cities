@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import LoaderScreensaver from '../loading/loading';
 import {connect} from 'react-redux';
 import {fetchNearPlacesList} from '../../store/api-actions';
-import {getNearPlacesCards, getNearPlacesCardsLoadedStatus} from '../../store/offers-data/selectors';
+import {getNearPlacesCards, getNearPlacesCardsLoadedStatus} from '../../store/current-offer-data/selectors';
 
 const NearPlacesList = ({cards, cardId, isNearPlacesLoaded, onLoadNearPlaces}) => {
   useEffect(() => {

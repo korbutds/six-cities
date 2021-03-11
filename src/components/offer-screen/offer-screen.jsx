@@ -12,21 +12,22 @@ import Map from '../map/map';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {setLocation} from '../../store/action';
+import {clearCurrentOffer, setLocation} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import {fetchCurrentOffer} from '../../store/api-actions';
 import citiesCardProp from '../cities-card/cities-card.prop';
-import {getCurrentOfferData, getCurrentOfferLoadedStatus, getNearPlacesCards, getOffersCards} from '../../store/offers-data/selectors';
+import {getCurrentOfferData, getCurrentOfferLoadedStatus, getNearPlacesCards} from '../../store/current-offer-data/selectors';
 
-const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, loadOffer}) => {
+const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, loadOffer, clearPage}) => {
 
   useEffect(() => {
     loadOffer(apartmentId);
+
+    return () => {
+      clearPage();
+    };
   }, [apartmentId]);
-
-  useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [apartmentId]);
-
 
   if (!isOfferLoaded) {
     return <LoaderScreensaver />;
@@ -155,11 +156,11 @@ OfferScreen.propTypes = {
   isOfferLoaded: PropTypes.bool.isRequired,
   onLocationChange: PropTypes.func.isRequired,
   loadOffer: PropTypes.func.isRequired,
-  currentOffer: citiesCardProp
+  currentOffer: citiesCardProp,
+  clearPage: PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  cards: getOffersCards(state),
   isOfferLoaded: getCurrentOfferLoadedStatus(state),
   nearPlaces: getNearPlacesCards(state),
   currentOffer: getCurrentOfferData(state),
@@ -171,6 +172,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   loadOffer(id) {
     dispatch(fetchCurrentOffer(id));
+  },
+  clearPage() {
+    dispatch(clearCurrentOffer());
   }
 });
 

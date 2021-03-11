@@ -6,7 +6,7 @@ import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading.jsx';
 import {fetchCommentsList} from '../../store/api-actions.js';
 import {useParams} from 'react-router';
-import {getComments, getCommentsLoadedStatus} from '../../store/offers-data/selectors.js';
+import {getComments, getCommentsLoadedStatus} from '../../store/current-offer-data/selectors.js';
 
 const Reviews = ({comments, isCommentsLoaded, onLoad}) => {
   const {id} = useParams();

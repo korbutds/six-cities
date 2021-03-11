@@ -1,29 +1,19 @@
 import {CityList} from "../../const";
-import {ActionType} from "../action";
+import {setLocation, setSort} from "../action";
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   location: CityList.Paris,
   sort: `Popular`,
 };
 
-const screen = (state = initialState, action) => {
-  switch (action.type) {
-
-    case ActionType.CHANGE_LOCATION:
-      return {
-        ...state,
-        location: action.payload
-      };
-
-    case ActionType.CHANGE_SORT:
-      return {
-        ...state,
-        sort: action.payload
-      };
-
-    default:
-      return state;
-  }
-};
+const screen = createReducer(initialState, (builder) => {
+  builder.addCase(setLocation, (state, action) => {
+    state.location = action.payload;
+  });
+  builder.addCase(setSort, (state, action) => {
+    state.sort = action.payload;
+  });
+});
 
 export default screen;

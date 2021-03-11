@@ -1,4 +1,5 @@
-import {ActionType} from "../action";
+import {getCards} from "../action";
+import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
   cards: [],
@@ -11,40 +12,11 @@ const initialState = {
   isCommentsLoaded: false,
 };
 
-const offersData = (state = initialState, action) => {
-  switch (action.type) {
-
-    case ActionType.LOAD_CARDS:
-      return {
-        ...state,
-        cards: action.payload,
-        isCardsLoaded: true
-      };
-
-    case ActionType.LOAD_CURRENT_OFFER:
-      return {
-        ...state,
-        currentOffer: action.payload,
-        isOfferLoaded: true,
-      };
-
-    case ActionType.LOAD_NEAR_PLACES:
-      return {
-        ...state,
-        nearPlaces: action.payload,
-        isNearPlacesLoaded: true,
-      };
-
-    case ActionType.LOAD_COMMENTS:
-      return {
-        ...state,
-        comments: action.payload,
-        isCommentsLoaded: true
-      };
-
-    default:
-      return state;
-  }
-};
+const offersData = createReducer(initialState, (builder) => {
+  builder.addCase(getCards, (state, action) => {
+    state.cards = action.payload;
+    state.isCardsLoaded = true;
+  });
+});
 
 export default offersData;
