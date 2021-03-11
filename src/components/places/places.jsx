@@ -6,7 +6,7 @@ import LocationList from '../location-list/location-list';
 import NoPlaces from '../no-places/no-places';
 import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
 import {connect} from 'react-redux';
-import {ActionCreators} from '../../store/action';
+import {setLocation} from '../../store/action';
 import LoaderScreensaver from '../loading/loading';
 
 const Places = (props) => {
@@ -56,7 +56,7 @@ const mapStateToProps = ({cards, location, sort, isCardsLoaded}) => ({
 const mapDispatchToProps = (dispatch) => ({
   handleCityChange(evt) {
     const location = evt.target.innerText;
-    dispatch(ActionCreators.setLocation(location));
+    dispatch(setLocation(location));
   }
 });
 

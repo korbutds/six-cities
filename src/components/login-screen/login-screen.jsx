@@ -7,6 +7,7 @@ import {AuthorizationStatus, RoutePathes} from '../../const';
 import {Redirect} from 'react-router';
 
 const LoginScreen = ({onSubmit, authorizationStatus}) => {
+  console.log(authorizationStatus)
   const loginRef = useRef();
   const passwordRef = useRef();
   const handleSubmit = (evt) => {
@@ -56,7 +57,7 @@ const LoginScreen = ({onSubmit, authorizationStatus}) => {
 
 LoginScreen.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.bool
+  authorizationStatus: PropTypes.string.isRequired
 };
 
 const mapStateToProps = ({authorizationStatus}) => ({

@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
-import cardPropTypes from '../cities-card/cities-card.prop.js';
-import {CitiesInfo} from '../../const.js';
+import cardPropTypes from '../cities-card/cities-card.prop';
+import {CitiesInfo} from '../../const';
 import {connect} from 'react-redux';
 
 import "leaflet/dist/leaflet.css";

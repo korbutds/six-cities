@@ -7,6 +7,7 @@ import {logout} from '../../store/api-actions';
 
 const HeaderNavigation = (props) => {
   const {authorizationStatus, login, userAvatar} = props;
+  console.log(props)
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());

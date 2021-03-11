@@ -12,7 +12,7 @@ import Map from '../map/map';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {ActionCreators} from '../../store/action';
+import {setLocation} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import {fetchCurrentOffer} from '../../store/api-actions';
@@ -166,7 +166,7 @@ const mapStateToProps = ({cards, isOfferLoaded, nearPlaces, currentOffer}) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   onLocationChange(location) {
-    dispatch(ActionCreators.setLocation(location));
+    dispatch(setLocation(location));
   },
   loadOffer(id) {
     dispatch(fetchCurrentOffer(id));

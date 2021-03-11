@@ -21,16 +21,3 @@ export const setUserName = (userName) => ({type: ActionType.CHANGE_USERNAME, pay
 export const setUserAvatar = (url) => ({type: ActionType.USER_AVATAR, payload: url});
 export const redirect = (url) => ({type: ActionType.REDIRECT, payload: url});
 export const getComments = (comments) => ({type: ActionType.LOAD_COMMENTS, payload: comments});
-
-export const ActionCreators = {
-  setLocation,
-  setSort,
-  getCards,
-  getNearPlaces,
-  requireAuthorization,
-  setUserName,
-  redirect,
-  setUserAvatar,
-  getComments,
-  getCurrentOffer
-};
