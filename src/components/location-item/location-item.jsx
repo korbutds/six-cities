@@ -1,5 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
+import {getLocation} from '../../store/screen/selectors';
 import loactionItemPropTypes from './location-item.props';
 
 const LocationItem = (props) => {
@@ -15,8 +16,8 @@ const LocationItem = (props) => {
 
 LocationItem.propTypes = loactionItemPropTypes;
 
-const mapStateToProps = ({SCREEN}) => ({
-  currentCity: SCREEN.location
+const mapStateToProps = (state) => ({
+  currentCity: getLocation(state)
 });
 
 export {LocationItem};

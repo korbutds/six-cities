@@ -3,6 +3,7 @@ import {SortTypes} from '../../const';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 import SortItem from '../sort-item/sort-item';
+import {getSortType} from '../../store/screen/selectors';
 
 const Sort = (props) => {
   const {currentSortType} = props;
@@ -33,8 +34,8 @@ Sort.propTypes = {
   currentSortType: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({SCREEN}) => ({
-  currentSortType: SCREEN.sort
+const mapStateToProps = (state) => ({
+  currentSortType: getSortType(state)
 });
 
 export {Sort};

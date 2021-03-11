@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import {CitiesInfo} from '../../const';
 import {connect} from 'react-redux';
-
+import {getLocation} from '../../store/screen/selectors';
 import "leaflet/dist/leaflet.css";
 
 const Map = (props) => {
@@ -62,8 +62,8 @@ Map.propTypes = {
   cardId: PropTypes.number
 };
 
-const mapStateToProps = ({SCREEN}) => ({
-  city: SCREEN.location,
+const mapStateToProps = (state) => ({
+  city: getLocation(state)
 });
 
 export {Map};

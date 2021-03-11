@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import Map from '../map/map';
 import Sort from '../sort/sort';
+import {getLocation} from '../../store/screen/selectors';
 
 const CitiesList = (props) => {
   const {currentCityPlaces, currentCity} = props;
@@ -34,8 +35,8 @@ CitiesList.propTypes = {
   currentCity: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({SCREEN}) => ({
-  currentCity: SCREEN.location,
+const mapStateToProps = (state) => ({
+  currentCity: getLocation(state),
 });
 
 export {CitiesList};

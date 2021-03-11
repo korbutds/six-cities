@@ -5,6 +5,7 @@ import {login} from '../../store/api-actions';
 import Header from '../header/header';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import {Redirect} from 'react-router';
+import {getAuthorisationStatus} from '../../store/user-data/selectors';
 
 const LoginScreen = ({onSubmit, authorizationStatus}) => {
   const loginRef = useRef();
@@ -59,8 +60,8 @@ LoginScreen.propTypes = {
   authorizationStatus: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorisationStatus(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

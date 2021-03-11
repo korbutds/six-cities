@@ -17,6 +17,7 @@ import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import {fetchCurrentOffer} from '../../store/api-actions';
 import citiesCardProp from '../cities-card/cities-card.prop';
+import {getCurrentOfferData, getCurrentOfferLoadedStatus, getNearPlacesCards, getOffersCards} from '../../store/offers-data/selectors';
 
 const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, loadOffer}) => {
 
@@ -157,11 +158,11 @@ OfferScreen.propTypes = {
   currentOffer: citiesCardProp
 };
 
-const mapStateToProps = ({DATA}) => ({
-  cards: DATA.cards,
-  isOfferLoaded: DATA.isOfferLoaded,
-  nearPlaces: DATA.nearPlaces,
-  currentOffer: DATA.currentOffer
+const mapStateToProps = (state) => ({
+  cards: getOffersCards(state),
+  isOfferLoaded: getCurrentOfferLoadedStatus(state),
+  nearPlaces: getNearPlacesCards(state),
+  currentOffer: getCurrentOfferData(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

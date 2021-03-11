@@ -8,6 +8,8 @@ import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
 import {connect} from 'react-redux';
 import {setLocation} from '../../store/action';
 import LoaderScreensaver from '../loading/loading';
+import {getCardsLoadedStatus, getOffersCards} from '../../store/offers-data/selectors';
+import {getLocation, getSortType} from '../../store/screen/selectors';
 
 const Places = (props) => {
   const {cards, handleCityChange, currentCity, sortType, isCardsLoaded} = props;
@@ -46,11 +48,11 @@ Places.propTypes = {
   isCardsLoaded: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({DATA, SCREEN}) => ({
-  cards: DATA.cards,
-  isCardsLoaded: DATA.isCardsLoaded,
-  currentCity: SCREEN.location,
-  sortType: SCREEN.sort,
+const mapStateToProps = (state) => ({
+  cards: getOffersCards(state),
+  isCardsLoaded: getCardsLoadedStatus(state),
+  currentCity: getLocation(state),
+  sortType: getSortType(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({

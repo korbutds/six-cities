@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import {connect, useDispatch} from 'react-redux';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import {logout} from '../../store/api-actions';
+import {getAuthorisationStatus, getUserAvatar, getUserLogin} from '../../store/user-data/selectors';
 
 const HeaderNavigation = (props) => {
   const {authorizationStatus, login, userAvatar} = props;
@@ -55,10 +56,10 @@ HeaderNavigation.propTypes = {
   userAvatar: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({USER}) => ({
-  authorizationStatus: USER.authorizationStatus,
-  login: USER.login,
-  userAvatar: USER.userAvatar
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorisationStatus(state),
+  login: getUserLogin(state),
+  userAvatar: getUserAvatar(state)
 });
 
 export {HeaderNavigation};

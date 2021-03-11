@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading.jsx';
 import {fetchCommentsList} from '../../store/api-actions.js';
 import {useParams} from 'react-router';
+import {getComments, getCommentsLoadedStatus} from '../../store/offers-data/selectors.js';
 
 const Reviews = ({comments, isCommentsLoaded, onLoad}) => {
   const {id} = useParams();
@@ -35,9 +36,9 @@ Reviews.propTypes = {
   onLoad: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = ({DATA}) => ({
-  isCommentsLoaded: DATA.isCommentsLoaded,
-  comments: DATA.comments
+const mapStateToProps = (state) => ({
+  comments: getComments(state),
+  isCommentsLoaded: getCommentsLoadedStatus(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({

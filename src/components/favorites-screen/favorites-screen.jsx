@@ -5,6 +5,7 @@ import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
 import Header from '../header/header';
 import {connect} from 'react-redux';
+import {getOffersCards} from '../../store/offers-data/selectors.js';
 
 const FavoritesScreen = ({cards}) => {
 
@@ -28,8 +29,8 @@ FavoritesScreen.propTypes = {
   cards: cardsPropTypes
 };
 
-const mapStateToProps = ({DATA}) => ({
-  cards: DATA.cards
+const mapStateToProps = (state) => ({
+  cards: getOffersCards(state),
 });
 
 export {FavoritesScreen};

@@ -3,6 +3,8 @@ import {AuthorizationStatus} from '../../const';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
+import {getAuthorisationStatus} from '../../store/user-data/selectors';
+import {getCardsLoadedStatus} from '../../store/offers-data/selectors';
 
 const PrivateRoute = ({authorizationStatus, isCardsLoaded, component, noAuth}) => {
   if (!isCardsLoaded) {
@@ -22,9 +24,9 @@ PrivateRoute.propTypes = () => ({
   authorizationStatus: PropTypes.string.isRequired
 });
 
-const mapStateToProps = ({USER, DATA}) => ({
-  authorizationStatus: USER.authorizationStatus,
-  isCardsLoaded: DATA.isCardsLoaded
+const mapStateToProps = (state) => ({
+  authorizationStatus: getAuthorisationStatus(state),
+  isCardsLoaded: getCardsLoadedStatus(state)
 });
 
 export {PrivateRoute};

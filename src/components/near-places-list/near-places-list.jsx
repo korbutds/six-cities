@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import LoaderScreensaver from '../loading/loading';
 import {connect} from 'react-redux';
 import {fetchNearPlacesList} from '../../store/api-actions';
+import {getNearPlacesCards, getNearPlacesCardsLoadedStatus} from '../../store/offers-data/selectors';
 
 const NearPlacesList = ({cards, cardId, isNearPlacesLoaded, onLoadNearPlaces}) => {
   useEffect(() => {
@@ -31,9 +32,9 @@ NearPlacesList.propTypes = {
   cardId: PropTypes.number.isRequired
 };
 
-const mapStateToProps = ({DATA}) => ({
-  isNearPlacesLoaded: DATA.isNearPlacesLoaded,
-  cards: DATA.nearPlaces
+const mapStateToProps = (state) => ({
+  isNearPlacesLoaded: getNearPlacesCardsLoadedStatus(state),
+  cards: getNearPlacesCards(state)
 });
 
 const mapDispatchToProps = (dispatch) => ({
