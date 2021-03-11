@@ -6,26 +6,26 @@ import PropTypes from 'prop-types';
 import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
-import cardsPropTypes from '../places/places.prop';
-import commentPropTypes from '../reviews/comments.prop.js';
 import Map from '../map/map';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {clearCurrentOffer, setLocation} from '../../store/action';
+import {clearCurrentOffer} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import {fetchCurrentOffer} from '../../store/api-actions';
-import citiesCardProp from '../cities-card/cities-card.prop';
-import {getCurrentOfferData, getCurrentOfferLoadedStatus, getNearPlacesCards} from '../../store/current-offer-data/selectors';
 
-const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces, loadOffer, clearPage}) => {
+const OfferScreen = ({apartmentId}) => {
+
+  const dispatch = useDispatch();
+
+  const {currentOffer: card, isOfferLoaded, nearPlaces} = useSelector((state) => state.CURRENT_OFFER);
 
   useEffect(() => {
-    loadOffer(apartmentId);
+    dispatch(fetchCurrentOffer(apartmentId));
 
     return () => {
-      clearPage();
+      dispatch(clearCurrentOffer());
     };
   }, [apartmentId]);
 
@@ -149,34 +149,7 @@ const OfferScreen = ({currentOffer: card, apartmentId, isOfferLoaded, nearPlaces
 };
 
 OfferScreen.propTypes = {
-  cards: cardsPropTypes,
-  comments: commentPropTypes,
-  nearPlaces: cardsPropTypes,
   apartmentId: PropTypes.string.isRequired,
-  isOfferLoaded: PropTypes.bool.isRequired,
-  onLocationChange: PropTypes.func.isRequired,
-  loadOffer: PropTypes.func.isRequired,
-  currentOffer: citiesCardProp,
-  clearPage: PropTypes.func.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  isOfferLoaded: getCurrentOfferLoadedStatus(state),
-  nearPlaces: getNearPlacesCards(state),
-  currentOffer: getCurrentOfferData(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLocationChange(location) {
-    dispatch(setLocation(location));
-  },
-  loadOffer(id) {
-    dispatch(fetchCurrentOffer(id));
-  },
-  clearPage() {
-    dispatch(clearCurrentOffer());
-  }
-});
-
-export {OfferScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(OfferScreen);
+export default OfferScreen;

@@ -1,17 +1,16 @@
 import React, {useEffect} from 'react';
-import PropTypes from 'prop-types';
-import commentsPropTypes from './comments.prop.js';
 import Review from '../review/review';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading.jsx';
 import {fetchCommentsList} from '../../store/api-actions.js';
 import {useParams} from 'react-router';
-import {getComments, getCommentsLoadedStatus} from '../../store/current-offer-data/selectors.js';
 
-const Reviews = ({comments, isCommentsLoaded, onLoad}) => {
+const Reviews = () => {
+  const {comments, isCommentsLoaded} = useSelector((state) => state.CURRENT_OFFER);
+  const dispatch = useDispatch();
   const {id} = useParams();
   useEffect(() => {
-    onLoad(id);
+    dispatch(fetchCommentsList(id));
 
   }, [id]);
 
@@ -30,23 +29,4 @@ const Reviews = ({comments, isCommentsLoaded, onLoad}) => {
   );
 };
 
-Reviews.propTypes = {
-  comments: commentsPropTypes,
-  isCommentsLoaded: PropTypes.bool.isRequired,
-  onLoad: PropTypes.func.isRequired,
-};
-
-const mapStateToProps = (state) => ({
-  comments: getComments(state),
-  isCommentsLoaded: getCommentsLoadedStatus(state),
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoad(id) {
-    dispatch(fetchCommentsList(id));
-  }
-});
-
-
-export {Reviews};
-export default connect(mapStateToProps, mapDispatchToProps)(Reviews);
+export default Reviews;

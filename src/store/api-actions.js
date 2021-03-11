@@ -1,5 +1,5 @@
 import {APIRoutePathes, AuthorizationStatus, RoutePathes} from "../const";
-import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserAvatar, requireAuthorization, redirect, getComments} from "./action";
+import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserInfo, requireAuthorization, redirect, getComments, setUserAvatar} from "./action";
 
 export const fetchCardsList = () => (dispatch, _getState, api) => (
   api.get(APIRoutePathes.HOTELS)
@@ -18,18 +18,15 @@ export const fetchNearPlacesList = (id) => (dispatch, _getState, api) => (
 
 export const checkAuth = () => (dispatch, _getState, api) => (
   api.get(APIRoutePathes.LOGIN)
-  .then((response) => {
-    dispatch(setUserName(response.data.email));
-    dispatch(setUserAvatar(response.data[`avatar_url`]));
-  })
+  .then((response) => dispatch(setUserInfo(response.data.email, response.data[`avatar_url`])))
   .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
   .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
   api.post(APIRoutePathes.LOGIN, {email, password})
+    .then((response) => dispatch(setUserInfo(response.data.email, response.data[`avatar_url`])))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(setUserName(email)))
     .then(() => dispatch(redirect(RoutePathes.MAIN_SCREEN)))
     .catch(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)))
 );
@@ -37,6 +34,7 @@ export const login = ({login: email, password}) => (dispatch, _getState, api) =>
 export const logout = () => (dispatch, _state, api) => {
   api.get(APIRoutePathes.LOGOUT)
     .then(() => dispatch(setUserName(``)))
+    .then(() => dispatch(setUserAvatar(``)))
     .then(() => dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH)));
 };
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import {connect} from 'react-redux';
-import {getLocation} from '../../store/screen/selectors';
+import {useSelector} from 'react-redux';
 import loactionItemPropTypes from './location-item.props';
 
 const LocationItem = (props) => {
-  const {city, currentCity, onClickHandle} = props;
+  const {city, onClickHandle} = props;
+  const {location: currentCity} = useSelector((state) => state.SCREEN);
   return (
     <li className="locations__item">
       <a className={`locations__item-link tabs__item ${currentCity === city ? `tabs__item--active` : ``}`} href="#" onClick={onClickHandle}>
@@ -16,9 +16,4 @@ const LocationItem = (props) => {
 
 LocationItem.propTypes = loactionItemPropTypes;
 
-const mapStateToProps = (state) => ({
-  currentCity: getLocation(state)
-});
-
-export {LocationItem};
-export default connect(mapStateToProps)(LocationItem);
+export default LocationItem;

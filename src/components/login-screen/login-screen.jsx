@@ -1,21 +1,24 @@
 import React, {useRef} from 'react';
-import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {login} from '../../store/api-actions';
 import Header from '../header/header';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import {Redirect} from 'react-router';
-import {getAuthorisationStatus} from '../../store/user-data/selectors';
 
-const LoginScreen = ({onSubmit, authorizationStatus}) => {
+const LoginScreen = () => {
   const loginRef = useRef();
   const passwordRef = useRef();
+  const {authorizationStatus} = useSelector((state) => state.USER);
+  const dispatch = useDispatch();
   const handleSubmit = (evt) => {
-    evt.preventDefault();
-    onSubmit({
+    evt.preventDefault({
       login: loginRef.current.value,
       password: passwordRef.current.value
     });
+    dispatch(login({
+      login: loginRef.current.value,
+      password: passwordRef.current.value
+    }));
   };
 
   if (authorizationStatus === AuthorizationStatus.AUTH) {
@@ -55,20 +58,4 @@ const LoginScreen = ({onSubmit, authorizationStatus}) => {
   );
 };
 
-LoginScreen.propTypes = {
-  onSubmit: PropTypes.func.isRequired,
-  authorizationStatus: PropTypes.string.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorisationStatus(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(loginData) {
-    dispatch(login(loginData));
-  }
-});
-
-export {LoginScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(LoginScreen);
+export default LoginScreen;

@@ -2,13 +2,15 @@ import React, {useEffect} from 'react';
 import NearPlacesCard from '../near-places-card/near-places-card';
 import PropTypes from 'prop-types';
 import LoaderScreensaver from '../loading/loading';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {fetchNearPlacesList} from '../../store/api-actions';
-import {getNearPlacesCards, getNearPlacesCardsLoadedStatus} from '../../store/current-offer-data/selectors';
 
-const NearPlacesList = ({cards, cardId, isNearPlacesLoaded, onLoadNearPlaces}) => {
+const NearPlacesList = ({cardId}) => {
+  const dispatch = useDispatch();
+  const {nearPlaces: cards, isNearPlacesLoaded} = useSelector((state) => state.CURRENT_OFFER);
+
   useEffect(() => {
-    onLoadNearPlaces(cardId);
+    dispatch(fetchNearPlacesList(cardId));
   }, [cardId]);
 
   if (!isNearPlacesLoaded) {
@@ -26,22 +28,7 @@ const NearPlacesList = ({cards, cardId, isNearPlacesLoaded, onLoadNearPlaces}) =
 };
 
 NearPlacesList.propTypes = {
-  cards: PropTypes.array.isRequired,
-  isNearPlacesLoaded: PropTypes.bool.isRequired,
-  onLoadNearPlaces: PropTypes.func.isRequired,
   cardId: PropTypes.number.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  isNearPlacesLoaded: getNearPlacesCardsLoadedStatus(state),
-  cards: getNearPlacesCards(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoadNearPlaces(id) {
-    dispatch(fetchNearPlacesList(id));
-  }
-});
-
-export {NearPlacesList};
-export default connect(mapStateToProps, mapDispatchToProps)(NearPlacesList);
+export default NearPlacesList;

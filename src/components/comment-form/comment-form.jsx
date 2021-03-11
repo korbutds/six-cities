@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React, {useCallback, useRef, useState} from 'react';
-import {connect} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import {sendComment} from '../../store/api-actions';
 import FormRating from '../form-rating/form-rating';
 import FormTextarea from '../form-textarea/form-textarea';
 
-const CommentForm = ({id, onSubmit}) => {
+const CommentForm = ({id}) => {
   const commentForm = useRef();
   const [comment, setComment] = useState({
     rating: null,
@@ -27,10 +27,11 @@ const CommentForm = ({id, onSubmit}) => {
       commentText: value,
     }));
   }, [comment.commentText]);
+  const dispatch = useDispatch();
 
   const handleCommentSubmit = (evt) => {
     evt.preventDefault();
-    onSubmit(id, comment);
+    dispatch(sendComment(id, comment));
     setComment((prevState) => ({
       ...prevState,
       commentText: ``,
@@ -55,14 +56,6 @@ const CommentForm = ({id, onSubmit}) => {
 
 CommentForm.propTypes = {
   id: PropTypes.number.isRequired,
-  onSubmit: PropTypes.func.isRequired
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  onSubmit(id, comment) {
-    dispatch(sendComment(id, comment));
-  }
-});
-
-export {CommentForm};
-export default connect(null, mapDispatchToProps)(CommentForm);
+export default CommentForm;

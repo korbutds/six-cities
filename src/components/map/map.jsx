@@ -3,12 +3,13 @@ import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import {CitiesInfo} from '../../const';
-import {connect} from 'react-redux';
-import {getLocation} from '../../store/screen/selectors';
+import {useSelector} from 'react-redux';
 import "leaflet/dist/leaflet.css";
 
 const Map = (props) => {
-  const {city, cards, cardId} = props;
+  const {cards, cardId} = props;
+
+  const {location: city} = useSelector((state) => state.SCREEN);
 
   useEffect(() => {
     const cityCoords = CitiesInfo[city].coords;
@@ -55,17 +56,10 @@ const Map = (props) => {
 };
 
 Map.propTypes = {
-  city: PropTypes.string.isRequired,
   cards: PropTypes.arrayOf(
       cardPropTypes
   ),
   cardId: PropTypes.number
 };
 
-const mapStateToProps = (state) => ({
-  city: getLocation(state)
-});
-
-export {Map};
-
-export default connect(mapStateToProps)(Map);
+export default Map;

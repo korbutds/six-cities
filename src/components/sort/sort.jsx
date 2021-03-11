@@ -1,12 +1,11 @@
 import React, {useRef} from 'react';
 import {SortTypes} from '../../const';
-import {connect} from 'react-redux';
-import PropTypes from 'prop-types';
+import {useSelector} from 'react-redux';
 import SortItem from '../sort-item/sort-item';
-import {getSortType} from '../../store/screen/selectors';
 
-const Sort = (props) => {
-  const {currentSortType} = props;
+const Sort = () => {
+  const {sort: currentSortType} = useSelector((state) => state.SCREEN);
+
   const sortTypesList = Object.values(SortTypes);
 
   const sortList = useRef();
@@ -30,14 +29,5 @@ const Sort = (props) => {
   );
 };
 
-Sort.propTypes = {
-  currentSortType: PropTypes.string.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  currentSortType: getSortType(state)
-});
-
-export {Sort};
-export default connect(mapStateToProps)(Sort);
+export default Sort;
 

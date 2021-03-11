@@ -1,18 +1,22 @@
 import React from 'react';
-import cardPropTypes from '../cities-card/cities-card.prop';
 import CitiesList from '../cities-list/cities-list';
-import PropTypes from 'prop-types';
 import LocationList from '../location-list/location-list';
 import NoPlaces from '../no-places/no-places';
 import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {setLocation} from '../../store/action';
 import LoaderScreensaver from '../loading/loading';
-import {getCardsLoadedStatus, getOffersCards} from '../../store/offers-data/selectors';
-import {getLocation, getSortType} from '../../store/screen/selectors';
 
-const Places = (props) => {
-  const {cards, handleCityChange, currentCity, sortType, isCardsLoaded} = props;
+const Places = () => {
+  const {cards, sortType, isCardsLoaded} = useSelector((state) => state.DATA);
+  const {location: currentCity} = useSelector((state) => state.SCREEN);
+
+  const dispatch = useDispatch();
+
+  const handleCityChange = (evt) => {
+    const location = evt.target.innerText;
+    dispatch(setLocation(location));
+  };
 
   if (!isCardsLoaded) {
     return (
@@ -38,29 +42,5 @@ const Places = (props) => {
   );
 };
 
-Places.propTypes = {
-  cards: PropTypes.arrayOf(
-      cardPropTypes
-  ),
-  handleCityChange: PropTypes.func.isRequired,
-  currentCity: PropTypes.string.isRequired,
-  sortType: PropTypes.string.isRequired,
-  isCardsLoaded: PropTypes.bool.isRequired
-};
 
-const mapStateToProps = (state) => ({
-  cards: getOffersCards(state),
-  isCardsLoaded: getCardsLoadedStatus(state),
-  currentCity: getLocation(state),
-  sortType: getSortType(state)
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  handleCityChange(evt) {
-    const location = evt.target.innerText;
-    dispatch(setLocation(location));
-  }
-});
-
-export {Places};
-export default connect(mapStateToProps, mapDispatchToProps)(Places);
+export default Places;

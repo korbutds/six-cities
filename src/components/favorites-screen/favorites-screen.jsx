@@ -1,13 +1,13 @@
 import React from 'react';
-import cardsPropTypes from '../places/places.prop.js';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
 import Header from '../header/header';
-import {connect} from 'react-redux';
-import {getOffersCards} from '../../store/offers-data/selectors.js';
+import {useSelector} from 'react-redux';
 
-const FavoritesScreen = ({cards}) => {
+const FavoritesScreen = () => {
+
+  const {cards} = useSelector((state) => state.DATA);
 
   const favoritesCards = cards.filter((card) => (card.is_favorite));
   return (
@@ -25,13 +25,4 @@ const FavoritesScreen = ({cards}) => {
   );
 };
 
-FavoritesScreen.propTypes = {
-  cards: cardsPropTypes
-};
-
-const mapStateToProps = (state) => ({
-  cards: getOffersCards(state),
-});
-
-export {FavoritesScreen};
-export default connect(mapStateToProps)(FavoritesScreen);
+export default FavoritesScreen;

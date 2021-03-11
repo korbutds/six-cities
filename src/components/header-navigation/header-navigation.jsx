@@ -1,13 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import PropTypes from 'prop-types';
-import {connect, useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import {logout} from '../../store/api-actions';
-import {getAuthorisationStatus, getUserAvatar, getUserLogin} from '../../store/user-data/selectors';
 
-const HeaderNavigation = (props) => {
-  const {authorizationStatus, login, userAvatar} = props;
+const HeaderNavigation = () => {
+  const {authorizationStatus, login, userAvatar} = useSelector((state) => state.USER);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());
@@ -49,19 +47,4 @@ const HeaderNavigation = (props) => {
   );
 };
 
-HeaderNavigation.propTypes = {
-  authorizationStatus: PropTypes.string.isRequired,
-  isMainPage: PropTypes.bool,
-  login: PropTypes.string.isRequired,
-  userAvatar: PropTypes.string.isRequired
-};
-
-const mapStateToProps = (state) => ({
-  authorizationStatus: getAuthorisationStatus(state),
-  login: getUserLogin(state),
-  userAvatar: getUserAvatar(state)
-});
-
-export {HeaderNavigation};
-
-export default connect(mapStateToProps)(HeaderNavigation);
+export default HeaderNavigation;

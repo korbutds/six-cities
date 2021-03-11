@@ -12,6 +12,7 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
   CHANGE_USERNAME: `user/changeName`,
   SET_USER_AVATAR: `user/changeAvatar`,
+  SET_USER_INFO: `user/changeUserInfo`
 };
 
 export const setLocation = createAction(ActionType.CHANGE_LOCATION, (location) => {
@@ -52,6 +53,15 @@ export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATI
 export const setUserName = createAction(ActionType.CHANGE_USERNAME, (userName) => {
   return {
     payload: userName
+  };
+});
+
+export const setUserInfo = createAction(ActionType.SET_USER_INFO, (userName, userAvatar) => {
+  return {
+    payload: {
+      userName,
+      userAvatar
+    }
   };
 });
 

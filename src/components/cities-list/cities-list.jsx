@@ -1,15 +1,15 @@
 import React, {useState} from 'react';
-import {connect} from 'react-redux';
+import {useSelector} from 'react-redux';
 import CitiesCard from '../cities-card/cities-card';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
 import Map from '../map/map';
 import Sort from '../sort/sort';
-import {getLocation} from '../../store/screen/selectors';
 
 const CitiesList = (props) => {
-  const {currentCityPlaces, currentCity} = props;
+  const {currentCityPlaces} = props;
   const [cardId, setCardId] = useState(null);
+  const {currentCity} = useSelector((state) => state.SCREEN);
 
   return (
     <div className="cities">
@@ -32,12 +32,6 @@ const CitiesList = (props) => {
 
 CitiesList.propTypes = {
   currentCityPlaces: PropTypes.arrayOf(cardPropTypes),
-  currentCity: PropTypes.string.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  currentCity: getLocation(state),
-});
-
-export {CitiesList};
-export default connect(mapStateToProps)(CitiesList);
+export default CitiesList;
