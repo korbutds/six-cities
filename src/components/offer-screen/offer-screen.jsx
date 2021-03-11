@@ -157,11 +157,11 @@ OfferScreen.propTypes = {
   currentOffer: citiesCardProp
 };
 
-const mapStateToProps = ({cards, isOfferLoaded, nearPlaces, currentOffer}) => ({
-  cards,
-  isOfferLoaded,
-  nearPlaces,
-  currentOffer
+const mapStateToProps = ({DATA}) => ({
+  cards: DATA.cards,
+  isOfferLoaded: DATA.isOfferLoaded,
+  nearPlaces: DATA.nearPlaces,
+  currentOffer: DATA.currentOffer
 });
 
 const mapDispatchToProps = (dispatch) => ({

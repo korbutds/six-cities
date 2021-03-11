@@ -62,8 +62,8 @@ Map.propTypes = {
   cardId: PropTypes.number
 };
 
-const mapStateToProps = ({location}) => ({
-  city: location,
+const mapStateToProps = ({SCREEN}) => ({
+  city: SCREEN.location,
 });
 
 export {Map};

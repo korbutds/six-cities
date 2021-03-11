@@ -31,9 +31,9 @@ NearPlacesList.propTypes = {
   cardId: PropTypes.number.isRequired
 };
 
-const mapStateToProps = ({isNearPlacesLoaded, nearPlaces}) => ({
-  isNearPlacesLoaded,
-  cards: nearPlaces
+const mapStateToProps = ({DATA}) => ({
+  isNearPlacesLoaded: DATA.isNearPlacesLoaded,
+  cards: DATA.nearPlaces
 });
 
 const mapDispatchToProps = (dispatch) => ({

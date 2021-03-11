@@ -15,8 +15,8 @@ const LocationItem = (props) => {
 
 LocationItem.propTypes = loactionItemPropTypes;
 
-const mapStateToProps = ({location}) => ({
-  currentCity: location
+const mapStateToProps = ({SCREEN}) => ({
+  currentCity: SCREEN.location
 });
 
 export {LocationItem};

@@ -46,11 +46,11 @@ Places.propTypes = {
   isCardsLoaded: PropTypes.bool.isRequired
 };
 
-const mapStateToProps = ({cards, location, sort, isCardsLoaded}) => ({
-  cards,
-  currentCity: location,
-  sortType: sort,
-  isCardsLoaded
+const mapStateToProps = ({DATA, SCREEN}) => ({
+  cards: DATA.cards,
+  isCardsLoaded: DATA.isCardsLoaded,
+  currentCity: SCREEN.location,
+  sortType: SCREEN.sort,
 });
 
 const mapDispatchToProps = (dispatch) => ({

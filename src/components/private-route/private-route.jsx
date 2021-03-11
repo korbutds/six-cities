@@ -22,9 +22,9 @@ PrivateRoute.propTypes = () => ({
   authorizationStatus: PropTypes.string.isRequired
 });
 
-const mapStateToProps = ({authorizationStatus, isCardsLoaded}) => ({
-  authorizationStatus,
-  isCardsLoaded
+const mapStateToProps = ({USER, DATA}) => ({
+  authorizationStatus: USER.authorizationStatus,
+  isCardsLoaded: DATA.isCardsLoaded
 });
 
 export {PrivateRoute};

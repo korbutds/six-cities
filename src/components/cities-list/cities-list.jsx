@@ -34,8 +34,8 @@ CitiesList.propTypes = {
   currentCity: PropTypes.string.isRequired
 };
 
-const mapStateToProps = ({location}) => ({
-  currentCity: location,
+const mapStateToProps = ({SCREEN}) => ({
+  currentCity: SCREEN.location,
 });
 
 export {CitiesList};

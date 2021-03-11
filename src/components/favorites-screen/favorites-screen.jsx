@@ -28,8 +28,8 @@ FavoritesScreen.propTypes = {
   cards: cardsPropTypes
 };
 
-const mapStateToProps = ({cards}) => ({
-  cards
+const mapStateToProps = ({DATA}) => ({
+  cards: DATA.cards
 });
 
 export {FavoritesScreen};
