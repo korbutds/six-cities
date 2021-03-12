@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 import {makeFirstLetterUC} from '../../utils';
 import Header from '../header/header';
 import Reviews from '../reviews/reviews';
@@ -6,31 +6,36 @@ import PropTypes from 'prop-types';
 import CommentForm from '../comment-form/comment-form';
 import NearPlacesList from '../near-places-list/near-places-list';
 import OffersList from '../offers-list/offers-list';
-import cardsPropTypes from '../places/places.prop';
-import commentPropTypes from '../reviews/comments.prop.js';
 import Map from '../map/map';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {ActionCreators} from '../../store/action';
+import {changeFavoriteFlag, clearCurrentOffer} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
+import Image from '../image/image';
+import {fetchCurrentOffer, sendFavoriteStatus} from '../../store/api-actions';
+import browserHistory from '../../browser-history';
+import {AuthorizationStatus, RoutePathes} from '../../const';
 
-const ImageComponent = ({image}) => {
-  return (
-    <div className="property__image-wrapper">
-      <img className="property__image" src={image} alt="Photo studio" />
-    </div>
-  );
-};
+const OfferScreen = ({apartmentId}) => {
 
-const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationChange}) => {
-  if (!isCardsLoaded) {
+  const dispatch = useDispatch();
+
+  const {currentOffer: card, isOfferLoaded, nearPlaces} = useSelector((state) => state.CURRENT_OFFER);
+  const {authorizationStatus} = useSelector((state) => state.USER);
+  const {isFavoriteStatusChanged} = useSelector((state) => state.DATA);
+
+  useEffect(() => {
+    dispatch(fetchCurrentOffer(apartmentId));
+
+    return () => {
+      dispatch(clearCurrentOffer());
+    };
+  }, [apartmentId, isFavoriteStatusChanged]);
+
+  if (!isOfferLoaded) {
     return <LoaderScreensaver />;
   }
-
-  const card = cards.find(({id}) => {
-    return id === parseFloat(apartmentId);
-  });
 
   if (!card) {
     return <NotFoundScreen />;
@@ -50,16 +55,24 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
     goods,
     host,
     description,
-    city
   } = card;
 
-  onLocationChange(city.name);
+  const handleFavoriteClick = () => {
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      browserHistory.push(RoutePathes.LOGIN_SCREEN);
+    } else {
+      const isFavoriteCard = Number(!isFavorite);
 
-  const [cardId, setNearCardId] = useState(null);
-  useEffect(() => scrollTo({top: 0, left: 0, behavior: `smooth`}), [id]);
+      dispatch(changeFavoriteFlag());
+      dispatch(sendFavoriteStatus(id, isFavoriteCard));
+    }
+  };
 
-  const getNearCardId = (handleId) => setNearCardId(handleId);
   const contentImages = images.slice(0, 6);
+
+  const nearPlacesMapCards = nearPlaces.slice();
+  nearPlacesMapCards.push(card);
+
   return (
     <div className="page">
       <Header />
@@ -68,7 +81,7 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
         <section className="property">
           <div className="property__gallery-container container">
             <div className="property__gallery">
-              {contentImages.map((image, i) => (<ImageComponent image={image} key={`${card.id}-${i}-photo`}/>))}
+              {contentImages.map((image, i) => (<Image image={image} key={`${card.id}-${i}-photo`}/>))}
             </div>
           </div>
           <div className="property__container container">
@@ -82,7 +95,7 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className={`property__bookmark-button button ${isFavorite ? `property__bookmark-button--active` : ``}`} type="button">
+                <button className={`property__bookmark-button button ${isFavorite ? `property__bookmark-button--active` : ``}`} type="button" onClick={handleFavoriteClick} disabled={!isFavoriteStatusChanged}>
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>
@@ -134,16 +147,16 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
                 </div>
               </div>
               <section className="property__reviews reviews">
-                <Reviews id={id} />
+                <Reviews />
                 <PrivateRoute component={() => <CommentForm id={id} />} noAuth={() => ``}/>
               </section>
 
             </div>
           </div>
-          <Map cards={nearPlaces} cardId={cardId}/>
+          <Map cards={nearPlacesMapCards} cardId={id}/>
         </section>
         <div className="container">
-          <NearPlacesList cardId={id} onCursor={getNearCardId}/>
+          <NearPlacesList cardId={id} />
         </div>
       </main>
     </div>
@@ -151,29 +164,7 @@ const OfferScreen = ({cards, apartmentId, isCardsLoaded, nearPlaces, onLocationC
 };
 
 OfferScreen.propTypes = {
-  cards: cardsPropTypes,
-  comments: commentPropTypes,
-  nearPlaces: cardsPropTypes,
   apartmentId: PropTypes.string.isRequired,
-  isCardsLoaded: PropTypes.bool.isRequired,
-  onLocationChange: PropTypes.func.isRequired
 };
 
-ImageComponent.propTypes = {
-  image: PropTypes.string
-};
-
-const mapStateToProps = ({cards, isCardsLoaded, nearPlaces}) => ({
-  cards,
-  isCardsLoaded,
-  nearPlaces
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLocationChange(location) {
-    dispatch(ActionCreators.setLocation(location));
-  }
-});
-
-export {OfferScreen};
-export default connect(mapStateToProps, mapDispatchToProps)(OfferScreen);
+export default OfferScreen;

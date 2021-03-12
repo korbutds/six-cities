@@ -79,11 +79,15 @@ export const RoutePathes = {
   LOGIN_SCREEN: `/login`,
   FAVORITES_SCREEN: `/favorites`,
   OFFER_SCREEN: `/offer/:id`,
+  NOT_FOUND: `/404`
 };
 
 export const APIRoutePathes = {
   LOGIN: `/login`,
   LOGOUT: `/logout`,
   HOTELS: `/hotels`,
-  COMMENTS: `/comments`
+  COMMENTS: `/comments`,
+  FAVORITE: `/favorite`
 };
+
+export const RatingTitles = [`perfect`, `good`, `not bad`, `badly`, `terribly`];

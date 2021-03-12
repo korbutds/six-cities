@@ -1,10 +1,20 @@
 import React from 'react';
+import {useDispatch} from 'react-redux';
+import {changeFavoriteFlag} from '../../store/action.js';
+import {sendFavoriteStatus} from '../../store/api-actions.js';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
 
 
 const FavoritesCard = ({card}) => {
-  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
+  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, id} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
+  const dispatch = useDispatch();
+  const handleFavoriteClick = () => {
+    const isFavoriteCard = Number(!isFavorite);
+
+    dispatch(changeFavoriteFlag());
+    dispatch(sendFavoriteStatus(id, isFavoriteCard));
+  };
 
   return (
     <article className="favorites__card place-card">
@@ -20,7 +30,7 @@ const FavoritesCard = ({card}) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`} onClick={handleFavoriteClick} type="button">
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>

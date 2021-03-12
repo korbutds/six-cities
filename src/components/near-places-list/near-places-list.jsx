@@ -2,12 +2,15 @@ import React, {useEffect} from 'react';
 import NearPlacesCard from '../near-places-card/near-places-card';
 import PropTypes from 'prop-types';
 import LoaderScreensaver from '../loading/loading';
-import {connect} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {fetchNearPlacesList} from '../../store/api-actions';
 
-const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNearPlaces}) => {
+const NearPlacesList = ({cardId}) => {
+  const dispatch = useDispatch();
+  const {nearPlaces: cards, isNearPlacesLoaded} = useSelector((state) => state.CURRENT_OFFER);
+
   useEffect(() => {
-    onLoadNearPlaces(cardId);
+    dispatch(fetchNearPlacesList(cardId));
   }, [cardId]);
 
   if (!isNearPlacesLoaded) {
@@ -18,30 +21,14 @@ const NearPlacesList = ({cards, cardId, onCursor, isNearPlacesLoaded, onLoadNear
     <section className="near-places places">
       <h2 className="near-places__title">Other places in the neighbourhood</h2>
       <div className="near-places__list places__list">
-        {cards.map((card, id) => <NearPlacesCard card={card} key={`${id}-nearCard`} onCursor={onCursor}/>)}
+        {cards.map((card, id) => <NearPlacesCard card={card} key={`${id}-nearCard`} />)}
       </div>
     </section>
   );
 };
 
 NearPlacesList.propTypes = {
-  cards: PropTypes.array.isRequired,
-  onCursor: PropTypes.func.isRequired,
-  isNearPlacesLoaded: PropTypes.bool.isRequired,
-  onLoadNearPlaces: PropTypes.func.isRequired,
   cardId: PropTypes.number.isRequired
 };
 
-const mapStateToProps = ({isNearPlacesLoaded, nearPlaces}) => ({
-  isNearPlacesLoaded,
-  cards: nearPlaces
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  onLoadNearPlaces(id) {
-    dispatch(fetchNearPlacesList(id));
-  }
-});
-
-export {NearPlacesList};
-export default connect(mapStateToProps, mapDispatchToProps)(NearPlacesList);
+export default NearPlacesList;

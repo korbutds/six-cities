@@ -1,14 +1,33 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
+import {AuthorizationStatus, RoutePathes} from '../../const';
 import PropTypes from 'prop-types';
+import browserHistory from '../../browser-history';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeFavoriteFlag} from '../../store/action';
+import {sendFavoriteStatus} from '../../store/api-actions';
 
-const NearPlacesCard = ({card, onCursor}) => {
-  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating} = card;
+const NearPlacesCard = ({card}) => {
+  const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
-  const handleCursorHover = () => onCursor(id);
-  const handleCursorOut = () => onCursor(null);
+
+  const dispatch = useDispatch();
+  const {authorizationStatus} = useSelector((state) => state.USER);
+  const {isFavoriteStatusChanged} = useSelector((state) => state.DATA);
+
+  const handleFavoriteClick = () => {
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      browserHistory.push(RoutePathes.LOGIN_SCREEN);
+    } else {
+      const isFavoriteCard = Number(!isFavorite);
+
+      dispatch(changeFavoriteFlag());
+      dispatch(sendFavoriteStatus(id, isFavoriteCard));
+    }
+  };
+
   return (
-    <article className="near-places__card place-card" onMouseEnter={handleCursorHover} onMouseLeave={handleCursorOut}>
+    <article className="near-places__card place-card" >
       {isPremium && <div className="place-card__mark"><span>Premium</span></div>}
       <div className="near-places__image-wrapper place-card__image-wrapper">
         <a href="#">
@@ -21,7 +40,7 @@ const NearPlacesCard = ({card, onCursor}) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className="place-card__bookmark-button place-card__bookmark-button--active button" type="button">
+          <button className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`} type="button" onClick={handleFavoriteClick} disabled={!isFavoriteStatusChanged}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>

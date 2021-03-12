@@ -1,25 +1,22 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import LocationItem from '../location-item/location-item';
-import {connect} from 'react-redux';
+import {CityList} from '../../const';
+import {useDispatch} from 'react-redux';
+import {setLocation} from '../../store/action';
 
-const LocationList = ({onCityClick, cities}) => {
+const LocationList = () => {
+  const dispatch = useDispatch();
+
+  const handleCityChange = (evt) => {
+    const currentCity = evt.target.innerText;
+    dispatch(setLocation(currentCity));
+  };
   return (
     <ul className="locations__list tabs__list">
-      {Object.keys(cities).map((city, i) => <LocationItem city={city} key={`${city}-${i}`} onClickHandle={onCityClick}/>)}
+      {Object.keys(CityList).map((city, i) => <LocationItem city={city} key={`${city}-${i}`} onClickHandle={handleCityChange}/>)}
     </ul>
   );
 };
 
-LocationList.propTypes = {
-  onCityClick: PropTypes.func.isRequired,
-  cities: PropTypes.objectOf(PropTypes.string)
-};
-
-const mapStateToProps = ({cities}) => ({
-  cities
-});
-
-export {LocationList};
-export default connect(mapStateToProps)(LocationList);
+export default LocationList;
 
