@@ -24,13 +24,13 @@ export const getCityFiltredPlaces = (places) => {
   }, {});
 };
 
-const sortPlacesPopular = (placeA, placeB) => (placeA.id - placeB.id);
+export const sortPlacesPopular = (placeA, placeB) => (placeA.id - placeB.id);
 
-const sortPlacesPriceToLow = (placeA, placeB) => (placeB.price - placeA.price);
+export const sortPlacesPriceToLow = (placeA, placeB) => (placeB.price - placeA.price);
 
-const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB.price);
+export const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB.price);
 
-const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
+export const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
 
 export const getSortedPlaces = (places, sortType) => {
   const placesCopy = places.slice();

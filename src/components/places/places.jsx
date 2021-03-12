@@ -2,20 +2,20 @@ import React from 'react';
 import CitiesList from '../cities-list/cities-list';
 import LocationList from '../location-list/location-list';
 import NoPlaces from '../no-places/no-places';
-import {getCityFiltredPlaces, getSortedPlaces} from '../../utils';
 import {useDispatch, useSelector} from 'react-redux';
 import {setLocation} from '../../store/action';
 import LoaderScreensaver from '../loading/loading';
 
 const Places = () => {
-  const {cards, sortType, isCardsLoaded} = useSelector((state) => state.DATA);
-  const {location: currentCity} = useSelector((state) => state.SCREEN);
-
+  const {isCardsLoaded, cards} = useSelector((state) => state.DATA);
+  const {location} = useSelector((state) => state.SCREEN);
   const dispatch = useDispatch();
+  const filtredCards = cards.filter((card) => card.city.name === location);
+
 
   const handleCityChange = (evt) => {
-    const location = evt.target.innerText;
-    dispatch(setLocation(location));
+    const currentCity = evt.target.innerText;
+    dispatch(setLocation(currentCity));
   };
 
   if (!isCardsLoaded) {
@@ -23,10 +23,6 @@ const Places = () => {
       <LoaderScreensaver />
     );
   }
-
-  const filteredPlacesByCities = getCityFiltredPlaces(cards);
-
-  const currentCityPlaces = getSortedPlaces(filteredPlacesByCities[currentCity], sortType);
 
   return (
     <main className="page__main page__main--index page__main--index-empty">
@@ -36,7 +32,7 @@ const Places = () => {
           <LocationList onCityClick={handleCityChange}/>
         </section>
       </div>
-      {currentCityPlaces.length === 0 ? <NoPlaces /> : <CitiesList currentCityPlaces={currentCityPlaces} />}
+      {filtredCards.length === 0 ? <NoPlaces /> : <CitiesList />}
 
     </main>
   );
