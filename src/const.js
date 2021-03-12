@@ -86,7 +86,8 @@ export const APIRoutePathes = {
   LOGIN: `/login`,
   LOGOUT: `/logout`,
   HOTELS: `/hotels`,
-  COMMENTS: `/comments`
+  COMMENTS: `/comments`,
+  FAVORITE: `/favorite`
 };
 
 export const RatingTitles = [`perfect`, `good`, `not bad`, `badly`, `terribly`];

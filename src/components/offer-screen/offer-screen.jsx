@@ -10,16 +10,20 @@ import Map from '../map/map';
 import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {clearCurrentOffer} from '../../store/action';
+import {changeFavoriteFlag, clearCurrentOffer} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
-import {fetchCurrentOffer} from '../../store/api-actions';
+import {fetchCurrentOffer, sendFavoriteStatus} from '../../store/api-actions';
+import browserHistory from '../../browser-history';
+import {AuthorizationStatus, RoutePathes} from '../../const';
 
 const OfferScreen = ({apartmentId}) => {
 
   const dispatch = useDispatch();
 
   const {currentOffer: card, isOfferLoaded, nearPlaces} = useSelector((state) => state.CURRENT_OFFER);
+  const {authorizationStatus} = useSelector((state) => state.USER);
+  const {isFavoriteStatusChanged} = useSelector((state) => state.DATA);
 
   useEffect(() => {
     dispatch(fetchCurrentOffer(apartmentId));
@@ -27,7 +31,7 @@ const OfferScreen = ({apartmentId}) => {
     return () => {
       dispatch(clearCurrentOffer());
     };
-  }, [apartmentId]);
+  }, [apartmentId, isFavoriteStatusChanged]);
 
   if (!isOfferLoaded) {
     return <LoaderScreensaver />;
@@ -52,6 +56,24 @@ const OfferScreen = ({apartmentId}) => {
     host,
     description,
   } = card;
+
+  const handleFavoriteClick = () => {
+    if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
+      browserHistory.push(RoutePathes.LOGIN_SCREEN);
+    } else {
+      const currentCard = Object.assign({},
+          card,
+          {
+            'is_favorite': !card[`is_favorite`]
+          }
+      );
+
+      const isFavoriteCard = currentCard[`is_favorite`] ? 1 : 0;
+
+      dispatch(changeFavoriteFlag());
+      dispatch(sendFavoriteStatus(currentCard, isFavoriteCard));
+    }
+  };
 
   const contentImages = images.slice(0, 6);
 
@@ -80,7 +102,7 @@ const OfferScreen = ({apartmentId}) => {
                 <h1 className="property__name">
                   {title}
                 </h1>
-                <button className={`property__bookmark-button button ${isFavorite ? `property__bookmark-button--active` : ``}`} type="button">
+                <button className={`property__bookmark-button button ${isFavorite ? `property__bookmark-button--active` : ``}`} type="button" onClick={handleFavoriteClick} disabled={!isFavoriteStatusChanged}>
                   <svg className="property__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
                   </svg>

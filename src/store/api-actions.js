@@ -1,5 +1,5 @@
 import {APIRoutePathes, AuthorizationStatus, RoutePathes} from "../const";
-import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserInfo, requireAuthorization, redirect, getComments, setUserAvatar} from "./action";
+import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserInfo, requireAuthorization, redirect, getComments, setUserAvatar, changeFavoriteStatus} from "./action";
 
 export const fetchCardsList = () => (dispatch, _getState, api) => (
   api.get(APIRoutePathes.HOTELS)
@@ -46,4 +46,10 @@ export const fetchCommentsList = (id) => (dispatch, _state, api) => {
 export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _state, api) => {
   api.post(`${APIRoutePathes.COMMENTS}/${id}`, {comment, rating})
     .then(({data}) => dispatch(getComments(data)));
+};
+
+export const sendFavoriteStatus = (card, favorite) => (dispatch, _state, api) => {
+  api.post(`${APIRoutePathes.FAVORITE}/${card.id}/${favorite}`)
+    .then(({data}) => dispatch(changeFavoriteStatus(data)))
+    .catch(() => {});
 };

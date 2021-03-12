@@ -12,7 +12,10 @@ export const ActionType = {
   REQUIRED_AUTHORIZATION: `user/requiredAuthorization`,
   CHANGE_USERNAME: `user/changeName`,
   SET_USER_AVATAR: `user/changeAvatar`,
-  SET_USER_INFO: `user/changeUserInfo`
+  SET_USER_INFO: `user/changeUserInfo`,
+  CHANGE_FAVORITE_STATUS: `offers/changeFavoriteStatus`,
+  CHANGE_FAVORITE_FLAG: `offers/changeFavoriteFlag`
+
 };
 
 export const setLocation = createAction(ActionType.CHANGE_LOCATION, (location) => {
@@ -82,5 +85,13 @@ export const getComments = createAction(ActionType.LOAD_COMMENTS, (comments) => 
     payload: comments
   };
 });
+
+export const changeFavoriteStatus = createAction(ActionType.CHANGE_FAVORITE_STATUS, (card) => {
+  return {
+    payload: card
+  };
+});
+
+export const changeFavoriteFlag = createAction(ActionType.CHANGE_FAVORITE_FLAG);
 
 export const clearCurrentOffer = createAction(ActionType.CLEAR_CURRENT_STATE);
