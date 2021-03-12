@@ -8,16 +8,17 @@ import {sortPlacesPopular, sortPlacesPriceToLow, sortPlacesPriceToHight, sortPla
 import {SortTypes} from '../../const';
 import Map from '../map/map';
 import Sort from '../sort/sort';
+import NoPlaces from '../no-places/no-places';
 
 const CitiesList = () => {
   const [cardId, setCardId] = useState(null);
-  const {location: currentCity} = useSelector((state) => state.SCREEN);
+  const currentCity = useSelector((state) => state.SCREEN.location);
   const rootState = useSelector((state) => state);
 
   const getCards = (state) => state.DATA.cards;
   const getLocation = (state) => state.SCREEN.location;
   const getSortType = (state) => state.SCREEN.sort;
-  const getCurrentCity = (cardsList, location, sort) => {
+  const getCurrentCityOffers = (cardsList, location, sort) => {
     const filtredCards = cardsList.filter((card) => card.city.name === location);
     switch (sort) {
       case SortTypes.POPULAR:
@@ -33,7 +34,11 @@ const CitiesList = () => {
     }
   };
 
-  const currentCityCards = createSelector(getCards, getLocation, getSortType, getCurrentCity)(rootState);
+  const currentCityCards = createSelector(getCards, getLocation, getSortType, getCurrentCityOffers)(rootState);
+
+  if (currentCityCards.length === 0) {
+    return <NoPlaces />;
+  }
 
   return (
     <div className="cities">

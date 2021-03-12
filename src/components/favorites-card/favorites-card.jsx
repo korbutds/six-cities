@@ -1,25 +1,19 @@
 import React from 'react';
 import {useDispatch} from 'react-redux';
+import {changeFavoriteFlag} from '../../store/action.js';
 import {sendFavoriteStatus} from '../../store/api-actions.js';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
 
 
 const FavoritesCard = ({card}) => {
-  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
+  const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, id} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const dispatch = useDispatch();
   const handleFavoriteClick = () => {
-    const currentCard = Object.assign({},
-        card,
-        {
-          'is_favorite': !card[`is_favorite`]
-        }
-    );
+    const isFavoriteCard = Number(!isFavorite);
 
-    const isFavoriteCard = currentCard[`is_favorite`] ? 1 : 0;
-
-    dispatch(sendFavoriteStatus(currentCard, isFavoriteCard));
-
+    dispatch(changeFavoriteFlag());
+    dispatch(sendFavoriteStatus(id, isFavoriteCard));
   };
 
   return (

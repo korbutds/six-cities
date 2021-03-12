@@ -18,79 +18,55 @@ export const ActionType = {
 
 };
 
-export const setLocation = createAction(ActionType.CHANGE_LOCATION, (location) => {
-  return {
-    payload: location
-  };
-});
+export const setLocation = createAction(ActionType.CHANGE_LOCATION, (location) => ({
+  payload: location
+}));
 
-export const setSort = createAction(ActionType.CHANGE_SORT, (sort) => {
-  return {
-    payload: sort
-  };
-});
+export const setSort = createAction(ActionType.CHANGE_SORT, (sort) => ({
+  payload: sort
+}));
 
-export const getCards = createAction((ActionType.LOAD_CARDS), (cards) => {
-  return {
-    payload: cards
-  };
-});
+export const getCards = createAction((ActionType.LOAD_CARDS), (cards) => ({
+  payload: cards
+}));
 
-export const getCurrentOffer = createAction(ActionType.LOAD_CURRENT_OFFER, (card) => {
-  return {
-    payload: card
-  };
-});
+export const getCurrentOffer = createAction(ActionType.LOAD_CURRENT_OFFER, (card) => ({
+  payload: card
+}));
 
-export const getNearPlaces = createAction(ActionType.LOAD_NEAR_PLACES, (cards) => {
-  return {
-    payload: cards
-  };
-});
-export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => {
-  return {
-    payload: status
-  };
-});
+export const getNearPlaces = createAction(ActionType.LOAD_NEAR_PLACES, (cards) => ({
+  payload: cards
+}));
+export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({
+  payload: status
+}));
 
-export const setUserName = createAction(ActionType.CHANGE_USERNAME, (userName) => {
-  return {
-    payload: userName
-  };
-});
+export const setUserName = createAction(ActionType.CHANGE_USERNAME, (userName) => ({
+  payload: userName
+}));
 
-export const setUserInfo = createAction(ActionType.SET_USER_INFO, (userName, userAvatar) => {
-  return {
-    payload: {
-      userName,
-      userAvatar
-    }
-  };
-});
+export const setUserInfo = createAction(ActionType.SET_USER_INFO, (userName, userAvatar) => ({
+  payload: {
+    userName,
+    userAvatar
+  }
+}));
 
-export const setUserAvatar = createAction(ActionType.SET_USER_AVATAR, (url) => {
-  return {
-    payload: url
-  };
-});
+export const setUserAvatar = createAction(ActionType.SET_USER_AVATAR, (url) => ({
+  payload: url
+}));
 
-export const redirect = createAction(ActionType.REDIRECT, (url) => {
-  return {
-    payload: url
-  };
-});
+export const redirect = createAction(ActionType.REDIRECT, (url) => ({
+  payload: url
+}));
 
-export const getComments = createAction(ActionType.LOAD_COMMENTS, (comments) => {
-  return {
-    payload: comments
-  };
-});
+export const getComments = createAction(ActionType.LOAD_COMMENTS, (comments) => ({
+  payload: comments
+}));
 
-export const changeFavoriteStatus = createAction(ActionType.CHANGE_FAVORITE_STATUS, (card) => {
-  return {
-    payload: card
-  };
-});
+export const changeFavoriteStatus = createAction(ActionType.CHANGE_FAVORITE_STATUS, (card) => ({
+  payload: card
+}));
 
 export const changeFavoriteFlag = createAction(ActionType.CHANGE_FAVORITE_FLAG);
 

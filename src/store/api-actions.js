@@ -48,8 +48,8 @@ export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _s
     .then(({data}) => dispatch(getComments(data)));
 };
 
-export const sendFavoriteStatus = (card, favorite) => (dispatch, _state, api) => {
-  api.post(`${APIRoutePathes.FAVORITE}/${card.id}/${favorite}`)
+export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => {
+  api.post(`${APIRoutePathes.FAVORITE}/${id}/${favorite}`)
     .then(({data}) => dispatch(changeFavoriteStatus(data)))
     .catch(() => {});
 };

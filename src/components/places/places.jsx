@@ -1,22 +1,11 @@
 import React from 'react';
 import CitiesList from '../cities-list/cities-list';
 import LocationList from '../location-list/location-list';
-import NoPlaces from '../no-places/no-places';
-import {useDispatch, useSelector} from 'react-redux';
-import {setLocation} from '../../store/action';
+import {useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 
 const Places = () => {
-  const {isCardsLoaded, cards} = useSelector((state) => state.DATA);
-  const {location} = useSelector((state) => state.SCREEN);
-  const dispatch = useDispatch();
-  const filtredCards = cards.filter((card) => card.city.name === location);
-
-
-  const handleCityChange = (evt) => {
-    const currentCity = evt.target.innerText;
-    dispatch(setLocation(currentCity));
-  };
+  const {isCardsLoaded} = useSelector((state) => state.DATA);
 
   if (!isCardsLoaded) {
     return (
@@ -29,11 +18,10 @@ const Places = () => {
       <h1 className="visually-hidden">Cities</h1>
       <div className="tabs">
         <section className="locations container">
-          <LocationList onCityClick={handleCityChange}/>
+          <LocationList />
         </section>
       </div>
-      {filtredCards.length === 0 ? <NoPlaces /> : <CitiesList />}
-
+      <CitiesList />
     </main>
   );
 };

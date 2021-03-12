@@ -61,17 +61,10 @@ const OfferScreen = ({apartmentId}) => {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
       browserHistory.push(RoutePathes.LOGIN_SCREEN);
     } else {
-      const currentCard = Object.assign({},
-          card,
-          {
-            'is_favorite': !card[`is_favorite`]
-          }
-      );
-
-      const isFavoriteCard = currentCard[`is_favorite`] ? 1 : 0;
+      const isFavoriteCard = Number(!isFavorite);
 
       dispatch(changeFavoriteFlag());
-      dispatch(sendFavoriteStatus(currentCard, isFavoriteCard));
+      dispatch(sendFavoriteStatus(id, isFavoriteCard));
     }
   };
 

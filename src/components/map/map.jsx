@@ -9,7 +9,7 @@ import "leaflet/dist/leaflet.css";
 const Map = (props) => {
   const {cards, cardId} = props;
 
-  const {location: city} = useSelector((state) => state.SCREEN);
+  const city = useSelector((state) => state.SCREEN.location);
 
   useEffect(() => {
     const cityCoords = CitiesInfo[city].coords;
