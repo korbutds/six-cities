@@ -1,17 +1,12 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import NearPlacesCard from '../near-places-card/near-places-card';
 import PropTypes from 'prop-types';
 import LoaderScreensaver from '../loading/loading';
-import {useDispatch, useSelector} from 'react-redux';
-import {fetchNearPlacesList} from '../../store/api-actions';
+import {useSelector} from 'react-redux';
 
-const NearPlacesList = ({cardId}) => {
-  const dispatch = useDispatch();
+const NearPlacesList = () => {
   const {nearPlaces: cards, isNearPlacesLoaded} = useSelector((state) => state.CURRENT_OFFER);
 
-  useEffect(() => {
-    dispatch(fetchNearPlacesList(cardId));
-  }, [cardId]);
 
   if (!isNearPlacesLoaded) {
     return <LoaderScreensaver />;

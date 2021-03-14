@@ -1,12 +1,13 @@
-import {changeFavoriteFlag, changeFavoriteStatus, getCards} from "../action";
+import {changeFavoriteStatus, changeFetchStatus, getCards} from "../action";
 import {createReducer} from '@reduxjs/toolkit';
+import {FetchStatus} from "../../const";
 
 const initialState = {
   cards: [],
   isCardsLoaded: false,
   currentOffer: null,
   isOfferLoaded: false,
-  isFavoriteStatusChanged: true,
+  fetchStatus: FetchStatus.DONE
 };
 
 const newCardList = (stateCards, currentCard) => {
@@ -26,8 +27,8 @@ const offersData = createReducer(initialState, (builder) => {
     state.cards = newCardList(state.cards, action.payload);
     state.isFavoriteStatusChanged = true;
   });
-  builder.addCase(changeFavoriteFlag, (state) => {
-    state.isFavoriteStatusChanged = !state.isFavoriteStatusChanged;
+  builder.addCase(changeFetchStatus, (state, action) => {
+    state.fetchStatus = action.payload;
   });
 });
 
