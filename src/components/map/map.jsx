@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useRef} from 'react';
 import leaflet from 'leaflet';
 import PropTypes from 'prop-types';
 import cardPropTypes from '../cities-card/cities-card.prop';
@@ -10,26 +10,33 @@ const Map = (props) => {
   const {cards, cardId} = props;
 
   const city = useSelector((state) => state.SCREEN.location);
+  const map = useRef();
 
   useEffect(() => {
     const cityCoords = CitiesInfo[city].coords;
     const cityZoom = CitiesInfo[city].zoom;
 
-    const mapView = leaflet.map(`map`, {
+    map.current = leaflet.map(`map`, {
       center: cityCoords,
       zoom: cityZoom,
       zoomControl: false,
       marker: true,
     });
 
-    mapView.setView(cityCoords, cityZoom);
+    map.current.setView(cityCoords, cityZoom);
 
     leaflet
       .tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png`, {
         attribution: `&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>`
       })
-      .addTo(mapView);
+      .addTo(map.current);
 
+    return () => {
+      map.current.remove();
+    };
+  }, [city]);
+
+  useEffect(() => {
     cards.forEach(({id, location, title}) => {
       const customIcon = leaflet.icon({
         iconUrl: `${id === cardId ? `./img/pin-active.svg` : `./img/pin.svg`}`,
@@ -43,14 +50,10 @@ const Map = (props) => {
       {
         icon: customIcon
       })
-      .addTo(mapView)
+      .addTo(map.current)
       .bindPopup(title);
     });
-
-    return () => {
-      mapView.remove();
-    };
-  }, [city, cardId, cards]);
+  }, [cardId, cards]);
 
   return (<section className="property__map map" id="map" ></section>);
 };
