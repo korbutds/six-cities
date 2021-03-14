@@ -7,7 +7,7 @@ const initialState = {
   isCardsLoaded: false,
   currentOffer: null,
   isOfferLoaded: false,
-  fetchStatus: FetchStatus.DONE
+  fetchStatus: FetchStatus.PENDING
 };
 
 const newCardList = (stateCards, currentCard) => {

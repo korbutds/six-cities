@@ -50,6 +50,7 @@ export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _s
     .then(({data}) => dispatch(getComments(data)))
     .then(() => dispatch(changeFetchStatus(FetchStatus.DONE)))
     .catch(() => dispatch(changeFetchStatus(FetchStatus.ERROR)))
+    .finally(() => setTimeout(() => (dispatch(changeFetchStatus(FetchStatus.PENDING))), 5000))
 );
 
 export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (

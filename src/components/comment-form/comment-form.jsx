@@ -1,7 +1,10 @@
 import PropTypes from 'prop-types';
-import React, {useCallback, useRef, useState} from 'react';
-import {useDispatch} from 'react-redux';
+import React, {useCallback, useEffect, useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {FetchStatus} from '../../const';
+import {changeFetchStatus} from '../../store/action';
 import {sendComment} from '../../store/api-actions';
+import {CommentSettings} from '../../utils';
 import FormRating from '../form-rating/form-rating';
 import FormTextarea from '../form-textarea/form-textarea';
 
@@ -11,6 +14,20 @@ const CommentForm = ({id}) => {
     rating: null,
     commentText: ``
   });
+
+  const {fetchStatus} = useSelector((state) => state.DATA);
+
+  useEffect(() => {
+    if (fetchStatus === FetchStatus.DONE) {
+      setComment({
+        rating: null,
+        commentText: ``
+      });
+    }
+  }, [fetchStatus]);
+
+
+  const isFormDisabled = (comment.rating === null || comment.commentText === `` || fetchStatus === FetchStatus.SENDING || comment.commentText.length <= CommentSettings.MIN_SIZE) ? true : false;
 
   const handleRatingChange = useCallback((evt) => {
     const value = parseFloat(evt.target.value);
@@ -27,20 +44,23 @@ const CommentForm = ({id}) => {
       commentText: value,
     }));
   }, [comment.commentText]);
+
   const dispatch = useDispatch();
 
   const handleCommentSubmit = (evt) => {
     evt.preventDefault();
+    dispatch(changeFetchStatus(FetchStatus.SENDING));
     dispatch(sendComment(id, comment));
-    setComment((prevState) => ({
-      ...prevState,
-      commentText: ``,
-      rating: null
-    }));
   };
 
   return (
-    <form className="reviews__form form" action="#" method="post" onSubmit={handleCommentSubmit} ref={commentForm}>
+    <form
+      className="reviews__form form"
+      action="#"
+      method="post"
+      onSubmit={handleCommentSubmit}
+      ref={commentForm}
+      disabled={isFormDisabled}>
       <label className="reviews__label form__label" htmlFor="review">Your review</label>
       <FormRating rating={comment.rating} handleRatingChange={handleRatingChange}/>
       <FormTextarea value={comment.commentText} handleCommentChange={handleCommentChange}/>
@@ -48,7 +68,8 @@ const CommentForm = ({id}) => {
         <p className="reviews__help">
           To submit review please make sure to set <span className="reviews__star">rating</span> and describe your stay with at least <b className="reviews__text-amount">50 characters</b>.
         </p>
-        <button className="reviews__submit form__submit button" type="submit" disabled={false} >Submit</button>
+        <button className="reviews__submit form__submit button" type="submit" disabled={isFormDisabled} >Submit</button>
+        {fetchStatus === FetchStatus.ERROR ? <span className="review-error">Oops, ERROR. Try again</span> : ``}
       </div>
     </form>
   );

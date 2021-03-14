@@ -71,8 +71,9 @@ export const AuthorizationStatus = {
 };
 
 export const FetchStatus = {
-  DONE: `DONE`,
+  PENDING: `PENDING`,
   SENDING: `SENDING`,
+  DONE: `DONE`,
   ERROR: `ERROR`
 };
 
