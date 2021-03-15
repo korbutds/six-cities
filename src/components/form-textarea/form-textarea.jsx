@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import React, {memo} from 'react';
+import {CommentSettings} from '../../utils';
 
 const FormTextarea = ({value, handleCommentChange}) => {
   return (
@@ -9,6 +10,8 @@ const FormTextarea = ({value, handleCommentChange}) => {
       placeholder="Tell how was your stay, what you like and what can be improved"
       onChange={handleCommentChange}
       value={value}
+      minLength={CommentSettings.MIN_SIZE}
+      maxLength={CommentSettings.MAX_SIZE}
       required></textarea>
   );
 };

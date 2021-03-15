@@ -1,6 +1,8 @@
 import React from 'react';
-import {useDispatch} from 'react-redux';
-import {changeFavoriteFlag} from '../../store/action.js';
+import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
+import {FetchStatus} from '../../const.js';
+import {changeFetchStatus} from '../../store/action.js';
 import {sendFavoriteStatus} from '../../store/api-actions.js';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
 
@@ -9,11 +11,12 @@ const FavoritesCard = ({card}) => {
   const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, id} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const dispatch = useDispatch();
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
+
   const handleFavoriteClick = () => {
     const isFavoriteCard = Number(!isFavorite);
-
-    dispatch(changeFavoriteFlag());
     dispatch(sendFavoriteStatus(id, isFavoriteCard));
+    dispatch(changeFetchStatus(FetchStatus.SENDING));
   };
 
   return (
@@ -30,7 +33,11 @@ const FavoritesCard = ({card}) => {
             <b className="place-card__price-value">&euro;{price}</b>
             <span className="place-card__price-text">&#47;&nbsp;night</span>
           </div>
-          <button className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`} onClick={handleFavoriteClick} type="button">
+          <button
+            className={`place-card__bookmark-button ${isFavorite ? `place-card__bookmark-button--active` : ``} button`}
+            onClick={handleFavoriteClick}
+            type="button"
+            disabled={fetchStatus === FetchStatus.SENDING}>
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
@@ -48,7 +55,7 @@ const FavoritesCard = ({card}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${id}`} href="#">{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

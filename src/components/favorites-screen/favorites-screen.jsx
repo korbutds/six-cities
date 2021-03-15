@@ -7,7 +7,7 @@ import {useSelector} from 'react-redux';
 
 const FavoritesScreen = () => {
 
-  const {cards} = useSelector((state) => state.DATA);
+  const cards = useSelector((state) => state.DATA.cards);
 
   const favoritesCards = cards.filter((card) => (card.is_favorite));
   return (

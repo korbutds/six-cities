@@ -14,7 +14,7 @@ export const ActionType = {
   SET_USER_AVATAR: `user/changeAvatar`,
   SET_USER_INFO: `user/changeUserInfo`,
   CHANGE_FAVORITE_STATUS: `offers/changeFavoriteStatus`,
-  CHANGE_FAVORITE_FLAG: `offers/changeFavoriteFlag`
+  CHANGE_FETCH_STATUS: `data/changeFetchStatus`
 
 };
 
@@ -68,6 +68,8 @@ export const changeFavoriteStatus = createAction(ActionType.CHANGE_FAVORITE_STAT
   payload: card
 }));
 
-export const changeFavoriteFlag = createAction(ActionType.CHANGE_FAVORITE_FLAG);
+export const changeFetchStatus = createAction(ActionType.CHANGE_FETCH_STATUS, (fetchStatus) => ({
+  payload: fetchStatus
+}));
 
 export const clearCurrentOffer = createAction(ActionType.CLEAR_CURRENT_STATE);

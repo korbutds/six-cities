@@ -4,11 +4,10 @@ import CitiesCard from '../cities-card/cities-card';
 import PropTypes from 'prop-types';
 import {createSelector} from 'reselect';
 import cardPropTypes from '../cities-card/cities-card.prop';
-import {sortPlacesPopular, sortPlacesPriceToLow, sortPlacesPriceToHight, sortPlacesRate} from '../../utils';
-import {SortTypes} from '../../const';
 import Map from '../map/map';
 import Sort from '../sort/sort';
 import NoPlaces from '../no-places/no-places';
+import {getCurrentCityOffers} from '../../store/offers-data/selectors';
 
 const CitiesList = () => {
   const [cardId, setCardId] = useState(null);
@@ -18,21 +17,6 @@ const CitiesList = () => {
   const getCards = (state) => state.DATA.cards;
   const getLocation = (state) => state.SCREEN.location;
   const getSortType = (state) => state.SCREEN.sort;
-  const getCurrentCityOffers = (cardsList, location, sort) => {
-    const filtredCards = cardsList.filter((card) => card.city.name === location);
-    switch (sort) {
-      case SortTypes.POPULAR:
-        return filtredCards.sort(sortPlacesPopular);
-      case SortTypes.PRICE_HIGH_TO_LOW:
-        return filtredCards.sort(sortPlacesPriceToLow);
-      case SortTypes.PRICE_LOW_TO_HIGH:
-        return filtredCards.sort(sortPlacesPriceToHight);
-      case SortTypes.TOP_RATED_FIRST:
-        return filtredCards.sort(sortPlacesRate);
-      default:
-        return filtredCards;
-    }
-  };
 
   const currentCityCards = createSelector(getCards, getLocation, getSortType, getCurrentCityOffers)(rootState);
 

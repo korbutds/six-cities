@@ -49,4 +49,9 @@ export const getSortedPlaces = (places, sortType) => {
   }
 };
 
+export const CommentSettings = {
+  MIN_SIZE: 50,
+  MAX_SIZE: 300,
+};
+
 export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));

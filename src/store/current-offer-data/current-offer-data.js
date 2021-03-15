@@ -7,7 +7,7 @@ const initialState = {
   nearPlaces: [],
   isNearPlacesLoaded: false,
   comments: [],
-  isCommentsLoaded: false,
+  isCommentsLoaded: false
 };
 
 const newCardList = (stateCards, currentCard) => {
