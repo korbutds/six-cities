@@ -21,9 +21,11 @@ const OfferScreen = ({apartmentId}) => {
 
   const dispatch = useDispatch();
 
-  const {currentOffer: card, isOfferLoaded, nearPlaces} = useSelector((state) => state.CURRENT_OFFER);
-  const {authorizationStatus} = useSelector((state) => state.USER);
-  const {fetchStatus} = useSelector((state) => state.DATA);
+  const card = useSelector((state) => state.CURRENT_OFFER.currentOffer);
+  const isOfferLoaded = useSelector((state) => state.CURRENT_OFFER.isOfferLoaded);
+  const nearPlaces = useSelector((state) => state.CURRENT_OFFER.nearPlaces);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 
   useEffect(() => {
     dispatch(fetchCurrentOffer(apartmentId));

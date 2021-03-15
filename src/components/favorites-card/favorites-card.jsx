@@ -1,5 +1,6 @@
 import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
+import {Link} from 'react-router-dom';
 import {FetchStatus} from '../../const.js';
 import {changeFetchStatus} from '../../store/action.js';
 import {sendFavoriteStatus} from '../../store/api-actions.js';
@@ -10,7 +11,7 @@ const FavoritesCard = ({card}) => {
   const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, id} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
   const dispatch = useDispatch();
-  const {fetchStatus} = useSelector((state) => state.DATA);
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 
   const handleFavoriteClick = () => {
     const isFavoriteCard = Number(!isFavorite);
@@ -54,7 +55,7 @@ const FavoritesCard = ({card}) => {
           </div>
         </div>
         <h2 className="place-card__name">
-          <a href="#">{title}</a>
+          <Link to={`/offer/${id}`} href="#">{title}</Link>
         </h2>
         <p className="place-card__type">{type}</p>
       </div>

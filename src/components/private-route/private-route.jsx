@@ -5,8 +5,8 @@ import {useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 
 const PrivateRoute = ({component, noAuth}) => {
-  const {authorizationStatus} = useSelector((state) => state.USER);
-  const {isCardsLoaded} = useSelector((state) => state.DATA);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
+  const isCardsLoaded = useSelector((state) => state.DATA.isCardsLoaded);
 
   if (!isCardsLoaded) {
     return <LoaderScreensaver />;

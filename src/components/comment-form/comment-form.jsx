@@ -15,7 +15,7 @@ const CommentForm = ({id}) => {
     commentText: ``
   });
 
-  const {fetchStatus} = useSelector((state) => state.DATA);
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 
   useEffect(() => {
     if (fetchStatus === FetchStatus.DONE) {
@@ -27,7 +27,7 @@ const CommentForm = ({id}) => {
   }, [fetchStatus]);
 
 
-  const isFormDisabled = (comment.rating === null || comment.commentText === `` || fetchStatus === FetchStatus.SENDING || comment.commentText.length <= CommentSettings.MIN_SIZE) ? true : false;
+  const isFormDisabled = (comment.rating === null || comment.commentText === `` || fetchStatus === FetchStatus.SENDING || comment.commentText.length <= CommentSettings.MIN_SIZE);
 
   const handleRatingChange = useCallback((evt) => {
     const value = parseFloat(evt.target.value);

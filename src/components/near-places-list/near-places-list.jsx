@@ -5,7 +5,8 @@ import LoaderScreensaver from '../loading/loading';
 import {useSelector} from 'react-redux';
 
 const NearPlacesList = () => {
-  const {nearPlaces: cards, isNearPlacesLoaded} = useSelector((state) => state.CURRENT_OFFER);
+  const isNearPlacesLoaded = useSelector((state) => state.CURRENT_OFFER.isNearPlacesLoaded);
+  const cards = useSelector((state) => state.CURRENT_OFFER.nearPlaces);
 
 
   if (!isNearPlacesLoaded) {

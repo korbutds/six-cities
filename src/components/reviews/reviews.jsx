@@ -6,7 +6,8 @@ import {fetchCommentsList} from '../../store/api-actions.js';
 import {useParams} from 'react-router';
 
 const Reviews = () => {
-  const {comments, isCommentsLoaded} = useSelector((state) => state.CURRENT_OFFER);
+  const comments = useSelector((state) => state.CURRENT_OFFER.comments);
+  const isCommentsLoaded = useSelector((state) => state.CURRENT_OFFER.isCommentsLoaded);
   const dispatch = useDispatch();
   const {id} = useParams();
   useEffect(() => {

@@ -1,5 +1,5 @@
 import {APIRoutePathes, AuthorizationStatus, FetchStatus, RoutePathes} from "../const";
-import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserInfo, requireAuthorization, redirect, getComments, setUserAvatar, changeFavoriteStatus, changeFetchStatus} from "./action";
+import {getCurrentOffer, getCards, getNearPlaces, setUserName, setUserInfo, requireAuthorization, redirect, getComments, setUserAvatar, changeFavoriteStatus, changeFetchStatus, setLocation} from "./action";
 
 export const fetchCardsList = () => (dispatch, _getState, api) => (
   api.get(APIRoutePathes.HOTELS)
@@ -8,7 +8,10 @@ export const fetchCardsList = () => (dispatch, _getState, api) => (
 
 export const fetchCurrentOffer = (id) => (dispatch, _getState, api) => (
   api.get(`${APIRoutePathes.HOTELS}/${id}`)
-  .then(({data}) => dispatch(getCurrentOffer(data)))
+  .then(({data}) => {
+    dispatch(getCurrentOffer(data));
+    dispatch(setLocation(data.city.name));
+  })
 );
 
 export const fetchNearPlacesList = (id) => (dispatch, _getState, api) => (

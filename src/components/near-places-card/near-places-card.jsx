@@ -12,8 +12,8 @@ const NearPlacesCard = ({card}) => {
   const ratingInPercents = rating * 10 * 2 + `%`;
 
   const dispatch = useDispatch();
-  const {authorizationStatus} = useSelector((state) => state.USER);
-  const {fetchStatus} = useSelector((state) => state.DATA);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 
   const handleFavoriteClick = () => {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {

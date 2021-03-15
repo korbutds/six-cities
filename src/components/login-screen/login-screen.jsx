@@ -8,7 +8,7 @@ import {Redirect} from 'react-router';
 const LoginScreen = () => {
   const loginRef = useRef();
   const passwordRef = useRef();
-  const {authorizationStatus} = useSelector((state) => state.USER);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
   const dispatch = useDispatch();
   const handleSubmit = (evt) => {
     evt.preventDefault({

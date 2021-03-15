@@ -5,7 +5,7 @@ import {useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 
 const Places = () => {
-  const {isCardsLoaded} = useSelector((state) => state.DATA);
+  const isCardsLoaded = useSelector((state) => state.DATA.isCardsLoaded);
 
   if (!isCardsLoaded) {
     return (

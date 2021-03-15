@@ -5,7 +5,9 @@ import {AuthorizationStatus, RoutePathes} from '../../const';
 import {logout} from '../../store/api-actions';
 
 const HeaderNavigation = () => {
-  const {authorizationStatus, login, userAvatar} = useSelector((state) => state.USER);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
+  const login = useSelector((state) => state.USER.login);
+  const userAvatar = useSelector((state) => state.USER.userAvatar);
   const dispatch = useDispatch();
   const handleLogout = () => {
     dispatch(logout());

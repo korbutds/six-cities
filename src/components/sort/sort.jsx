@@ -4,7 +4,7 @@ import {useSelector} from 'react-redux';
 import SortItem from '../sort-item/sort-item';
 
 const Sort = () => {
-  const {sort: currentSortType} = useSelector((state) => state.SCREEN);
+  const currentSortType = useSelector((state) => state.SCREEN.sort);
 
   const sortTypesList = Object.values(SortTypes);
 

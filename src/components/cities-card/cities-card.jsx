@@ -12,8 +12,8 @@ const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
   const ratingInPercents = rating * 10 * 2 + `%`;
 
-  const {fetchStatus} = useSelector((state) => state.DATA);
-  const {authorizationStatus} = useSelector((state) => state.USER);
+  const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
+  const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
 
   const dispatch = useDispatch();
 
