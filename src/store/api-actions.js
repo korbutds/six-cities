@@ -61,6 +61,7 @@ export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
     .then(({data}) => dispatch(changeFavoriteStatus(data)))
     .then(() => dispatch(changeFetchStatus(FetchStatus.DONE)))
     .catch(() => dispatch(changeFetchStatus(FetchStatus.ERROR)))
+    .finally(() => setTimeout(() => (dispatch(changeFetchStatus(FetchStatus.PENDING))), 5000))
 );
 
 export const sendFavoriteOfferScreenStatus = (id, favorite) => (dispatch, _state, api) => (

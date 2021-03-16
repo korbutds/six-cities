@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {memo} from 'react';
 import {useSelector} from 'react-redux';
 import loactionItemPropTypes from './location-item.props';
 
@@ -16,4 +16,4 @@ const LocationItem = (props) => {
 
 LocationItem.propTypes = loactionItemPropTypes;
 
-export default LocationItem;
+export default memo(LocationItem);

@@ -25,7 +25,6 @@ const offersData = createReducer(initialState, (builder) => {
   });
   builder.addCase(changeFavoriteStatus, (state, action) => {
     state.cards = newCardList(state.cards, action.payload);
-    state.isFavoriteStatusChanged = true;
   });
   builder.addCase(changeFetchStatus, (state, action) => {
     state.fetchStatus = action.payload;
