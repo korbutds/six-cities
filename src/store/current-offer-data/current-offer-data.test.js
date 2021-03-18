@@ -1,7 +1,7 @@
 import {ActionType, clearCurrentOffer} from "../action";
 import currentOfferData from "./current-offer-data";
 
-describe(`Reducers work correctly`, () => {
+describe(`Current offer data reducers work correctly`, () => {
   it(`Reducer should return default`, () => {
     const initialState = {
       currentOffer: {},
