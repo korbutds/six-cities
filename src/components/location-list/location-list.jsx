@@ -2,7 +2,7 @@ import React, {useCallback} from 'react';
 import LocationItem from '../location-item/location-item';
 import {CityList} from '../../const';
 import {useDispatch, useSelector} from 'react-redux';
-import {setLocation} from '../../store/action';
+import {setLocation} from '../../store/screen/actions';
 
 const LocationList = () => {
   const dispatch = useDispatch();

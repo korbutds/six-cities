@@ -1,5 +1,5 @@
 import {AuthorizationStatus} from "../../const";
-import {ActionType} from "../action";
+import {ActionType} from "./actions";
 import userData from "./reducer";
 
 describe(`User data reducer should work correctly`, () => {

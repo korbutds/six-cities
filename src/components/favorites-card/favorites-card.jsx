@@ -2,8 +2,9 @@ import React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {FetchStatus} from '../../const.js';
-import {changeFetchStatus} from '../../store/action.js';
-import {sendFavoriteStatus} from '../../store/api-actions.js';
+import {changeFetchStatus} from '../../store/offers-data/actions.js';
+
+import {sendFavoriteStatus} from '../../store/offers-data/api-actions.js';
 import cardPropTypes from '../cities-card/cities-card.prop.js';
 
 

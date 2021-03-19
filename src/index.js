@@ -5,11 +5,11 @@ import App from '../src/components/app/app';
 import {Provider} from 'react-redux';
 import rootReducer from './store/root-reducer';
 import {createApi} from './services/api';
-import {requireAuthorization} from './store/action';
 import {AuthorizationStatus} from './const';
 import {checkAuth} from './store/user-data/api-actions';
-import {fetchCardsList} from './store/api-actions';
 import {redirect} from './middlewares/redirect';
+import {requireAuthorization} from './store/user-data/actions';
+import {fetchCardsList} from './store/offers-data/api-actions';
 
 const api = createApi(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))

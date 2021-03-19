@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import {AuthorizationStatus, RoutePathes} from '../../const';
-import {logout} from '../../store/api-actions';
+import {logout} from '../../store/user-data/api-actions';
 
 const HeaderNavigation = () => {
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);

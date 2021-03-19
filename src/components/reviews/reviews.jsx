@@ -2,8 +2,8 @@ import React, {useEffect} from 'react';
 import Review from '../review/review';
 import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading.jsx';
-import {fetchCommentsList} from '../../store/api-actions.js';
 import {useParams} from 'react-router';
+import {fetchCommentsList} from '../../store/current-offer-data/api-actions';
 
 const Reviews = () => {
   const comments = useSelector((state) => state.CURRENT_OFFER.comments);

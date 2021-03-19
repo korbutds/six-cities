@@ -1,6 +1,6 @@
 import {FetchStatus} from "../../const";
-import {ActionType} from "../action";
-import offersData from "./offers-data";
+import {ActionType} from "./actions";
+import offersData from "./reducer";
 
 describe(`Ofers data reducers work correctly`, () => {
 

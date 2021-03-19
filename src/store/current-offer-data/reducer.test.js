@@ -1,5 +1,5 @@
-import {ActionType, clearCurrentOffer} from "../action";
-import currentOfferData from "./current-offer-data";
+import {ActionType, clearCurrentOffer} from "./actions";
+import currentOfferData from "./reducer";
 
 describe(`Current offer data reducers work correctly`, () => {
   it(`Reducer should return default`, () => {

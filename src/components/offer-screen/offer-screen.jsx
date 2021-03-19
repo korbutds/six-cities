@@ -10,12 +10,12 @@ import Map from '../map/map';
 import {useDispatch, useSelector} from 'react-redux';
 import LoaderScreensaver from '../loading/loading';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {changeFetchStatus, clearCurrentOffer} from '../../store/action';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
-import {fetchCurrentOffer, fetchNearPlacesList, sendFavoriteOfferScreenStatus} from '../../store/api-actions';
 import browserHistory from '../../browser-history';
 import {AuthorizationStatus, FetchStatus, RoutePathes} from '../../const';
+import {fetchCurrentOffer, fetchNearPlacesList, sendFavoriteOfferScreenStatus} from '../../store/current-offer-data/api-actions';
+import {changeFetchStatus, clearCurrentOffer} from '../../store/current-offer-data/actions';
 
 const OfferScreen = ({apartmentId}) => {
 
