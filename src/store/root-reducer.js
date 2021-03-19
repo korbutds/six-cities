@@ -1,7 +1,7 @@
 import {combineReducers} from 'redux';
 import offersData from './offers-data/offers-data';
-import screen from './screen/screen';
-import userData from './user-data/user-data';
+import screen from './screen/reducer';
+import userData from './user-data/reducer';
 import currentOfferData from './current-offer-data/current-offer-data';
 
 export const NameSpace = {

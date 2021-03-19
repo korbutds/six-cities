@@ -1,11 +1,6 @@
-import MockAdapter from 'axios-mock-adapter';
-import {APIRoutePathes, AuthorizationStatus, FetchStatus} from "../../const";
-import {createApi} from "../../services/api";
+import {AuthorizationStatus} from "../../const";
 import {ActionType} from "../action";
-import {checkAuth} from '../api-actions';
-import userData from "./user-data";
-
-const api = createApi(() => {});
+import userData from "./reducer";
 
 describe(`User data reducer should work correctly`, () => {
   it(`Reducer should change authorization status correctly`, () => {
@@ -73,38 +68,5 @@ describe(`User data reducer should work correctly`, () => {
     };
 
     expect(userData(initialState, setUserInfoAction)).toEqual(expectedState);
-  });
-});
-
-
-describe(`Async user data operations work correctly`, () => {
-  it(`Should make a correct API call to ./login`, () => {
-    const apiMock = new MockAdapter(api);
-    const dispatch = jest.fn();
-    const checkAuthLoader = checkAuth();
-
-    apiMock
-      .onGet(APIRoutePathes.LOGIN)
-      .reply(200, [{fake: true}]);
-
-    return checkAuthLoader(dispatch, () => {}, api)
-      .then(() => {
-        expect(dispatch).toHaveBeenCalledTimes(3);
-        expect(dispatch).toHaveBeenNthCalledWith(1, {
-          type: ActionType.SET_USER_INFO,
-          payload: {
-            userName: undefined,
-            userAvatar: undefined
-          }
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(2, {
-          type: ActionType.REQUIRED_AUTHORIZATION,
-          payload: AuthorizationStatus.AUTH
-        });
-        expect(dispatch).toHaveBeenNthCalledWith(3, {
-          type: ActionType.CHANGE_FETCH_STATUS,
-          payload: FetchStatus.DONE
-        });
-      });
   });
 });

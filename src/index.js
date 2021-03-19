@@ -7,7 +7,8 @@ import rootReducer from './store/root-reducer';
 import {createApi} from './services/api';
 import {requireAuthorization} from './store/action';
 import {AuthorizationStatus} from './const';
-import {checkAuth, fetchCardsList} from './store/api-actions';
+import {checkAuth} from './store/user-data/api-actions';
+import {fetchCardsList} from './store/api-actions';
 import {redirect} from './middlewares/redirect';
 
 const api = createApi(

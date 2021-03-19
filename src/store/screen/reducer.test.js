@@ -1,6 +1,6 @@
 import {SortTypes} from "../../const";
 import {ActionType} from "../action";
-import screen from "./screen";
+import screen from "./reducer";
 
 describe(`Screen reducer should work correctly`, () => {
   it(`Reducer for change location work correctly`, () => {
