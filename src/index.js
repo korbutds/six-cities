@@ -10,6 +10,8 @@ import {checkAuth} from './store/user-data/api-actions';
 import {redirect} from './middlewares/redirect';
 import {requireAuthorization} from './store/user-data/actions';
 import {fetchCardsList} from './store/offers-data/api-actions';
+import {Router} from 'react-router-dom';
+import browserHistory from './browser-history';
 
 const api = createApi(
     () => store.dispatch(requireAuthorization(AuthorizationStatus.NO_AUTH))
@@ -30,7 +32,9 @@ store.dispatch(fetchCardsList());
 
 ReactDOM.render(
     <Provider store={store}>
-      <App />
+      <Router history={browserHistory}>
+        <App />
+      </Router>
     </Provider>,
     document.querySelector(`#root`)
 );
