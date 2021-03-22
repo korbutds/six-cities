@@ -5,6 +5,8 @@ import {FetchStatus} from "../../const";
 const initialState = {
   cards: [],
   isCardsLoaded: false,
+  favoriteCard: [],
+  isFavoriteCardsLoaded: false,
   currentOffer: null,
   isOfferLoaded: false,
   fetchStatus: FetchStatus.PENDING
@@ -22,6 +24,10 @@ const offersData = createReducer(initialState, (builder) => {
   builder.addCase(actions.getCards, (state, action) => {
     state.cards = action.payload;
     state.isCardsLoaded = true;
+  });
+  builder.addCase(actions.getFavoriteCards, (state, action) => {
+    state.favoriteCard = action.payload;
+    state.isFavoriteCardsLoaded = true;
   });
   builder.addCase(actions.changeFavoriteStatus, (state, action) => {
     state.cards = newCardList(state.cards, action.payload);

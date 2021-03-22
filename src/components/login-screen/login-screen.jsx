@@ -11,10 +11,7 @@ const LoginScreen = () => {
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
   const dispatch = useDispatch();
   const handleSubmit = (evt) => {
-    evt.preventDefault({
-      login: loginRef.current.value,
-      password: passwordRef.current.value
-    });
+    evt.preventDefault();
     dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value

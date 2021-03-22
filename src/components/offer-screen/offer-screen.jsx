@@ -14,7 +14,7 @@ import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import browserHistory from '../../browser-history';
 import {AuthorizationStatus, FetchStatus, RoutePathes} from '../../const';
-import {fetchCurrentOffer, fetchNearPlacesList, sendFavoriteOfferScreenStatus} from '../../store/current-offer-data/api-actions';
+import {fetchCurrentOfferInfo, sendFavoriteOfferScreenStatus} from '../../store/current-offer-data/api-actions';
 import {changeFetchStatus, clearCurrentOffer} from '../../store/current-offer-data/actions';
 
 const OfferScreen = ({apartmentId}) => {
@@ -22,21 +22,19 @@ const OfferScreen = ({apartmentId}) => {
   const dispatch = useDispatch();
 
   const card = useSelector((state) => state.CURRENT_OFFER.currentOffer);
-  const isOfferLoaded = useSelector((state) => state.CURRENT_OFFER.isOfferLoaded);
   const nearPlaces = useSelector((state) => state.CURRENT_OFFER.nearPlaces);
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
   const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 
   useEffect(() => {
-    dispatch(fetchCurrentOffer(apartmentId));
-    dispatch(fetchNearPlacesList(apartmentId));
-
+    dispatch(changeFetchStatus(FetchStatus.SENDING));
+    dispatch(fetchCurrentOfferInfo(apartmentId));
     return () => {
       dispatch(clearCurrentOffer());
     };
   }, [apartmentId]);
 
-  if (!isOfferLoaded) {
+  if (fetchStatus === FetchStatus.SENDING) {
     return <LoaderScreensaver />;
   }
 

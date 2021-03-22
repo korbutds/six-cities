@@ -9,7 +9,7 @@ import {changeFetchStatus} from '../../store/current-offer-data/actions';
 
 const NearPlacesCard = ({card}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
-  const ratingInPercents = rating * 10 * 2 + `%`;
+  const ratingInPercents = `${Math.round(rating) * 10 * 2}%`;
 
   const dispatch = useDispatch();
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);

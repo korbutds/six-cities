@@ -10,7 +10,7 @@ import {sendFavoriteStatus} from '../../store/current-offer-data/api-actions';
 
 const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
-  const ratingInPercents = rating * 10 * 2 + `%`;
+  const ratingInPercents = `${Math.round(rating) * 10 * 2}%`;
 
   const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);

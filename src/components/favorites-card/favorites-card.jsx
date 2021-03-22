@@ -10,7 +10,7 @@ import cardPropTypes from '../cities-card/cities-card.prop.js';
 
 const FavoritesCard = ({card}) => {
   const {preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite, id} = card;
-  const ratingInPercents = rating * 10 * 2 + `%`;
+  const ratingInPercents = `${Math.round(rating) * 10 * 2}%`;
   const dispatch = useDispatch();
   const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
 

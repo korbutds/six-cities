@@ -1,23 +1,20 @@
 import {APIRoutePathes, FetchStatus} from "../../const";
 import * as actions from "./actions";
 
-export const fetchCurrentOffer = (id) => (dispatch, _getState, api) => (
-  api.get(`${APIRoutePathes.HOTELS}/${id}`)
-  .then(({data}) => {
-    dispatch(actions.getCurrentOffer(data));
-    dispatch(actions.setLocation(data.city.name));
+export const fetchCurrentOfferInfo = (id) => (dispatch, _getState, api) => (
+  Promise.all([
+    api.get(`${APIRoutePathes.HOTELS}/${id}`),
+    api.get(`${APIRoutePathes.HOTELS}/${id}/nearby`),
+    api.get(`${APIRoutePathes.COMMENTS}/${id}`)
+  ])
+  .then(([offer, nearBy, comments]) => {
+    dispatch(actions.getCurrentOffer(offer.data));
+    dispatch(actions.setLocation(offer.data.city.name));
+    dispatch(actions.getNearPlaces(nearBy.data));
+    dispatch(actions.getComments(comments.data));
   })
-);
-
-export const fetchNearPlacesList = (id) => (dispatch, _getState, api) => (
-  api.get(`${APIRoutePathes.HOTELS}/${id}/nearby`).
-    then(({data}) => dispatch(actions.getNearPlaces(data)))
-    .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
-);
-
-export const fetchCommentsList = (id) => (dispatch, _state, api) => (
-  api.get(`${APIRoutePathes.COMMENTS}/${id}`)
-    .then(({data}) => dispatch(actions.getComments(data)))
+  .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
+  .catch(() => dispatch(actions.changeFetchStatus(FetchStatus.ERROR)))
 );
 
 export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _state, api) => (

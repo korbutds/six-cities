@@ -6,6 +6,11 @@ export const fetchCardsList = () => (dispatch, _getState, api) => (
     .then(({data}) => dispatch(actions.getCards(data)))
 );
 
+export const fetchFavoritesCards = () => (dispatch, _getState, api) => (
+  api.get(APIRoutePathes.FAVORITE)
+    .then(({data}) => dispatch(actions.getFavoriteCards(data)))
+);
+
 export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
   api.post(`${APIRoutePathes.FAVORITE}/${id}/${favorite}`)
     .then(({data}) => dispatch(actions.changeFavoriteStatus(data)))

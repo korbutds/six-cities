@@ -2,7 +2,7 @@ import MockAdapter from "axios-mock-adapter";
 import {APIRoutePathes, FetchStatus} from "../../const";
 import {createApi} from "../../services/api";
 import {ActionType} from "./actions";
-import {fetchCardsList, sendFavoriteStatus} from "./api-actions";
+import {fetchCardsList, fetchFavoritesCards, sendFavoriteStatus} from "./api-actions";
 
 const api = createApi(() => {});
 describe(`Async offers data operations work correctly`, () => {
@@ -20,6 +20,25 @@ describe(`Async offers data operations work correctly`, () => {
         expect(dispatch).toHaveBeenCalledTimes(1);
         expect(dispatch).toHaveBeenNthCalledWith(1, {
           type: ActionType.LOAD_CARDS,
+          payload: [{fake: true}]
+        });
+      });
+  });
+
+  it(`Should make a correct API call to /favorite`, () => {
+    const apiMock = new MockAdapter(api);
+    const dispatch = jest.fn();
+    const getFavoriteCardsLoader = fetchFavoritesCards();
+
+    apiMock
+      .onGet(APIRoutePathes.FAVORITE)
+      .reply(200, [{fake: true}]);
+
+    return getFavoriteCardsLoader(dispatch, () => {}, api)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledTimes(1);
+        expect(dispatch).toHaveBeenNthCalledWith(1, {
+          type: ActionType.LOAD_FAVORITE,
           payload: [{fake: true}]
         });
       });
