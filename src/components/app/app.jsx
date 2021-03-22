@@ -5,7 +5,6 @@ import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
 import NotFoundScreen from '../not-found-screen/not-found-screen';
-import {Comments} from '../../mocks/comments';
 import PrivateRoute from '../private-route/private-route';
 import {RoutePathes} from '../../const';
 
@@ -28,7 +27,6 @@ const App = () => {
 
         return (
           <OfferScreen
-            comments={Comments}
             apartmentId={apartmentId}
           />
         );
