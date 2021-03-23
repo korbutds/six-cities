@@ -10,7 +10,7 @@ import LoaderScreensaver from '../loading/loading';
 const FavoritesScreen = () => {
   const dispatch = useDispatch();
 
-  const cards = useSelector((state) => state.DATA.cards);
+  const cards = useSelector((state) => state.DATA.favoriteCard);
   const isFavoriteCardsLoaded = useSelector((state) => state.DATA.isFavoriteCardsLoaded);
   useEffect(() => {
     dispatch(fetchFavoritesCards());

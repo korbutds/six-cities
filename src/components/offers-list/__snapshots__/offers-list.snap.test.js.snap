@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`OffersList component render correctly 1`] = `
+<div>
+  <ul
+    class="property__inside-list"
+  >
+    <li
+      class="property__inside-item"
+    >
+      Breakfast
+    </li>
+    <li
+      class="property__inside-item"
+    >
+      Air conditioning
+    </li>
+    <li
+      class="property__inside-item"
+    >
+      Laptop friendly workspace
+    </li>
+    <li
+      class="property__inside-item"
+    >
+      Washer
+    </li>
+  </ul>
+</div>
+`;

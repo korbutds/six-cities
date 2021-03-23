@@ -1,0 +1,104 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`FavoritesCard component render correctly 1`] = `
+<div>
+  <article
+    class="favorites__card place-card"
+  >
+    <div
+      class="place-card__mark"
+    >
+      <span>
+        Premium
+      </span>
+    </div>
+    <div
+      class="favorites__image-wrapper place-card__image-wrapper"
+    >
+      <a
+        href="#"
+      >
+        <img
+          alt="Place image"
+          class="place-card__image"
+          height="110"
+          src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+          width="150"
+        />
+      </a>
+    </div>
+    <div
+      class="favorites__card-info place-card__info"
+    >
+      <div
+        class="place-card__price-wrapper"
+      >
+        <div
+          class="place-card__price"
+        >
+          <b
+            class="place-card__price-value"
+          >
+            €
+            169
+          </b>
+          <span
+            class="place-card__price-text"
+          >
+            / night
+          </span>
+        </div>
+        <button
+          class="place-card__bookmark-button  button"
+          type="button"
+        >
+          <svg
+            class="place-card__bookmark-icon"
+            height="19"
+            width="18"
+          >
+            <use
+              xlink:href="#icon-bookmark"
+            />
+          </svg>
+          <span
+            class="visually-hidden"
+          >
+            To bookmarks
+          </span>
+        </button>
+      </div>
+      <div
+        class="place-card__rating rating"
+      >
+        <div
+          class="place-card__stars rating__stars"
+        >
+          <span
+            style="width: 60%;"
+          />
+          <span
+            class="visually-hidden"
+          >
+            Rating
+          </span>
+        </div>
+      </div>
+      <h2
+        class="place-card__name"
+      >
+        <a
+          href="/offer/1"
+        >
+          The house among olive 
+        </a>
+      </h2>
+      <p
+        class="place-card__type"
+      >
+        room
+      </p>
+    </div>
+  </article>
+</div>
+`;

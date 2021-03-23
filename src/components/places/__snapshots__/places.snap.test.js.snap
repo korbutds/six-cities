@@ -1,0 +1,380 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Places component render correctly 1`] = `
+<div>
+  <main
+    class="page__main page__main--index page__main--index-empty"
+  >
+    <h1
+      class="visually-hidden"
+    >
+      Cities
+    </h1>
+    <div
+      class="tabs"
+    >
+      <section
+        class="locations container"
+      >
+        <ul
+          class="locations__list tabs__list"
+        >
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item tabs__item--active"
+              href="#"
+            >
+              <span>
+                Paris
+              </span>
+            </a>
+          </li>
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item "
+              href="#"
+            >
+              <span>
+                Cologne
+              </span>
+            </a>
+          </li>
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item "
+              href="#"
+            >
+              <span>
+                Brussels
+              </span>
+            </a>
+          </li>
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item "
+              href="#"
+            >
+              <span>
+                Amsterdam
+              </span>
+            </a>
+          </li>
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item "
+              href="#"
+            >
+              <span>
+                Hamburg
+              </span>
+            </a>
+          </li>
+          <li
+            class="locations__item"
+          >
+            <a
+              class="locations__item-link tabs__item "
+              href="#"
+            >
+              <span>
+                Dusseldorf
+              </span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </div>
+    <div
+      class="cities"
+    >
+      <div
+        class="cities__places-container container"
+      >
+        <section
+          class="cities__places places"
+        >
+          <h2
+            class="visually-hidden"
+          >
+            Places
+          </h2>
+          <b
+            class="places__found"
+          >
+            1
+             
+            place
+             to stay in 
+            Paris
+          </b>
+          <form
+            action="#"
+            class="places__sorting"
+            method="get"
+          >
+            <span
+              class="places__sorting-caption"
+            >
+              Sort by
+            </span>
+            <span
+              class="places__sorting-type"
+              tabindex="0"
+            >
+              Popular
+              <svg
+                class="places__sorting-arrow"
+                height="4"
+                width="7"
+              >
+                <use
+                  xlink:href="#icon-arrow-select"
+                />
+              </svg>
+            </span>
+            <ul
+              class="places__options places__options--custom"
+            >
+              <li
+                class="places__option places__option--active"
+                tabindex="0"
+              >
+                Popular
+              </li>
+              <li
+                class="places__option places__option--active"
+                tabindex="0"
+              >
+                Price: low to high
+              </li>
+              <li
+                class="places__option places__option--active"
+                tabindex="0"
+              >
+                Price: high to low
+              </li>
+              <li
+                class="places__option places__option--active"
+                tabindex="0"
+              >
+                Top rated first
+              </li>
+            </ul>
+          </form>
+          <div
+            class="cities__places-list places__list tabs__content"
+          >
+            <article
+              class="cities__place-card place-card"
+            >
+              <div
+                class="place-card__mark"
+              >
+                <span>
+                  Premium
+                </span>
+              </div>
+              <div
+                class="cities__image-wrapper place-card__image-wrapper"
+              >
+                <a
+                  href="#"
+                >
+                  <img
+                    alt="Place image"
+                    class="place-card__image"
+                    height="200"
+                    src="https://assets.htmlacademy.ru/intensives/javascript-3/hotel/16.jpg"
+                    width="260"
+                  />
+                </a>
+              </div>
+              <div
+                class="place-card__info"
+              >
+                <div
+                  class="place-card__price-wrapper"
+                >
+                  <div
+                    class="place-card__price"
+                  >
+                    <b
+                      class="place-card__price-value"
+                    >
+                      €
+                      169
+                    </b>
+                    <span
+                      class="place-card__price-text"
+                    >
+                      / night
+                    </span>
+                  </div>
+                  <button
+                    class="place-card__bookmark-button  button"
+                    type="button"
+                  >
+                    <svg
+                      class="place-card__bookmark-icon"
+                      height="19"
+                      width="18"
+                    >
+                      <use
+                        xlink:href="#icon-bookmark"
+                      />
+                    </svg>
+                    <span
+                      class="visually-hidden"
+                    >
+                      To bookmarks
+                    </span>
+                  </button>
+                </div>
+                <div
+                  class="place-card__rating rating"
+                >
+                  <div
+                    class="place-card__stars rating__stars"
+                  >
+                    <span
+                      style="width: 60%;"
+                    />
+                    <span
+                      class="visually-hidden"
+                    >
+                      Rating
+                    </span>
+                  </div>
+                </div>
+                <h2
+                  class="place-card__name"
+                >
+                  <a
+                    href="/offer/1"
+                  >
+                    The house among olive 
+                  </a>
+                </h2>
+                <p
+                  class="place-card__type"
+                >
+                  room
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+        <div
+          class="cities__right-section"
+        >
+          <section
+            class="property__map map leaflet-container leaflet-grab leaflet-touch-drag"
+            id="map"
+            style="position: relative;"
+            tabindex="0"
+          >
+            <div
+              class="leaflet-pane leaflet-map-pane"
+              style="left: 0px; top: 0px;"
+            >
+              <div
+                class="leaflet-pane leaflet-tile-pane"
+              >
+                <div
+                  class="leaflet-layer "
+                  style="z-index: 1;"
+                >
+                  <div
+                    class="leaflet-tile-container leaflet-zoom-animated"
+                    style="z-index: 18; left: 0px; top: 0px;"
+                  >
+                    <img
+                      alt=""
+                      class="leaflet-tile"
+                      role="presentation"
+                      src="https://a.basemaps.cartocdn.com/rastertiles/voyager/12/2074/1409.png"
+                      style="width: 256px; height: 256px; left: -195px; top: -36px;"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div
+                class="leaflet-pane leaflet-shadow-pane"
+              />
+              <div
+                class="leaflet-pane leaflet-overlay-pane"
+              />
+              <div
+                class="leaflet-pane leaflet-marker-pane"
+              >
+                <img
+                  alt=""
+                  class="leaflet-marker-icon leaflet-zoom-hide leaflet-interactive"
+                  src="./img/pin.svg"
+                  style="margin-left: -13.5px; margin-top: -19.5px; width: 27px; height: 39px; left: -5px; top: 80px; z-index: 80;"
+                  tabindex="0"
+                />
+              </div>
+              <div
+                class="leaflet-pane leaflet-tooltip-pane"
+              />
+              <div
+                class="leaflet-pane leaflet-popup-pane"
+              />
+            </div>
+            <div
+              class="leaflet-control-container"
+            >
+              <div
+                class="leaflet-top leaflet-left"
+              />
+              <div
+                class="leaflet-top leaflet-right"
+              />
+              <div
+                class="leaflet-bottom leaflet-left"
+              />
+              <div
+                class="leaflet-bottom leaflet-right"
+              >
+                <div
+                  class="leaflet-control-attribution leaflet-control"
+                >
+                  <a
+                    href="https://leafletjs.com"
+                    title="A JS library for interactive maps"
+                  >
+                    Leaflet
+                  </a>
+                   | © 
+                  <a
+                    href="https://www.openstreetmap.org/copyright"
+                  >
+                    OpenStreetMap
+                  </a>
+                   contributors © 
+                  <a
+                    href="https://carto.com/attributions"
+                  >
+                    CARTO
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+`;

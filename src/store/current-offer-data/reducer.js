@@ -1,7 +1,7 @@
 import * as actions from "./actions";
 import {createReducer} from '@reduxjs/toolkit';
 
-const initialState = {
+export const initialState = {
   currentOffer: null,
   isOfferLoaded: false,
   nearPlaces: [],
