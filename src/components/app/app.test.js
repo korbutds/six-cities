@@ -161,7 +161,7 @@ describe(`Test routing`, () => {
           </Router>
         </redux.Provider>
     );
-    expect(screen.getByText(/To bookmarks/i)).toBeInTheDocument();
+    expect(screen.getByText(/Beautiful & luxurious studio at great location/i)).toBeInTheDocument();
   });
   it(`Render NotFoundScreen component correctly when user navigate to no exist page`, () => {
     history.push(`/non-existent-route`);
