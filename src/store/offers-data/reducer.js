@@ -2,13 +2,11 @@ import * as actions from "./actions";
 import {createReducer} from '@reduxjs/toolkit';
 import {FetchStatus} from "../../const";
 
-const initialState = {
+export const initialState = {
   cards: [],
   isCardsLoaded: false,
   favoriteCard: [],
   isFavoriteCardsLoaded: false,
-  currentOffer: null,
-  isOfferLoaded: false,
   fetchStatus: FetchStatus.PENDING
 };
 

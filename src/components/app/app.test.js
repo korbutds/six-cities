@@ -92,7 +92,7 @@ describe(`Test routing`, () => {
           DATA: {
             isCardsLoaded: true,
             isFavoriteCardsLoaded: true,
-            cards: []
+            favoriteCard: []
           },
         })}>
           <Router history={history}>

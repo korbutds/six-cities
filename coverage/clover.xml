@@ -1,0 +1,780 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1616504700263" clover="3.2.0">
+  <project timestamp="1616504700263" name="All files">
+    <metrics statements="474" coveredstatements="401" conditionals="85" coveredconditionals="54" methods="223" coveredmethods="185" elements="782" coveredelements="640" complexity="0" loc="474" ncloc="474" packages="42" files="58" classes="58"/>
+    <package name="src">
+      <metrics statements="35" coveredstatements="28" conditionals="5" coveredconditionals="0" methods="11" coveredmethods="10"/>
+      <file name="browser-history.js" path="C:\Users\korbu\HTMLacademy\6cities\src\browser-history.js">
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="3" count="8" type="stmt"/>
+      </file>
+      <file name="const.js" path="C:\Users\korbu\HTMLacademy\6cities\src\const.js">
+        <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="1" count="37" type="stmt"/>
+        <line num="52" count="37" type="stmt"/>
+        <line num="61" count="37" type="stmt"/>
+        <line num="68" count="37" type="stmt"/>
+        <line num="73" count="37" type="stmt"/>
+        <line num="80" count="37" type="stmt"/>
+        <line num="84" count="37" type="stmt"/>
+        <line num="92" count="37" type="stmt"/>
+        <line num="100" count="37" type="stmt"/>
+        <line num="102" count="37" type="stmt"/>
+      </file>
+      <file name="style-mock.js" path="C:\Users\korbu\HTMLacademy\6cities\src\style-mock.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="utils.js" path="C:\Users\korbu\HTMLacademy\6cities\src\utils.js">
+        <metrics statements="24" coveredstatements="17" conditionals="5" coveredconditionals="0" methods="11" coveredmethods="10"/>
+        <line num="3" count="9" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+        <line num="5" count="22" type="stmt"/>
+        <line num="9" count="9" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="15" count="132" type="stmt"/>
+        <line num="17" count="12" type="stmt"/>
+        <line num="20" count="12" type="stmt"/>
+        <line num="27" count="9" type="stmt"/>
+        <line num="29" count="9" type="stmt"/>
+        <line num="31" count="9" type="stmt"/>
+        <line num="33" count="9" type="stmt"/>
+        <line num="35" count="9" type="stmt"/>
+        <line num="36" count="0" type="stmt"/>
+        <line num="38" count="0" type="cond" truecount="0" falsecount="5"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="44" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="48" count="0" type="stmt"/>
+        <line num="52" count="9" type="stmt"/>
+        <line num="57" count="9" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.app">
+      <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+      <file name="app.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\app\app.jsx">
+        <metrics statements="5" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="1"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.cities-card">
+      <metrics statements="18" coveredstatements="11" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="3"/>
+      <file name="cities-card.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\cities-card\cities-card.jsx">
+        <metrics statements="18" coveredstatements="11" conditionals="6" coveredconditionals="3" methods="6" coveredmethods="3"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="3" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="stmt"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="27" count="3" type="stmt"/>
+        <line num="28" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="37" count="3" type="stmt"/>
+        <line num="82" count="5" type="stmt"/>
+      </file>
+      <file name="cities-card.prop.js" path="C:\Users\korbu\HTMLacademy\6cities\src\components\cities-card\cities-card.prop.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.cities-list">
+      <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="7"/>
+      <file name="cities-list.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\cities-list\cities-list.jsx">
+        <metrics statements="13" coveredstatements="13" conditionals="4" coveredconditionals="3" methods="7" coveredmethods="7"/>
+        <line num="12" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="8" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="27" count="2" type="stmt"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="46" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.comment-form">
+      <metrics statements="21" coveredstatements="13" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="3"/>
+      <file name="comment-form.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\comment-form\comment-form.jsx">
+        <metrics statements="21" coveredstatements="13" conditionals="8" coveredconditionals="3" methods="8" coveredmethods="3"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="18" count="4" type="stmt"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="1" falsecount="3"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="34" count="0" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="0" type="stmt"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="48" count="2" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="0" type="stmt"/>
+        <line num="52" count="0" type="stmt"/>
+        <line num="53" count="0" type="stmt"/>
+        <line num="56" count="2" type="stmt"/>
+        <line num="78" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.favorites-card">
+      <metrics statements="11" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="2"/>
+      <file name="favorites-card.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\favorites-card\favorites-card.jsx">
+        <metrics statements="11" coveredstatements="8" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="2"/>
+        <line num="11" count="5" type="stmt"/>
+        <line num="12" count="34" type="stmt"/>
+        <line num="13" count="34" type="stmt"/>
+        <line num="14" count="34" type="stmt"/>
+        <line num="15" count="68" type="stmt"/>
+        <line num="17" count="34" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="34" type="stmt"/>
+        <line num="67" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.favorites-empty">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="favorites-empty.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\favorites-empty\favorites-empty.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="4" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.favorites-item">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="favorites-item.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\favorites-item\favorites-item.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="4" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="17" count="33" type="stmt"/>
+        <line num="25" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.favorites-list">
+      <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="favorites-list.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\favorites-list\favorites-list.jsx">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="14" count="12" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.favorites-screen">
+      <metrics statements="10" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+      <file name="favorites-screen.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\favorites-screen\favorites-screen.jsx">
+        <metrics statements="10" coveredstatements="9" conditionals="4" coveredconditionals="3" methods="5" coveredmethods="5"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="2" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="19" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="23" count="11" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.footer">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="footer.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\footer\footer.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.form-rating">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="form-rating.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\form-rating\form-rating.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="5" count="4" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="15" type="stmt"/>
+        <line num="10" count="15" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.form-textarea">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="form-textarea.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\form-textarea\form-textarea.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.header">
+      <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+      <file name="header.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\header\header.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="3" coveredconditionals="3" methods="1" coveredmethods="1"/>
+        <line num="6" count="7" type="cond" truecount="1" falsecount="0"/>
+        <line num="7" count="11" type="stmt"/>
+        <line num="25" count="7" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.header-navigation">
+      <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
+      <file name="header-navigation.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\header-navigation\header-navigation.jsx">
+        <metrics statements="8" coveredstatements="7" conditionals="2" coveredconditionals="2" methods="5" coveredmethods="4"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="27" type="stmt"/>
+        <line num="9" count="27" type="stmt"/>
+        <line num="10" count="27" type="stmt"/>
+        <line num="11" count="12" type="stmt"/>
+        <line num="12" count="12" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="16" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.image">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="image.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\image\image.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="3" type="stmt"/>
+        <line num="5" count="9" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.loading">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="loading.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\loading\loading.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="7" count="8" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="26" count="8" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.location-item">
+      <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+      <file name="location-item.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\location-item\location-item.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="25" type="stmt"/>
+        <line num="7" count="50" type="stmt"/>
+        <line num="8" count="25" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+      </file>
+      <file name="location-item.props.js" path="C:\Users\korbu\HTMLacademy\6cities\src\components\location-item\location-item.props.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.location-list">
+      <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <file name="location-list.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\location-list\location-list.jsx">
+        <metrics statements="8" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="7" count="4" type="stmt"/>
+        <line num="8" count="4" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="0" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="17" count="24" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.login-screen">
+      <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+      <file name="login-screen.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\login-screen\login-screen.jsx">
+        <metrics statements="11" coveredstatements="8" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="2"/>
+        <line num="8" count="2" type="stmt"/>
+        <line num="9" count="2" type="stmt"/>
+        <line num="10" count="2" type="stmt"/>
+        <line num="11" count="4" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="15" count="0" type="stmt"/>
+        <line num="21" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.main-screen">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="main-screen.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\main-screen\main-screen.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="2" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.map">
+      <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+      <file name="map.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\map\map.jsx">
+        <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="6" coveredmethods="6"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="12" count="10" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="16" count="4" type="stmt"/>
+        <line num="17" count="4" type="stmt"/>
+        <line num="19" count="4" type="stmt"/>
+        <line num="26" count="4" type="stmt"/>
+        <line num="28" count="4" type="stmt"/>
+        <line num="34" count="4" type="stmt"/>
+        <line num="35" count="4" type="stmt"/>
+        <line num="39" count="4" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+        <line num="41" count="7" type="stmt"/>
+        <line num="46" count="7" type="stmt"/>
+        <line num="58" count="4" type="stmt"/>
+        <line num="61" count="5" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.near-places-card">
+      <metrics statements="14" coveredstatements="9" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="3"/>
+      <file name="near-places-card.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\near-places-card\near-places-card.jsx">
+        <metrics statements="14" coveredstatements="9" conditionals="6" coveredconditionals="3" methods="4" coveredmethods="3"/>
+        <line num="10" count="4" type="stmt"/>
+        <line num="11" count="7" type="stmt"/>
+        <line num="12" count="7" type="stmt"/>
+        <line num="14" count="7" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
+        <line num="16" count="14" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="20" count="0" type="stmt"/>
+        <line num="22" count="0" type="stmt"/>
+        <line num="23" count="0" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="28" count="7" type="stmt"/>
+        <line num="71" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.near-places-list">
+      <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <file name="near-places-list.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\near-places-list\near-places-list.jsx">
+        <metrics statements="8" coveredstatements="8" conditionals="2" coveredconditionals="2" methods="4" coveredmethods="4"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="8" type="stmt"/>
+        <line num="9" count="8" type="stmt"/>
+        <line num="12" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="2" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="26" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.no-places">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+      <file name="no-places.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\no-places\no-places.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="6" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.not-found-screen">
+      <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="not-found-screen.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\not-found-screen\not-found-screen.jsx">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.offer-item">
+      <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="offer-item.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\offer-item\offer-item.jsx">
+        <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="15" type="stmt"/>
+        <line num="10" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.offer-screen">
+      <metrics statements="29" coveredstatements="22" conditionals="12" coveredconditionals="7" methods="11" coveredmethods="9"/>
+      <file name="offer-screen.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\offer-screen\offer-screen.jsx">
+        <metrics statements="29" coveredstatements="22" conditionals="12" coveredconditionals="7" methods="11" coveredmethods="9"/>
+        <line num="20" count="2" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="6" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
+        <line num="26" count="6" type="stmt"/>
+        <line num="27" count="6" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="2" type="stmt"/>
+        <line num="31" count="2" type="stmt"/>
+        <line num="32" count="2" type="stmt"/>
+        <line num="33" count="2" type="stmt"/>
+        <line num="37" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="38" count="0" type="stmt"/>
+        <line num="41" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="42" count="0" type="stmt"/>
+        <line num="59" count="2" type="stmt"/>
+        <line num="61" count="2" type="stmt"/>
+        <line num="62" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="63" count="0" type="stmt"/>
+        <line num="65" count="0" type="stmt"/>
+        <line num="66" count="0" type="stmt"/>
+        <line num="67" count="0" type="stmt"/>
+        <line num="71" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="74" count="2" type="stmt"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="84" count="8" type="stmt"/>
+        <line num="156" count="1" type="stmt"/>
+        <line num="171" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.offers-list">
+      <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="offers-list.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\offers-list\offers-list.jsx">
+        <metrics statements="6" coveredstatements="5" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="7" count="0" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.places">
+      <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="places.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\places\places.jsx">
+        <metrics statements="5" coveredstatements="4" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="10" count="3" type="cond" truecount="1" falsecount="1"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+      </file>
+      <file name="places.prop.js" path="C:\Users\korbu\HTMLacademy\6cities\src\components\places\places.prop.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+    </package>
+    <package name="src.components.private-route">
+      <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3"/>
+      <file name="private-route.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\private-route\private-route.jsx">
+        <metrics statements="7" coveredstatements="7" conditionals="4" coveredconditionals="4" methods="4" coveredmethods="3"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="8" count="10" type="stmt"/>
+        <line num="9" count="10" type="stmt"/>
+        <line num="11" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.review">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+      <file name="comment.prop.js" path="C:\Users\korbu\HTMLacademy\6cities\src\components\review\comment.prop.js">
+        <metrics statements="0" coveredstatements="0" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      </file>
+      <file name="review.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\review\review.jsx">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="40" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.reviews">
+      <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+      <file name="reviews.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\reviews\reviews.jsx">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="6" count="8" type="stmt"/>
+        <line num="8" count="3" type="stmt"/>
+        <line num="13" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.sort">
+      <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+      <file name="sort.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\sort\sort.jsx">
+        <metrics statements="9" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="3"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="3" type="stmt"/>
+        <line num="12" count="3" type="stmt"/>
+        <line num="13" count="0" type="stmt"/>
+        <line num="14" count="0" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="26" count="12" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.components.sort-item">
+      <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+      <file name="sort-item.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\components\sort-item\sort-item.jsx">
+        <metrics statements="7" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="13" type="stmt"/>
+        <line num="9" count="13" type="stmt"/>
+        <line num="10" count="0" type="stmt"/>
+        <line num="11" count="0" type="stmt"/>
+        <line num="14" count="13" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.middlewares">
+      <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+      <file name="redirect.js" path="C:\Users\korbu\HTMLacademy\6cities\src\middlewares\redirect.js">
+        <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="3" coveredmethods="3"/>
+        <line num="4" count="4" type="stmt"/>
+        <line num="5" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="3" type="stmt"/>
+        <line num="9" count="4" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.services">
+      <metrics statements="14" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+      <file name="api.js" path="C:\Users\korbu\HTMLacademy\6cities\src\services\api.js">
+        <metrics statements="14" coveredstatements="9" conditionals="2" coveredconditionals="0" methods="3" coveredmethods="2"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="3" type="stmt"/>
+        <line num="7" count="3" type="stmt"/>
+        <line num="14" count="3" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="21" count="11" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="0" type="cond" truecount="0" falsecount="2"/>
+        <line num="26" count="0" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="35" count="3" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store.current-offer-data">
+      <metrics statements="59" coveredstatements="50" conditionals="2" coveredconditionals="1" methods="38" coveredmethods="27"/>
+      <file name="actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\current-offer-data\actions.js">
+        <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="3" count="28" type="stmt"/>
+        <line num="13" count="28" type="stmt"/>
+        <line num="17" count="28" type="stmt"/>
+        <line num="21" count="28" type="stmt"/>
+        <line num="25" count="28" type="stmt"/>
+        <line num="29" count="28" type="stmt"/>
+        <line num="33" count="28" type="stmt"/>
+        <line num="37" count="28" type="stmt"/>
+      </file>
+      <file name="api-actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\current-offer-data\api-actions.js">
+        <metrics statements="26" coveredstatements="18" conditionals="0" coveredconditionals="0" methods="24" coveredmethods="13"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="0" type="stmt"/>
+        <line num="20" count="9" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="0" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="28" count="9" type="stmt"/>
+        <line num="29" count="0" type="stmt"/>
+        <line num="30" count="0" type="stmt"/>
+        <line num="31" count="0" type="stmt"/>
+        <line num="32" count="0" type="stmt"/>
+        <line num="33" count="0" type="stmt"/>
+        <line num="36" count="9" type="stmt"/>
+        <line num="37" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="0" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\current-offer-data\reducer.js">
+        <metrics statements="25" coveredstatements="24" conditionals="2" coveredconditionals="1" methods="8" coveredmethods="8"/>
+        <line num="4" count="23" type="stmt"/>
+        <line num="13" count="23" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="23" type="stmt"/>
+        <line num="22" count="23" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="23" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="30" count="23" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="34" count="23" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+        <line num="37" count="23" type="stmt"/>
+        <line num="38" count="1" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="1" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store.offers-data">
+      <metrics statements="42" coveredstatements="38" conditionals="7" coveredconditionals="6" methods="26" coveredmethods="23"/>
+      <file name="actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\offers-data\actions.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="3" count="28" type="stmt"/>
+        <line num="10" count="28" type="stmt"/>
+        <line num="14" count="28" type="stmt"/>
+        <line num="18" count="28" type="stmt"/>
+        <line num="22" count="28" type="stmt"/>
+      </file>
+      <file name="api-actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\offers-data\api-actions.js">
+        <metrics statements="12" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="11"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="9" count="5" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="0" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\offers-data\reducer.js">
+        <metrics statements="17" coveredstatements="14" conditionals="2" coveredconditionals="1" methods="7" coveredmethods="6"/>
+        <line num="5" count="23" type="stmt"/>
+        <line num="13" count="23" type="stmt"/>
+        <line num="14" count="2" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="21" count="23" type="stmt"/>
+        <line num="22" count="23" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="23" type="stmt"/>
+        <line num="27" count="0" type="stmt"/>
+        <line num="28" count="0" type="stmt"/>
+        <line num="30" count="23" type="stmt"/>
+        <line num="31" count="1" type="stmt"/>
+        <line num="33" count="23" type="stmt"/>
+        <line num="34" count="1" type="stmt"/>
+      </file>
+      <file name="selectors.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\offers-data\selectors.js">
+        <metrics statements="8" coveredstatements="8" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="42" type="stmt"/>
+        <line num="7" count="8" type="cond" truecount="5" falsecount="0"/>
+        <line num="9" count="3" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="17" count="2" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store.screen">
+      <metrics statements="10" coveredstatements="10" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+      <file name="actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\screen\actions.js">
+        <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="3" count="27" type="stmt"/>
+        <line num="9" count="27" type="stmt"/>
+        <line num="13" count="27" type="stmt"/>
+        <line num="17" count="27" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\screen\reducer.js">
+        <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="3" coveredmethods="3"/>
+        <line num="5" count="23" type="stmt"/>
+        <line num="10" count="23" type="stmt"/>
+        <line num="11" count="23" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="14" count="23" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.store.user-data">
+      <metrics statements="34" coveredstatements="33" conditionals="0" coveredconditionals="0" methods="27" coveredmethods="26"/>
+      <file name="actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\user-data\actions.js">
+        <metrics statements="7" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
+        <line num="3" count="27" type="stmt"/>
+        <line num="11" count="27" type="stmt"/>
+        <line num="15" count="27" type="stmt"/>
+        <line num="19" count="27" type="stmt"/>
+        <line num="26" count="27" type="stmt"/>
+        <line num="30" count="27" type="stmt"/>
+        <line num="34" count="27" type="stmt"/>
+      </file>
+      <file name="api-actions.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\user-data\api-actions.js">
+        <metrics statements="16" coveredstatements="15" conditionals="0" coveredconditionals="0" methods="16" coveredmethods="15"/>
+        <line num="4" count="9" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="0" type="stmt"/>
+        <line num="12" count="9" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="19" count="9" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="reducer.js" path="C:\Users\korbu\HTMLacademy\6cities\src\store\user-data\reducer.js">
+        <metrics statements="11" coveredstatements="11" conditionals="0" coveredconditionals="0" methods="5" coveredmethods="5"/>
+        <line num="5" count="23" type="stmt"/>
+        <line num="11" count="23" type="stmt"/>
+        <line num="12" count="23" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="23" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="23" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="21" count="23" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.test">
+      <metrics statements="13" coveredstatements="12" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+      <file name="test-mock.jsx" path="C:\Users\korbu\HTMLacademy\6cities\src\test\test-mock.jsx">
+        <metrics statements="11" coveredstatements="10" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="9" count="22" type="stmt"/>
+        <line num="10" count="22" type="stmt"/>
+        <line num="11" count="22" type="stmt"/>
+        <line num="12" count="22" type="stmt"/>
+        <line num="13" count="22" type="stmt"/>
+        <line num="14" count="22" type="stmt"/>
+        <line num="15" count="22" type="cond" truecount="1" falsecount="1"/>
+        <line num="16" count="0" type="stmt"/>
+        <line num="19" count="22" type="stmt"/>
+        <line num="21" count="22" type="stmt"/>
+        <line num="30" count="22" type="stmt"/>
+      </file>
+      <file name="test-store.js" path="C:\Users\korbu\HTMLacademy\6cities\src\test\test-store.js">
+        <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="7" count="22" type="stmt"/>
+        <line num="1499" count="22" type="stmt"/>
+      </file>
+    </package>
+  </project>
+</coverage>
