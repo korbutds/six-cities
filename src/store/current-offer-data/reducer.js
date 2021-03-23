@@ -1,4 +1,4 @@
-import {changeFavoriteStatus, clearCurrentOffer, getComments, getCurrentOffer, getNearPlaces} from "../action";
+import * as actions from "./actions";
 import {createReducer} from '@reduxjs/toolkit';
 
 const initialState = {
@@ -19,22 +19,22 @@ const newCardList = (stateCards, currentCard) => {
 };
 
 const currentOfferData = createReducer(initialState, (builder) => {
-  builder.addCase(getCurrentOffer, (state, action) => {
+  builder.addCase(actions.getCurrentOffer, (state, action) => {
     state.currentOffer = action.payload;
     state.isOfferLoaded = true;
   });
-  builder.addCase(getNearPlaces, (state, action) => {
+  builder.addCase(actions.getNearPlaces, (state, action) => {
     state.nearPlaces = action.payload;
     state.isNearPlacesLoaded = true;
   });
-  builder.addCase(getComments, (state, action) => {
+  builder.addCase(actions.getComments, (state, action) => {
     state.comments = action.payload;
     state.isCommentsLoaded = true;
   });
-  builder.addCase(changeFavoriteStatus, (state, action) => {
+  builder.addCase(actions.changeFavoriteStatus, (state, action) => {
     state.nearPlaces = newCardList(state.nearPlaces, action.payload);
   });
-  builder.addCase(clearCurrentOffer, (state) => {
+  builder.addCase(actions.clearCurrentOffer, (state) => {
     state.currentOffer = null;
     state.isOfferLoaded = false;
     state.nearPlaces = [];

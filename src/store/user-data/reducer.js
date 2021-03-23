@@ -1,6 +1,6 @@
 import {AuthorizationStatus} from "../../const";
 import {createReducer} from '@reduxjs/toolkit';
-import {requireAuthorization, setUserAvatar, setUserInfo, setUserName} from "../action";
+import * as actions from "./actions";
 
 const initialState = {
   authorizationStatus: AuthorizationStatus.NO_AUTH,
@@ -9,16 +9,16 @@ const initialState = {
 };
 
 const userData = createReducer(initialState, (builder) => {
-  builder.addCase(requireAuthorization, (state, action) => {
+  builder.addCase(actions.requireAuthorization, (state, action) => {
     state.authorizationStatus = action.payload;
   });
-  builder.addCase(setUserName, (state, action) => {
+  builder.addCase(actions.setUserName, (state, action) => {
     state.login = action.payload;
   });
-  builder.addCase(setUserAvatar, (state, action) => {
+  builder.addCase(actions.setUserAvatar, (state, action) => {
     state.userAvatar = action.payload;
   });
-  builder.addCase(setUserInfo, (state, action) => {
+  builder.addCase(actions.setUserInfo, (state, action) => {
     state.userAvatar = action.payload.userAvatar;
     state.login = action.payload.userName;
   });

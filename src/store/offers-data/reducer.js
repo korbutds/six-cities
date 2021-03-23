@@ -1,10 +1,12 @@
-import {changeFavoriteStatus, changeFetchStatus, getCards} from "../action";
+import * as actions from "./actions";
 import {createReducer} from '@reduxjs/toolkit';
 import {FetchStatus} from "../../const";
 
 const initialState = {
   cards: [],
   isCardsLoaded: false,
+  favoriteCard: [],
+  isFavoriteCardsLoaded: false,
   currentOffer: null,
   isOfferLoaded: false,
   fetchStatus: FetchStatus.PENDING
@@ -19,15 +21,18 @@ const newCardList = (stateCards, currentCard) => {
 };
 
 const offersData = createReducer(initialState, (builder) => {
-  builder.addCase(getCards, (state, action) => {
+  builder.addCase(actions.getCards, (state, action) => {
     state.cards = action.payload;
     state.isCardsLoaded = true;
   });
-  builder.addCase(changeFavoriteStatus, (state, action) => {
-    state.cards = newCardList(state.cards, action.payload);
-    state.isFavoriteStatusChanged = true;
+  builder.addCase(actions.getFavoriteCards, (state, action) => {
+    state.favoriteCard = action.payload;
+    state.isFavoriteCardsLoaded = true;
   });
-  builder.addCase(changeFetchStatus, (state, action) => {
+  builder.addCase(actions.changeFavoriteStatus, (state, action) => {
+    state.cards = newCardList(state.cards, action.payload);
+  });
+  builder.addCase(actions.changeFetchStatus, (state, action) => {
     state.fetchStatus = action.payload;
   });
 });

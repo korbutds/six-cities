@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Shoul render Image component correctly 1`] = `
+<div>
+  <div
+    class="property__image-wrapper"
+  >
+    <img
+      alt="Photo studio"
+      class="property__image"
+      src="fakeurl"
+    />
+  </div>
+</div>
+`;

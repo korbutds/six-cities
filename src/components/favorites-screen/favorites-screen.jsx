@@ -1,13 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
 import Header from '../header/header';
-import {useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
+import {fetchFavoritesCards} from '../../store/offers-data/api-actions';
+import LoaderScreensaver from '../loading/loading';
 
 const FavoritesScreen = () => {
+  const dispatch = useDispatch();
 
   const cards = useSelector((state) => state.DATA.cards);
+  const isFavoriteCardsLoaded = useSelector((state) => state.DATA.isFavoriteCardsLoaded);
+  useEffect(() => {
+    dispatch(fetchFavoritesCards());
+  }, [cards]);
+
+  if (!isFavoriteCardsLoaded) {
+    return <LoaderScreensaver />;
+  }
 
   const favoritesCards = cards.filter((card) => (card.is_favorite));
   return (

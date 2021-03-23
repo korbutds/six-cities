@@ -1,9 +1,9 @@
 import React, {useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
-import {login} from '../../store/api-actions';
 import Header from '../header/header';
 import {AuthorizationStatus, RoutePathes} from '../../const';
 import {Redirect} from 'react-router';
+import {login} from '../../store/user-data/api-actions';
 
 const LoginScreen = () => {
   const loginRef = useRef();
@@ -11,10 +11,7 @@ const LoginScreen = () => {
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
   const dispatch = useDispatch();
   const handleSubmit = (evt) => {
-    evt.preventDefault({
-      login: loginRef.current.value,
-      password: passwordRef.current.value
-    });
+    evt.preventDefault();
     dispatch(login({
       login: loginRef.current.value,
       password: passwordRef.current.value

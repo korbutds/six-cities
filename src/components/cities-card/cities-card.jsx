@@ -3,14 +3,14 @@ import {Link} from 'react-router-dom';
 import cardPropTypes from './cities-card.prop';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
-import {sendFavoriteStatus} from '../../store/api-actions';
-import {changeFetchStatus} from '../../store/action';
 import browserHistory from '../../browser-history';
 import {AuthorizationStatus, FetchStatus, RoutePathes} from '../../const';
+import {changeFetchStatus} from '../../store/offers-data/actions';
+import {sendFavoriteStatus} from '../../store/current-offer-data/api-actions';
 
 const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;
-  const ratingInPercents = rating * 10 * 2 + `%`;
+  const ratingInPercents = `${Math.round(rating) * 10 * 2}%`;
 
   const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
