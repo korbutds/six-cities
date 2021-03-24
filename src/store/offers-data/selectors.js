@@ -1,5 +1,5 @@
 import {SortTypes} from "../../const";
-import {sortPlacesPopular, sortPlacesPriceToHight, sortPlacesPriceToLow, sortPlacesRate, sortCommentsByTime} from "../../utils";
+import {sortPlacesPopular, sortPlacesPriceToHight, sortPlacesPriceToLow, sortPlacesRate} from "../../utils";
 
 
 export const getCurrentCityOffers = (cardsList, location, sort) => {
@@ -15,15 +15,5 @@ export const getCurrentCityOffers = (cardsList, location, sort) => {
       return filtredCards.sort(sortPlacesRate);
     default:
       return filtredCards;
-  }
-};
-
-export const getCurrentCityComments = (comments) => {
-  if (comments.length < 2) {
-    return comments.slice();
-  } else if (comments.length < 11) {
-    return comments.slice().sort(sortCommentsByTime);
-  } else {
-    return comments.slice().sort(sortCommentsByTime).slice(0, 10);
   }
 };

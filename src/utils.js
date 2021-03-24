@@ -57,3 +57,13 @@ export const CommentSettings = {
 };
 
 export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));
+
+export const getCurrentCityComments = (comments) => {
+  if (comments.length < 2) {
+    return comments.slice();
+  } else if (comments.length < 11) {
+    return comments.slice().sort(sortCommentsByTime);
+  } else {
+    return comments.slice().sort(sortCommentsByTime).slice(0, 10);
+  }
+};

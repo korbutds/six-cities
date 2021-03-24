@@ -1,7 +1,7 @@
 import React from 'react';
 import Review from '../review/review';
 import {useSelector} from 'react-redux';
-import {getCurrentCityComments} from '../../store/offers-data/selectors';
+import {getCurrentCityComments} from '../../utils';
 
 const Reviews = () => {
   const comments = useSelector((state) => state.CURRENT_OFFER.comments);
