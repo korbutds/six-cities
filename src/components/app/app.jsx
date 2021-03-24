@@ -32,7 +32,7 @@ const App = () => {
         );
       }}/>
 
-      <Route path={RoutePathes.NOT_FOUND} exact>
+      <Route >
         <NotFoundScreen />
       </Route>
 
