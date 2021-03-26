@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
@@ -6,15 +6,19 @@ import Header from '../header/header';
 import {useDispatch, useSelector} from 'react-redux';
 import {fetchFavoritesCards} from '../../store/offers-data/api-actions';
 import LoaderScreensaver from '../loading/loading';
+import {changeFetchStatus} from '../../store/current-offer-data/actions';
+import {FetchStatus} from '../../const';
 
 const FavoritesScreen = () => {
   const dispatch = useDispatch();
-  dispatch(fetchFavoritesCards());
-
   const cards = useSelector((state) => state.DATA.favoriteCard);
-  const isFavoriteCardsLoaded = useSelector((state) => state.DATA.isFavoriteCardsLoaded);
+  const cardsList = useSelector((state) => state.DATA.cards);
+  useEffect(() => {
+    dispatch(changeFetchStatus(FetchStatus.SENDING));
+    dispatch(fetchFavoritesCards());
+  }, [cardsList]);
 
-  if (!isFavoriteCardsLoaded) {
+  if (!cards) {
     return <LoaderScreensaver />;
   }
 

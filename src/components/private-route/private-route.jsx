@@ -6,9 +6,9 @@ import LoaderScreensaver from '../loading/loading';
 
 const PrivateRoute = ({component, noAuth}) => {
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
-  const isCardsLoaded = useSelector((state) => state.DATA.isCardsLoaded);
+  const cards = useSelector((state) => state.DATA.cards);
 
-  if (!isCardsLoaded) {
+  if (!cards) {
     return <LoaderScreensaver />;
   }
   return (

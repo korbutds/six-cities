@@ -35,7 +35,7 @@ const OfferScreen = ({apartmentId}) => {
     };
   }, [apartmentId]);
 
-  if (!isOfferLoaded) {
+  if (!card) {
     return <LoaderScreensaver />;
   }
 

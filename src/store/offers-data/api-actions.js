@@ -9,6 +9,7 @@ export const fetchCardsList = () => (dispatch, _getState, api) => (
 export const fetchFavoritesCards = () => (dispatch, _getState, api) => (
   api.get(APIRoutePath.FAVORITE)
     .then(({data}) => dispatch(actions.getFavoriteCards(data)))
+    .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
 );
 
 export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
