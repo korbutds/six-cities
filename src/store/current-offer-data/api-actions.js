@@ -1,11 +1,11 @@
-import {APIRoutePathes, FetchStatus} from "../../const";
+import {APIRoutePath, FetchStatus} from "../../const";
 import * as actions from "./actions";
 
 export const fetchCurrentOfferInfo = (id) => (dispatch, _getState, api) => (
   Promise.all([
-    api.get(`${APIRoutePathes.HOTELS}/${id}`),
-    api.get(`${APIRoutePathes.HOTELS}/${id}/nearby`),
-    api.get(`${APIRoutePathes.COMMENTS}/${id}`)
+    api.get(`${APIRoutePath.HOTELS}/${id}`),
+    api.get(`${APIRoutePath.HOTELS}/${id}/nearby`),
+    api.get(`${APIRoutePath.COMMENTS}/${id}`)
   ])
   .then(([offer, nearBy, comments]) => {
     dispatch(actions.getCurrentOffer(offer.data));
@@ -18,7 +18,7 @@ export const fetchCurrentOfferInfo = (id) => (dispatch, _getState, api) => (
 );
 
 export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _state, api) => (
-  api.post(`${APIRoutePathes.COMMENTS}/${id}`, {comment, rating})
+  api.post(`${APIRoutePath.COMMENTS}/${id}`, {comment, rating})
     .then(({data}) => dispatch(actions.getComments(data)))
     .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
     .catch(() => dispatch(actions.changeFetchStatus(FetchStatus.ERROR)))
@@ -26,7 +26,7 @@ export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _s
 );
 
 export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
-  api.post(`${APIRoutePathes.FAVORITE}/${id}/${favorite}`)
+  api.post(`${APIRoutePath.FAVORITE}/${id}/${favorite}`)
     .then(({data}) => dispatch(actions.changeFavoriteStatus(data)))
     .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
     .catch(() => dispatch(actions.changeFetchStatus(FetchStatus.ERROR)))
@@ -34,7 +34,7 @@ export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
 );
 
 export const sendFavoriteOfferScreenStatus = (id, favorite) => (dispatch, _state, api) => (
-  api.post(`${APIRoutePathes.FAVORITE}/${id}/${favorite}`)
+  api.post(`${APIRoutePath.FAVORITE}/${id}/${favorite}`)
     .then(({data}) => {
       dispatch(actions.changeFavoriteStatus(data));
       dispatch(actions.getCurrentOffer(data));

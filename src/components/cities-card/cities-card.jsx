@@ -4,7 +4,7 @@ import cardPropTypes from './cities-card.prop';
 import PropTypes from 'prop-types';
 import {useDispatch, useSelector} from 'react-redux';
 import browserHistory from '../../browser-history';
-import {AuthorizationStatus, FetchStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus, FetchStatus, RoutePath} from '../../const';
 import {changeFetchStatus} from '../../store/offers-data/actions';
 import {sendFavoriteStatus} from '../../store/current-offer-data/api-actions';
 
@@ -26,7 +26,7 @@ const CitiesCard = ({card, onCursorHandle}) => {
 
   const handleFavoriteClick = () => {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      browserHistory.push(RoutePathes.LOGIN_SCREEN);
+      browserHistory.push(RoutePath.LOGIN_SCREEN);
     } else {
       const isFavoriteCard = Number(!isFavorite);
       dispatch(sendFavoriteStatus(id, isFavoriteCard));

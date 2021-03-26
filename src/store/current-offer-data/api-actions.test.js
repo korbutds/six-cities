@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import {APIRoutePathes, FetchStatus} from "../../const";
+import {APIRoutePath, FetchStatus} from "../../const";
 import {createApi} from "../../services/api";
 import {ActionType} from "./actions";
 import {fetchCurrentOfferInfo, sendComment, sendFavoriteOfferScreenStatus} from "./api-actions";
@@ -11,11 +11,11 @@ describe(`Async current offer data operations work correctly`, () => {
     const fetchCurrentOfferLoader = fetchCurrentOfferInfo(1);
 
     apiMock
-      .onGet(`${APIRoutePathes.HOTELS}/1`)
+      .onGet(`${APIRoutePath.HOTELS}/1`)
       .reply(200, {fake: true, city: {name: `fake`}})
-      .onGet(`${APIRoutePathes.HOTELS}/1/nearby`)
+      .onGet(`${APIRoutePath.HOTELS}/1/nearby`)
       .reply(200, [{fake: true}])
-      .onGet(`${APIRoutePathes.COMMENTS}/1`)
+      .onGet(`${APIRoutePath.COMMENTS}/1`)
       .reply(200, [{fake: true}]);
 
     return fetchCurrentOfferLoader(dispatch, () => {}, api)
@@ -49,7 +49,7 @@ describe(`Async current offer data operations work correctly`, () => {
     const sendCommentLoader = sendComment(1, {commentText: `fake`, rating: 1});
 
     apiMock
-      .onPost(`${APIRoutePathes.COMMENTS}/1`)
+      .onPost(`${APIRoutePath.COMMENTS}/1`)
       .reply(200, [{fake: true}]);
 
     return sendCommentLoader(dispatch, () => {}, api)
@@ -71,7 +71,7 @@ describe(`Async current offer data operations work correctly`, () => {
     const sendFavoriteOfferScreenStatusLoader = sendFavoriteOfferScreenStatus(1, 1);
 
     apiMock
-      .onPost(`${APIRoutePathes.FAVORITE}/1/1`)
+      .onPost(`${APIRoutePath.FAVORITE}/1/1`)
       .reply(200, {fake: true});
 
     return sendFavoriteOfferScreenStatusLoader(dispatch, () => {}, api)

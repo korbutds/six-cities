@@ -81,7 +81,7 @@ export const Colors = {
   SITE_BLUE: `#4481c3`
 };
 
-export const RoutePathes = {
+export const RoutePath = {
   MAIN_SCREEN: `/`,
   LOGIN_SCREEN: `/login`,
   FAVORITES_SCREEN: `/favorites`,
@@ -89,14 +89,12 @@ export const RoutePathes = {
   NOT_FOUND: `/404`
 };
 
-export const APIRoutePathes = {
+export const APIRoutePath = {
   LOGIN: `/login`,
   LOGOUT: `/logout`,
   HOTELS: `/hotels`,
   COMMENTS: `/comments`,
   FAVORITE: `/favorite`
 };
-
-export const CLICK_TIMEOUT = 1000;
 
 export const RatingTitles = [`perfect`, `good`, `not bad`, `badly`, `terribly`];

@@ -9,6 +9,7 @@ const LocationList = () => {
   const location = useSelector((state) => state.SCREEN.location);
 
   const handleCityChange = useCallback((evt) => {
+    evt.preventDefault();
     const currentCity = evt.target.innerText;
     dispatch(setLocation(currentCity));
   }, [location]);

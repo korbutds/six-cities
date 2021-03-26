@@ -1,7 +1,7 @@
 import React, {useRef} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import Header from '../header/header';
-import {AuthorizationStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus, RoutePath} from '../../const';
 import {Redirect} from 'react-router';
 import {login} from '../../store/user-data/api-actions';
 
@@ -19,7 +19,7 @@ const LoginScreen = () => {
   };
 
   if (authorizationStatus === AuthorizationStatus.AUTH) {
-    return <Redirect to={RoutePathes.MAIN_SCREEN} />;
+    return <Redirect to={RoutePath.MAIN_SCREEN} />;
   }
 
   return (

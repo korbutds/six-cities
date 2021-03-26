@@ -5,7 +5,7 @@ import {createMemoryHistory} from 'history';
 import {render, screen} from '@testing-library/react';
 import {Router} from 'react-router-dom';
 import App from './app';
-import {AuthorizationStatus, CityList, FetchStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus, CityList, FetchStatus, RoutePath} from '../../const';
 import LoginScreen from '../login-screen/login-screen';
 import FavoritesScreen from '../favorites-screen/favorites-screen';
 import OfferScreen from '../offer-screen/offer-screen';
@@ -42,7 +42,7 @@ describe(`Test routing`, () => {
   jest.spyOn(redux, `useDispatch`);
   jest.spyOn(redux, `useSelector`);
   it(`Render MainScreen component when user navigate to '/' url`, () => {
-    history.push(RoutePathes.MAIN_SCREEN);
+    history.push(RoutePath.MAIN_SCREEN);
     render(
         <redux.Provider store={mockStore({
           DATA: {
@@ -65,7 +65,7 @@ describe(`Test routing`, () => {
     expect(screen.getByText(`Cities`)).toBeInTheDocument();
   });
   it(`Render LoginScreen component correctly when user navigate to '/login'`, () => {
-    history.push(RoutePathes.LOGIN_SCREEN);
+    history.push(RoutePath.LOGIN_SCREEN);
     render(
         <redux.Provider store={mockStore({
           USER: {
@@ -82,7 +82,7 @@ describe(`Test routing`, () => {
   });
 
   it(`Render FavoriteScreen component correctly when user navigate to '/favorite'`, () => {
-    history.push(RoutePathes.FAVORITES_SCREEN);
+    history.push(RoutePath.FAVORITES_SCREEN);
 
     render(
         <redux.Provider store={mockStore({
@@ -104,7 +104,7 @@ describe(`Test routing`, () => {
     expect(screen.getByText(/Save properties to narrow down search or plan your future trips./i)).toBeInTheDocument();
   });
   it(`Render OfferScreen component correctly when user navigate to '/offer:id'`, () => {
-    history.push(`${RoutePathes.OFFER_SCREEN}/1`);
+    history.push(`${RoutePath.OFFER_SCREEN}/1`);
     render(
         <redux.Provider store={mockStore({
           USER: {

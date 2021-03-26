@@ -1,8 +1,8 @@
-import {APIRoutePathes, AuthorizationStatus, FetchStatus, RoutePathes} from "../../const";
+import {APIRoutePath, AuthorizationStatus, FetchStatus, RoutePath} from "../../const";
 import * as actions from "./actions";
 
 export const checkAuth = () => (dispatch, _getState, api) => (
-  api.get(APIRoutePathes.LOGIN)
+  api.get(APIRoutePath.LOGIN)
   .then((response) => dispatch(actions.setUserInfo(response.data.email, response.data[`avatar_url`])))
   .then(() => dispatch(actions.requireAuthorization(AuthorizationStatus.AUTH)))
   .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
@@ -10,14 +10,14 @@ export const checkAuth = () => (dispatch, _getState, api) => (
 );
 
 export const login = ({login: email, password}) => (dispatch, _getState, api) => (
-  api.post(APIRoutePathes.LOGIN, {email, password})
+  api.post(APIRoutePath.LOGIN, {email, password})
     .then((response) => dispatch(actions.setUserInfo(response.data.email, response.data[`avatar_url`])))
     .then(() => dispatch(actions.requireAuthorization(AuthorizationStatus.AUTH)))
-    .then(() => dispatch(actions.redirect(RoutePathes.MAIN_SCREEN)))
+    .then(() => dispatch(actions.redirect(RoutePath.MAIN_SCREEN)))
 );
 
 export const logout = () => (dispatch, _state, api) => (
-  api.get(APIRoutePathes.LOGOUT)
+  api.get(APIRoutePath.LOGOUT)
     .then(() => dispatch(actions.setUserName(``)))
     .then(() => dispatch(actions.setUserAvatar(``)))
     .then(() => dispatch(actions.requireAuthorization(AuthorizationStatus.NO_AUTH)))

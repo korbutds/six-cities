@@ -34,23 +34,6 @@ export const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating
 
 export const sortCommentsByTime = (commentA, commentB) => (Date.parse(commentB.rating) - Date.parse(commentA.rating));
 
-export const getSortedPlaces = (places, sortType) => {
-  const placesCopy = places.slice();
-
-  switch (sortType) {
-    case SortTypes.POPULAR:
-      return placesCopy.sort(sortPlacesPopular);
-    case SortTypes.PRICE_HIGH_TO_LOW:
-      return placesCopy.sort(sortPlacesPriceToLow);
-    case SortTypes.PRICE_LOW_TO_HIGH:
-      return placesCopy.sort(sortPlacesPriceToHight);
-    case SortTypes.TOP_RATED_FIRST:
-      return placesCopy.sort(sortPlacesRate);
-    default:
-      return placesCopy;
-  }
-};
-
 export const CommentSettings = {
   MIN_SIZE: 50,
   MAX_SIZE: 300,
@@ -58,12 +41,13 @@ export const CommentSettings = {
 
 export const makeFirstLetterUC = (str) => (str[0].toUpperCase() + str.slice(1));
 
-export const getCurrentCityComments = (comments) => {
+export const getCurrentCityComments = (commentsList) => {
+  const comments = commentsList.slice();
   if (comments.length < 2) {
-    return comments.slice();
+    return comments;
   } else if (comments.length < 11) {
-    return comments.slice().sort(sortCommentsByTime);
+    return comments.sort(sortCommentsByTime);
   } else {
-    return comments.slice().sort(sortCommentsByTime).slice(0, 10);
+    return comments.sort(sortCommentsByTime).slice(0, 10);
   }
 };

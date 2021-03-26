@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import {APIRoutePathes, FetchStatus} from "../../const";
+import {APIRoutePath, FetchStatus} from "../../const";
 import {createApi} from "../../services/api";
 import {ActionType} from "./actions";
 import {fetchCardsList, fetchFavoritesCards, sendFavoriteStatus} from "./api-actions";
@@ -12,7 +12,7 @@ describe(`Async offers data operations work correctly`, () => {
     const getCardsLoader = fetchCardsList();
 
     apiMock
-      .onGet(APIRoutePathes.HOTELS)
+      .onGet(APIRoutePath.HOTELS)
       .reply(200, [{fake: true}]);
 
     return getCardsLoader(dispatch, () => {}, api)
@@ -31,7 +31,7 @@ describe(`Async offers data operations work correctly`, () => {
     const getFavoriteCardsLoader = fetchFavoritesCards();
 
     apiMock
-      .onGet(APIRoutePathes.FAVORITE)
+      .onGet(APIRoutePath.FAVORITE)
       .reply(200, [{fake: true}]);
 
     return getFavoriteCardsLoader(dispatch, () => {}, api)
@@ -50,7 +50,7 @@ describe(`Async offers data operations work correctly`, () => {
     const sendFavoriteStatusLoader = sendFavoriteStatus(1, 1);
 
     apiMock
-      .onPost(`${APIRoutePathes.FAVORITE}/1/1`)
+      .onPost(`${APIRoutePath.FAVORITE}/1/1`)
       .reply(200, {fake: true});
 
     return sendFavoriteStatusLoader(dispatch, () => {}, api)

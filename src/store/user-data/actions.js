@@ -5,7 +5,8 @@ export const ActionType = {
   CHANGE_USERNAME: `user/changeName`,
   SET_USER_AVATAR: `user/changeAvatar`,
   SET_USER_INFO: `user/changeUserInfo`,
-  CHANGE_FETCH_STATUS: `data/changeFetchStatus`
+  CHANGE_FETCH_STATUS: `data/changeFetchStatus`,
+  REDIRECT: `screen/redirect`
 };
 
 export const requireAuthorization = createAction(ActionType.REQUIRED_AUTHORIZATION, (status) => ({

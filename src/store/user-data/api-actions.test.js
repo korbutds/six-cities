@@ -1,5 +1,5 @@
 import MockAdapter from "axios-mock-adapter";
-import {APIRoutePathes, AuthorizationStatus, FetchStatus, RoutePathes} from "../../const";
+import {APIRoutePath, AuthorizationStatus, FetchStatus, RoutePath} from "../../const";
 import {createApi} from "../../services/api";
 import {ActionType} from "./actions";
 import {checkAuth, login, logout} from "./api-actions";
@@ -13,7 +13,7 @@ describe(`Async user data operations work correctly`, () => {
     const checkAuthLoader = checkAuth();
 
     apiMock
-      .onGet(APIRoutePathes.LOGIN)
+      .onGet(APIRoutePath.LOGIN)
       .reply(200, {
         'email': `Vasya`,
         'avatar_url': `https://www.avatar.com`,
@@ -47,7 +47,7 @@ describe(`Async user data operations work correctly`, () => {
     const loginLoader = login(`Vasya`, `password`);
 
     apiMock
-      .onPost(APIRoutePathes.LOGIN)
+      .onPost(APIRoutePath.LOGIN)
       .reply(200, {
         'email': `Vasya`,
         'avatar_url': `https://www.avatar.com`,
@@ -69,7 +69,7 @@ describe(`Async user data operations work correctly`, () => {
         });
         expect(dispatch).toHaveBeenNthCalledWith(3, {
           type: ActionType.REDIRECT,
-          payload: RoutePathes.MAIN_SCREEN
+          payload: RoutePath.MAIN_SCREEN
         });
       });
   });
@@ -79,7 +79,7 @@ describe(`Async user data operations work correctly`, () => {
     const logoutLoader = logout();
 
     apiMock
-      .onGet(APIRoutePathes.LOGOUT)
+      .onGet(APIRoutePath.LOGOUT)
       .reply(200, []);
 
     return logoutLoader(dispatch, () => {}, api)

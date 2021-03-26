@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import FavoritesEmpty from '../favorites-empty/favorites-empty';
 import FavoritesList from '../favorites-list/favorites-list';
 import Footer from '../footer/footer';
@@ -9,12 +9,10 @@ import LoaderScreensaver from '../loading/loading';
 
 const FavoritesScreen = () => {
   const dispatch = useDispatch();
+  dispatch(fetchFavoritesCards());
 
   const cards = useSelector((state) => state.DATA.favoriteCard);
   const isFavoriteCardsLoaded = useSelector((state) => state.DATA.isFavoriteCardsLoaded);
-  useEffect(() => {
-    dispatch(fetchFavoritesCards());
-  }, [cards]);
 
   if (!isFavoriteCardsLoaded) {
     return <LoaderScreensaver />;

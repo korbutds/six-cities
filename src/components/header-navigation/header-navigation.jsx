@@ -1,7 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
-import {AuthorizationStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus, RoutePath} from '../../const';
 import {logout} from '../../store/user-data/api-actions';
 
 const HeaderNavigation = () => {
@@ -17,7 +17,7 @@ const HeaderNavigation = () => {
     <ul className="header__nav-list">
       {authorizationStatus === AuthorizationStatus.NO_AUTH ?
         <li className="header__nav-item user">
-          <Link className="header__nav-link header__nav-link--profile" href="#" to={RoutePathes.LOGIN_SCREEN}>
+          <Link className="header__nav-link header__nav-link--profile" href="#" to={RoutePath.LOGIN_SCREEN}>
             <div className="header__avatar-wrapper user__avatar-wrapper">
             </div>
             <span className="header__user-name user__name">Sign in</span>
@@ -25,7 +25,7 @@ const HeaderNavigation = () => {
         </li> :
         <>
           <li className="header__nav-item user">
-            <Link className="header__nav-link header__nav-link--profile" href="#" to={RoutePathes.FAVORITES_SCREEN}>
+            <Link className="header__nav-link header__nav-link--profile" href="#" to={RoutePath.FAVORITES_SCREEN}>
               <div className="header__avatar-wrapper user__avatar-wrapper"
                 style={{
                   backgroundImage: `url(${userAvatar})`,

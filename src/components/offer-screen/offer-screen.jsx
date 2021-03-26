@@ -13,7 +13,7 @@ import NotFoundScreen from '../not-found-screen/not-found-screen';
 import PrivateRoute from '../private-route/private-route';
 import Image from '../image/image';
 import browserHistory from '../../browser-history';
-import {AuthorizationStatus, FetchStatus, RoutePathes} from '../../const';
+import {AuthorizationStatus, FetchStatus, RoutePath} from '../../const';
 import {fetchCurrentOfferInfo, sendFavoriteOfferScreenStatus} from '../../store/current-offer-data/api-actions';
 import {changeFetchStatus, clearCurrentOffer} from '../../store/current-offer-data/actions';
 
@@ -60,7 +60,7 @@ const OfferScreen = ({apartmentId}) => {
 
   const handleFavoriteClick = () => {
     if (authorizationStatus === AuthorizationStatus.NO_AUTH) {
-      browserHistory.push(RoutePathes.LOGIN_SCREEN);
+      browserHistory.push(RoutePath.LOGIN_SCREEN);
     } else {
       const isFavoriteCard = Number(!isFavorite);
       dispatch(sendFavoriteOfferScreenStatus(id, isFavoriteCard));
