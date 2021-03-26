@@ -22,7 +22,6 @@ const OfferScreen = ({apartmentId}) => {
   const dispatch = useDispatch();
 
   const card = useSelector((state) => state.CURRENT_OFFER.currentOffer);
-  const isOfferLoaded = useSelector((state) => state.CURRENT_OFFER.isOfferLoaded);
   const nearPlaces = useSelector((state) => state.CURRENT_OFFER.nearPlaces);
   const authorizationStatus = useSelector((state) => state.USER.authorizationStatus);
   const fetchStatus = useSelector((state) => state.DATA.fetchStatus);
