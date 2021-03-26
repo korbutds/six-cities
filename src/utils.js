@@ -32,7 +32,7 @@ export const sortPlacesPriceToHight = (placeA, placeB) => (placeA.price - placeB
 
 export const sortPlacesRate = (placeA, placeB) => (placeB.rating - placeA.rating);
 
-export const sortCommentsByTime = (commentA, commentB) => (Date.parse(commentB.rating) - Date.parse(commentA.rating));
+export const sortCommentsByTime = (commentA, commentB) => (Date.parse(commentB.date) - Date.parse(commentA.date));
 
 export const CommentSettings = {
   MIN_SIZE: 50,
