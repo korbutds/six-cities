@@ -25,14 +25,6 @@ export const sendComment = (id, {commentText: comment, rating}) => (dispatch, _s
     .finally(() => setTimeout(() => (dispatch(actions.changeFetchStatus(FetchStatus.PENDING))), 5000))
 );
 
-export const sendFavoriteStatus = (id, favorite) => (dispatch, _state, api) => (
-  api.post(`${APIRoutePath.FAVORITE}/${id}/${favorite}`)
-    .then(({data}) => dispatch(actions.changeFavoriteStatus(data)))
-    .then(() => dispatch(actions.changeFetchStatus(FetchStatus.DONE)))
-    .catch(() => dispatch(actions.changeFetchStatus(FetchStatus.ERROR)))
-    .finally(() => setTimeout(() => (dispatch(actions.changeFetchStatus(FetchStatus.PENDING))), 5000))
-);
-
 export const sendFavoriteOfferScreenStatus = (id, favorite) => (dispatch, _state, api) => (
   api.post(`${APIRoutePath.FAVORITE}/${id}/${favorite}`)
     .then(({data}) => {

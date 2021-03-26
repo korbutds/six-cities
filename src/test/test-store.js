@@ -623,7 +623,6 @@ export const notEmptyStore = {
         "id": 11
       }
     ],
-    isCardsLoaded: true,
     favoriteCard: [
       {
         "city": {
@@ -1241,7 +1240,6 @@ export const notEmptyStore = {
         "id": 11
       }
     ],
-    isFavoriteCardsLoaded: true,
     fetchStatus: FetchStatus.PENDING
   },
   SCREEN: {
@@ -1308,7 +1306,6 @@ export const notEmptyStore = {
       },
       "id": 1
     },
-    isOfferLoaded: true,
     nearPlaces: [
       {
         "city": {
@@ -1477,7 +1474,6 @@ export const notEmptyStore = {
         "id": 4
       },
     ],
-    isNearPlacesLoaded: true,
     comments: [
       {
         "id": 1,
@@ -1492,7 +1488,6 @@ export const notEmptyStore = {
         "date": `2021-03-10T08:04:28.646Z`
       }
     ],
-    isCommentsLoaded: true
   }
 };
 

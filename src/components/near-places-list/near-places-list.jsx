@@ -1,17 +1,10 @@
 import React from 'react';
 import NearPlacesCard from '../near-places-card/near-places-card';
 import PropTypes from 'prop-types';
-import LoaderScreensaver from '../loading/loading';
 import {useSelector} from 'react-redux';
 
 const NearPlacesList = () => {
-  const isNearPlacesLoaded = useSelector((state) => state.CURRENT_OFFER.isNearPlacesLoaded);
   const cards = useSelector((state) => state.CURRENT_OFFER.nearPlaces);
-
-
-  if (!isNearPlacesLoaded) {
-    return <LoaderScreensaver />;
-  }
 
   return (
     <section className="near-places places">

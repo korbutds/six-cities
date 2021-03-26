@@ -19,8 +19,8 @@ describe(`Private-route work correctly`, () => {
     jest.spyOn(redux, `useSelector`);
     jest.spyOn(redux, `useDispatch`);
     const store = mockStore({
+      DATA: {cards: []},
       USER: {authorizationStatus: AuthorizationStatus.NO_AUTH},
-      DATA: {isCardsLoaded: true}
     });
     render(
         <Provider store={store}>
@@ -38,12 +38,12 @@ describe(`Private-route work correctly`, () => {
     expect(screen.getByText(/Public Route/i)).toBeInTheDocument();
     expect(screen.queryByText(/Private Route/i)).not.toBeInTheDocument();
   });
-  it(`If user no autorized he'll be redirect to /login`, () => {
+  it(`If user autorized he'll be redirect to /login`, () => {
     jest.spyOn(redux, `useSelector`);
     jest.spyOn(redux, `useDispatch`);
     const store = mockStore({
+      DATA: {cards: []},
       USER: {authorizationStatus: AuthorizationStatus.AUTH},
-      DATA: {isCardsLoaded: true}
     });
     render(
         <Provider store={store}>

@@ -6,7 +6,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import browserHistory from '../../browser-history';
 import {AuthorizationStatus, FetchStatus, RoutePath} from '../../const';
 import {changeFetchStatus} from '../../store/offers-data/actions';
-import {sendFavoriteStatus} from '../../store/current-offer-data/api-actions';
+import {sendFavoriteStatus} from '../../store/offers-data/api-actions';
 
 const CitiesCard = ({card, onCursorHandle}) => {
   const {id, preview_image: previewImage, is_premium: isPremium, price, title, type, rating, is_favorite: isFavorite} = card;

@@ -1,4 +1,4 @@
-import {CityList, SortTypes} from "./const";
+import {CityList} from "./const";
 
 export const getCitiesNames = (places) => {
   return places.reduce((acc, place) => {

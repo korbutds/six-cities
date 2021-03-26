@@ -46,7 +46,6 @@ describe(`Test routing`, () => {
     render(
         <redux.Provider store={mockStore({
           DATA: {
-            isCardsLoaded: true,
             cards: []
           },
           SCREEN: {
@@ -90,8 +89,6 @@ describe(`Test routing`, () => {
             authorizationStatus: AuthorizationStatus.AUTH
           },
           DATA: {
-            isCardsLoaded: true,
-            isFavoriteCardsLoaded: true,
             favoriteCard: []
           },
         })}>
@@ -145,11 +142,8 @@ describe(`Test routing`, () => {
               "title": `Beautiful & luxurious studio at great location`,
               "type": `apartment`
             },
-            isOfferLoaded: false,
             nearPlaces: [],
-            isNearPlacesLoaded: false,
             comments: [],
-            isCommentsLoaded: false
           },
           DATA: {
             fetchStatus: FetchStatus.DONE

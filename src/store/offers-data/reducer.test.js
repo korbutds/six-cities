@@ -4,31 +4,6 @@ import offersData from "./reducer";
 
 describe(`Ofers data reducers work correctly`, () => {
 
-  it(`Reducer should add cards to state and change isCardsLoaded status`, () => {
-    const initialState = {
-      cards: [],
-      isCardsLoaded: false,
-      currentOffer: null,
-      isOfferLoaded: false,
-      fetchStatus: FetchStatus.PENDING
-    };
-
-    const getCardsAction = {
-      type: ActionType.LOAD_CARDS,
-      payload: [{foo: `foo`}, {bar: `bar`}]
-    };
-
-    const expectedState = {
-      cards: [{foo: `foo`}, {bar: `bar`}],
-      isCardsLoaded: true,
-      currentOffer: null,
-      isOfferLoaded: false,
-      fetchStatus: FetchStatus.PENDING
-    };
-
-    expect(offersData(initialState, getCardsAction)).toEqual(expectedState);
-  });
-
   it(`Reducer should change cards list after change card favorite status`, () => {
     const initialState = {
       cards: [
